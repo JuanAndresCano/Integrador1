@@ -1,0 +1,238 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #ffff;
+    color: #161C2D;
+}
+nav .nav-link#find-work-link {
+    color: #473BF0 !important;
+}
+
+/* Botón primario */
+.btn-primary {
+    background-color: #473BF0 !important;
+    border: none !important;
+    border-radius: 50px !important;
+    padding: 0.5rem 1.5rem !important;
+    font-weight: 600 !important;
+    font-family: 'Poppins', sans-serif !important;
+    transition: background-color 0.3s !important; /* Transición suave */
+}
+
+.btn-primary:hover {
+    background-color: #3c32d9 !important; /* Color más oscuro al hacer hover */
+}
+
+/* Diseño para las cards de proyectos */
+.project-card {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra más definida */
+    border: 1px solid rgba(71, 59, 240, 0.2); /* Borde suave pero más visible */
+    transition: transform 0.3s, box-shadow 0.3s; /* Efecto de transición suave */
+}
+
+.project-card:hover {
+    transform: translateY(-5px); /* Efecto de elevación al hacer hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Sombra más intensa al hacer hover */
+}
+a h4 {
+    color: #161C2D;
+    font-weight: 600;
+
+}
+.no-underline {
+    text-decoration: none;
+}
+a:hover h4 {
+    color: #473BF0; 
+}
+
+/* Habilidades (badges) */
+.project-card .badge {
+    background: linear-gradient(145deg, #f8f9fa, #e2e6ea); /* Degradado sutil de gris claro a blanco */
+    color: #473BF0; /* Color de texto destacado */
+    font-weight: 400; /* Peso de fuente más destacado */
+    padding: 0.4rem 1rem; /* Relleno moderado */
+    border-radius: 30px; /* Bordes más redondeados */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15); /* Sombra suave */
+    margin-right: 0.5rem; /* Espaciado entre badges */
+    margin-bottom: 0.5rem; /* Espaciado entre filas */
+    font-size: 0.95rem; /* Tamaño de fuente */
+    transition: background 0.4s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Transiciones suaves */
+}
+    
+/* Efecto al pasar el mouse por encima de los badges */
+.project-card .badge:hover {
+    background: linear-gradient(145deg, #e2e6ea, #f8f9fa); /* Inversión de colores al hacer hover */
+    transform: translateY(-3px); /* Elevación suave */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra más profunda al hacer hover */
+}
+.project-card .btn-outline-primary {
+    color: #473BF0;
+    border-color: #473BF0;
+    border-radius: 50px;
+    padding: 0.25rem 1rem;
+    font-weight: 500;
+}
+
+.project-card .btn-outline-primary:hover {
+    background-color: #473BF0;
+    color: #fff;
+}
+
+.project-details {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e9ecef;
+}
+
+.project-details p {
+    font-weight: 500;
+    margin-bottom: 0;
+}
+
+.project-details span {
+    font-weight: 600;
+    color: #473BF0; /* Color de texto destacado */
+}
+
+.hero-title {
+    font-size: 3.5rem; /* Tamaño de fuente más grande */
+    font-weight: 700;
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.6); /* Sombra más pronunciada */
+    z-index: 1;
+    letter-spacing: 1.5px; /* Más espaciado entre letras */
+    color: #F8F8FF; /* Color blanco más puro */
+}
+
+.hero-section p {
+    font-size: 1.3rem; 
+    color: rgba(255, 255, 255, 0.9); /* Blanco con menor transparencia */
+    z-index: 1;
+}
+
+.nav-link#projects-link {
+    color: #473BF0 !important; /* Color morado */
+}
+
+
+
+.custom-filters {
+    background-color: #fff; /* Fondo blanco */
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid rgba(22, 28, 45, 0.2); /* Borde más sutil */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: var(--transition);
+}
+
+.custom-filters h5 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--title-color);
+    margin-bottom: 1rem;
+}
+
+.custom-filters .form-label {
+    font-weight: bold;
+    color: var(--title-color);
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.custom-filters .form-select,
+.custom-filters input[type="text"],
+.custom-filters input[type="number"],
+.custom-filters select {
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    background: #fff;
+    font-size: 1rem;
+    transition: box-shadow var(--transition-speed);
+}
+
+.custom-filters .form-select:focus,
+.custom-filters input[type="text"]:focus,
+.custom-filters input[type="number"]:focus,
+.custom-filters select:focus {
+    border-color: var(--primary-color); /* Color primario al seleccionar */
+    box-shadow: 0 0 0 1px rgba(71, 59, 240, 0.3); /* Sombra con color primario */
+    outline: none;
+}
+
+.custom-filters .btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    font-weight: 600;
+    transition: all var(--transition-speed);
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 8px;
+}
+@media (max-width: 968px) {
+    .custom-filters {
+        padding: 15px;
+    }
+    .col-12.col-md-3.order-md-2 {
+        order: 1;
+    }
+    .col-12.col-md-9.order-md-1 {
+        order: 2;
+    }
+}
+
+.custom-filters .btn-primary:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-2px);
+}
+
+:root {
+    --primary-color: #473BF0;
+    --primary-hover: #4b00d9;
+    --background-light: #f8f9fa;
+    --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --transition-speed: 0.3s;
+    --title-color: #1a1a1a;
+    --icon-color: #473BF0;
+    --primary-soft: rgba(71, 59, 240, 0.08);
+    --border: #E2E8F0;
+    --text-soft: #718096;
+    --item-radius: 12px;
+    --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.toast-container {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1050;
+}
+.toast {
+    background-color: #f8d7da;
+    color: #721c24;
+    border-color: #f5c6cb;
+    position: relative;
+    overflow: hidden;
+}
+.toast-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: var(--primary-color);
+    animation: progressBar 3s linear forwards;
+}
+@keyframes progressBar {
+    from { width: 100%; }
+    to { width: 0; }
+}

@@ -1,0 +1,40 @@
+/* Estilos personalizados */
+.hero {
+    background-image: url('{% static "accounts/img/background.jpg" %}');
+    background-size: cover;
+    background-position: center;
+}
+
+.btn-primary, .btn-success {
+    border-radius: 10px;
+}
+
+.navbar-brand {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.header-custom {
+    background-color: #161C2D; /* Cambia este valor por el azul que prefieras */
+}
+.bg {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0%;
+    right: 0%;
+    bottom: 0%;
+    left: 0%;
+    background-color: #161c2d;
+}
+
+.land-page {
+    width: 100%;
+    position: relative;
+    background-color: #f4f7fa;
+    height: 4785px;
+    text-align: left;
+    font-size: 21px;
+    color: #161c2d;
+    font-family: Poppins;
+}

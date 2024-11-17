@@ -1,0 +1,24 @@
+<!-- SUBIR Y ELIMINAR ARCHIVOS -->
+<div class="col-md-4 d-flex align-items-center">
+    {% if deliverable.requiresEvidence %}
+        <!-- Formulario para subir archivos -->
+        <form action="" method="post" enctype="multipart/form-data" style="display: inline;">
+            {% csrf_token %}
+            <input type="hidden" name="deliverable_id" value="{{ deliverable.id }}">
+            <input type="file" name="evidenceFile" accept=".pdf,.doc,.docx,.png,.jpg,.jpeg" required class="form-control me-2">
+            <button type="submit" class="btn btn-outline-success btn-sm" style="margin-left: 5px;">Upload File</button>
+        </form>
+
+        <!-- Botón para eliminar el archivo solo si ya hay uno cargado -->
+        {% if deliverable.evidenceFile %}
+            <form action="" method="post" style="display: inline;">
+                {% csrf_token %}
+                <input type="hidden" name="deliverable_id" value="{{ deliverable.id }}">
+                <button type="submit" name="deleteFile" class="btn btn-outline-danger btn-sm" style="margin-left: 5px;">Delete File</button>
+            </form>
+        {% endif %}
+    {% else %}
+        <span class="badge bg-secondary">No evidence required</span>
+    {% endif %}
+</div>
+<!-- SUBIR Y ELIMINAR ARCHIVOS -->

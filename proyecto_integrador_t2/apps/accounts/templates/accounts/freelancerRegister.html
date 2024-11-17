@@ -1,0 +1,123 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% trans "Sign up as a freelancer - SkillUp" %}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="{% static 'accounts/css/freelancerRegisterStyle.css' %}" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="header-left">
+                {% include 'accounts/nav.html' %}
+            </div>
+            <div class="language-selector">
+                <form action="{% url 'set_language' %}" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="next" value="{{ redirect_to }}" />
+                    <input type="hidden" name="language" value="es" />
+                    <button type="submit" class="language-btn">
+                        <img src="{% static 'GLOBAL/img/colombia.png' %}" alt="Español">
+                    </button>
+                </form>
+                
+                <form action="{% url 'set_language' %}" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="next" value="{{ redirect_to }}" />
+                    <input type="hidden" name="language" value="en" />
+                    <button type="submit" class="language-btn">
+                        <img src="{% static 'GLOBAL/img/usa.png' %}" alt="English">
+                    </button>
+                </form>
+            </div>
+        </div>
+    </header>
+
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-md-8">
+                <main>
+                    <h2 class="text-center">{% trans "Sign up as a freelancer" %}</h2>
+                    <p class="text-center text-muted">{% trans "To get started, you need to sign up here." %}</p>
+
+                    <form method="POST" action="">
+                        {% csrf_token %}
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    {{ form.first_name.label_tag }}
+                                    {{ form.first_name }}
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    {{ form.last_name.label_tag }}
+                                    {{ form.last_name }}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            {{ form.username.label_tag }}
+                            {{ form.username }}
+                        </div>
+
+                        <div class="form-group">
+                            {{ form.email.label_tag }}
+                            {{ form.email }}
+                        </div>
+
+                        <div class="form-group">
+                            {{ form.password1.label_tag }}
+                            <div class="password-input-container">
+                              {{ form.password1 }}
+                            </div>
+                        </div>
+                          
+                        <div class="form-group">
+                            {{ form.password2.label_tag }}
+                            <div class="password-input-container">
+                              {{ form.password2 }}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            {{ form.identification.label_tag }}
+                            {{ form.identification }}
+                        </div>
+
+                        <div class="form-group">
+                            {{ form.phoneNumber.label_tag }}
+                            {{ form.phoneNumber }}
+                        </div>
+
+                        {% if form.errors %}
+                            <div class="errors">
+                                {{ form.errors }}
+                            </div>
+                        {% endif %}
+
+                        <button type="submit" class="btn-submit">
+                            <i class="fas fa-user-plus"></i>
+                            {% trans "Create an account" %}
+                        </button>
+                    </form>
+
+                    <div class="text-center mt-4">
+                        <p>{% trans "Already have an account?" %} 
+                            <a href="{% url 'login' %}">{% trans "Sign in now" %}</a>
+                        </p>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </div>
+
+    {% include 'footer.html' %}
+</body>
+</html>

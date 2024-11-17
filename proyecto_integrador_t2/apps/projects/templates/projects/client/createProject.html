@@ -1,0 +1,168 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Project</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- CSS CREATE PROJECT -->
+    <link type='text/css' href="{% static 'projects/css/createProject.css' %}" rel='stylesheet'/>
+
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <!-- HEADER -->
+    {% include 'navbarClient.html' %}
+           
+    <!-- MAIN CONTENT -->
+    <main class="container my-5 flex-grow-1">
+        <h1 class="text-center mb-4">
+           {% trans "Create Project" %}
+        </h1>
+        <div class="row">
+            <!-- Formulario del proyecto -->
+            <div class="col-lg-8 col-md-7">
+                <form action="" method="POST" class="project-form">
+                    {% csrf_token %}
+                    
+                    <!-- Campo de Título Personalizado -->
+                    <div class="form-group mb-3">
+                        <label for="id_title" class="form-label">{% trans "Project Title" %}</label>
+                        {{ form.title }}
+                        {{ form.title.errors }}
+                    </div>
+
+                    <!-- Campo de Posición Requerida -->
+                    <div class="form-group mb-3">
+                        <label for="id_requiredPosition" class="form-label">{% trans "Required Position" %}</label>
+                        {{ form.requiredPosition }}
+                        {{ form.requiredPosition.errors }}
+                    </div>
+                            
+                    <!-- Campo de Descripción -->
+                    <div class="form-group mb-3">
+                        <label for="id_description" class="form-label">{% trans "Description" %}</label>
+                        {{ form.description }}
+                        {{ form.description.errors }}
+                    </div>
+                    
+                    <!-- Campo de Duración, Complejidad y Presupuesto en fila -->
+                    <div class="row">
+                        <!-- Campo de Duración -->
+                        <div class="col-md-4">
+                            <div class="form-group mb-3">
+                                <label for="id_daysDuration" class="form-label">{% trans "Project Duration" %}</label>
+                                {{ form.daysDuration }}
+                                {{ form.daysDuration.errors }}
+                            </div>
+                        </div>
+
+                        <!-- Campo de Complejidad -->
+                        <div class="col-md-4">
+                            <div class="form-group mb-3">
+                                <label for="id_complexity" class="form-label">{% trans "Experience Level" %}</label>
+                                {{ form.complexity }}
+                                {{ form.complexity.errors }}
+                            </div>
+                        </div>
+
+                        <!-- Campo de Presupuesto -->
+                        <div class="col-md-4">
+                            <div class="form-group mb-3">
+                                <label for="id_budget" class="form-label">{% trans "Budget" %}</label>
+                                {{ form.budget }}
+                                {{ form.budget.errors }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label class="form-label">{% trans "Skills and Expertise" %}</label>
+                        <div class="skills-container">
+                            {% for skill in form.skillExpertises.field.queryset %}
+                                <div class="skill-card">
+                                    <input class="form-check-input" type="checkbox" name="skillExpertises" id="skill-{{ skill.id }}" value="{{ skill.id }}" {% if skill in form.skillExpertises.value %} checked {% endif %}>
+                                    <label class="skill-card-label" for="skill-{{ skill.id }}">
+                                        {{ skill.name }}
+                                    </label>
+                                </div>
+                            {% endfor %}
+                        </div>
+                        
+                    </div>
+
+                    <!-- Mostrar errores generales -->
+                    {{ form.non_field_errors }}
+                    
+                    {% if update %}
+                        <input id="create-project-button" type="submit" value="{% trans 'Update Project' %}" class="btn create-project-btn btn-primary mt-3 form-btn-position">
+                    {% else %}
+                        <input id="create-project-button" type="submit" value="{% trans 'Create Project' %}" class="btn create-project-btn btn-primary mt-3 form-btn-position">
+                    {% endif %}                
+                </form>
+            </div>
+
+        <!-- Sección Acerca de Mí -->
+        <div class="col-lg-4 col-md-5 about-section">
+            <div class="about-me">
+                <h2>{% trans "About me" %}</h2>
+                <div class="company-info">
+                    {% if request.user.client.profile_pic %}
+                        <img class="profile-pic" src="{{ request.user.client.profile_pic.url }}" alt="Client Photo">
+                    {% else %}
+                        <img class="profile-pic" src="{% static 'img/default.png' %}" alt="Default Client Photo">
+                    {% endif %}
+                    
+                    <div class="company-details">
+                        <!-- Nombre de la empresa dinámico -->
+                        <h3>{{ request.user.client.companyName }}</h3>
+                        
+                        <!-- Descripción de la empresa dinámica -->
+                        <p>{{ request.user.client.description_company }}</p>
+                        
+                        <!-- Información adicional como en tu ejemplo -->
+                        <p>{% blocktrans %}{{ totalProjects }} published works{% endblocktrans %}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    {% include 'footer.html' %}
+    <!-- Bootstrap JS -->
+    <div class="toast-container">
+        {% for message in messages %}
+            <div class="toast {% if message.tags == 'success' %}toast-success{% endif %}" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="3000">
+                <div class="toast-header">
+                    <strong class="me-auto">
+                        {% if message.tags == 'success' %}
+                            {% trans "Success" %}
+                        {% else %}
+                            {% trans "Error" %}
+                        {% endif %}
+                    </strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body">
+                    {{ message }}
+                </div>
+                <div class="toast-progress"></div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var toastElList = [].slice.call(document.querySelectorAll('.toast'))
+            var toastList = toastElList.map(function (toastEl) {
+                return new bootstrap.Toast(toastEl, { autohide: true, delay: 3000 })
+            })
+            toastList.forEach(toast => toast.show())
+        });
+    </script>
+</body>
+</html>

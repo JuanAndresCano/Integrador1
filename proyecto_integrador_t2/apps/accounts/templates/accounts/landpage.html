@@ -1,0 +1,301 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+<html style="font-size: 16px;" lang="es">
+    <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta charset="utf-8">
+      <meta name="keywords" content="​Thoughtful, collaborative and insightful, ​Creates Unique Design and Construction According to Clients’ Needs, ​Wood Truss Systems, Responsive Pricing​ Table, $ 30, $ 60, Building Company, Read what our customers say, INTUITIVO">
+      <meta name="description" content="">
+      <title>SkillUp</title>
+      <link rel="stylesheet" href="{% static 'accounts/css/nicepage.css' %}" media="screen">
+      <link rel="stylesheet" href="{% static 'accounts/css/index.css' %}" media="screen">
+	  <link type="text/css" href="{% static 'accounts/css/main.css' %}" rel="stylesheet" />
+	  <link type="text/css" href="{% static 'GLOBAL/css/global.css' %}" rel="stylesheet" />
+      <script class="u-script" type="text/javascript" src="{% static 'accounts/js/jquery.js'%}" defer=""></script>
+      <script class="u-script" type="text/javascript" src="{% static 'accounts/js/nicepage.js'%}" defer=""></script>
+      <meta name="generator" content="Nicepage 6.18.5, nicepage.com">
+      <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+      <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
+      <script type="application/ld+json">{
+        "@context": "http://schema.org",
+        "@type": "Organization",
+        "name": ""
+      }</script>
+
+      <meta name="theme-color" content="#478ac9">
+      <meta property="og:title" content="Landing Page">
+      <meta property="og:type" content="website">
+
+    <meta data-intl-tel-input-cdn-path="intlTelInput/">
+  </head>
+
+  <body data-home-page="Landing-Page.html" data-home-page-title="Landing Page" data-path-to-root="./" data-include-products="false" class="u-body u-xl-mode" data-lang="es">
+    <header class="u-clearfix u-custom-color-1 u-header u-header" id="sec-bde6">
+      <div class="u-clearfix u-sheet u-valign-middle-lg u-valign-middle-xl u-sheet-1">
+        <h1 class="u-text u-text-default u-text-1">SkillUp</h1>
+        <a id="sign-up-button" href="#about_to_register" class="u-border-none u-btn u-btn-round u-button-style u-custom-color-2 u-custom-font u-hover-custom-color-2 u-radius u-btn-1">Sign Up</a>
+        <nav class="u-menu u-menu-one-level u-offcanvas u-menu-1">
+          <div class="menu-collapse u-custom-font" style="font-size: 1rem; letter-spacing: 0px; font-family: Poppins;">
+            <a class="u-button-style u-custom-left-right-menu-spacing u-custom-padding-bottom u-custom-top-bottom-menu-spacing u-nav-link u-palette-1-base u-text-active-palette-1-base u-text-hover-palette-2-base" href="#about_to_register">
+              <svg class="u-svg-link" viewBox="0 0 24 24">
+                <use xlink:href="#about_to_register"></use>
+              </svg>
+              <svg class="u-svg-content" version="1.1" id="menu-hamburger" viewBox="0 0 16 16" x="0px" y="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+                <g>
+                  <rect y="1" width="16" height="2"></rect>
+                  <rect y="7" width="16" height="2"></rect>
+                  <rect y="13" width="16" height="2"></rect>
+                </g>
+              </svg>
+            </a>
+          </div>
+          <div class="u-custom-menu u-nav-container">
+            <ul class="u-custom-font u-nav u-unstyled u-nav-1">
+            
+              <li class="u-nav-item">
+                <a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="{% url 'freelancerRegister' %}" style="padding: 10px 20px;">Find Work</a>
+              </li>
+              <li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="{% url 'clientRegister' %}" style="padding: 10px 20px;">Find Talent</a>
+              </li>
+
+              <li class="u-nav-item">
+                <a id="loginButton" class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="{% url 'login' %}" style="padding: 10px 20px;">Log In</a>
+              </li>
+            </ul>
+          </div>
+          <div class="u-custom-menu u-nav-container-collapse">
+            <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
+              <div class="u-inner-container-layout u-sidenav-overflow">
+                <div class="u-menu-close"></div>
+                <ul class="u-align-center u-custom-font u-nav u-popupmenu-items u-unstyled u-nav-2">
+                  <li class="u-nav-item">
+                    <a class="u-button-style u-nav-link" href="{% url 'login' %}">Log In</a>
+                  </li>
+                  <li class="u-nav-item"><a href="{% url 'freelancerRegister' %}" class="u-button-style u-nav-link">Find Work</a>
+                  </li>
+                  <li class="u-nav-item"><a href = "{% url 'clientRegister' %}" class="u-button-style u-nav-link">Find Talent</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
+          </div>
+        </nav>
+        
+		<!-- Formulario de selección de idioma -->
+		  <div class = "u-border-1 u-border-palette-1-light-1 u-btn u-btn-round u-button-style u-palette-1-light-3 u-radius u-text-palette-1-dark-2 u-btn-2">
+			<!-- Language Selector -->
+      
+        <div class="language-selector d-flex align-items-center me-3">
+          <form action="{% url 'set_language' %}" method="post" class="d-flex align-items-center">
+              {% csrf_token %}
+              <input type="hidden" name="next" value="{{ redirect_to }}" />
+              <input type="hidden" name="language" value="es" />
+              <button type="submit" class="btn p-0">
+                  <img src="{% static 'GLOBAL/img/colombia.png' %}" alt="Español" style="width: 30px; height: 20px;">
+              </button>
+          </form>
+
+          <form action="{% url 'set_language' %}" method="post" class="d-flex align-items-center ms-2">
+              {% csrf_token %}
+              <input type="hidden" name="next" value="{{ redirect_to }}" />
+              <input type="hidden" name="language" value="en" />
+              <button type="submit" class="btn p-0">
+                  <img src="{% static 'GLOBAL/img/usa.png' %}" alt="English" style="width: 30px; height: 20px;">
+              </button>
+          </form>
+        </div>
+      </div>
+
+    </header>
+    <section class="u-align-left u-clearfix u-custom-color-1 u-section-1" id="carousel_9a65">
+      <div class="u-clearfix u-sheet u-valign-middle-lg u-valign-middle-xl u-sheet-1">
+        <h2 class="u-custom-font u-text u-text-white u-text-1">{% trans "Elevate your work experience" %}</h2>
+        <img class="custom-expanded u-image u-image-1" src="{% static 'accounts/img/InteImg.jpg'%}" data-image-width="736" data-image-height="488">
+        <p class="u-custom-font u-text u-text-2">{% trans "Discover top talent or exciting opportunities with ease. Connect, collaborate, and achieve your goals effortlessly." %}</p>
+        <a href="#about_to_register" class="u-btn u-button-style u-none u-text-custom-color-3 u-text-hover-palette-2-base u-btn-1">Get started </a>
+      </div>
+    </section>
+    <section class="u-align-center u-clearfix u-section-2" id="sec-5a89">
+      <div class="u-clearfix u-sheet u-valign-middle-xs u-sheet-1">
+        <img class="u-image u-image-contain u-image-round u-radius u-image-1" src="{% static 'accounts/img/Encora_Logo.jpg'%}" alt="" data-image-width="2696" data-image-height="1414">
+        <img class="u-image u-image-contain u-image-round u-radius u-image-2" src="{% static 'accounts/img/Icesi.png'%}" alt="" data-image-width="393" data-image-height="128">
+      </div>
+    </section>
+    <section class="u-clearfix u-section-3" id="sec-7058">
+      <div class="u-clearfix u-sheet u-valign-top u-sheet-1">
+        <div class="u-expanded-width u-list u-list-1">
+          <div class="u-repeater u-repeater-1">
+            <div class="u-container-style u-gradient u-list-item u-opacity u-opacity-70 u-repeater-item u-list-item-1" data-animation-name="zoomIn" data-animation-duration="2000" data-animation-direction="">
+              <div class="u-container-layout u-similar-container u-container-layout-1">
+                <h4 class="u-align-center u-custom-font u-text u-text-body-alt-color u-text-1"> {% trans "Stay connected, stay efficient" %}</h4>
+                <p class="u-align-justify u-custom-font u-text u-text-grey-30 u-text-2">{%trans "Our messaging system ensures seamless communication between clients and freelancers" %} </p>
+              </div>
+            </div>
+            <div class="u-container-style u-gradient u-list-item u-opacity u-opacity-70 u-repeater-item u-video-cover u-list-item-2" data-animation-name="zoomIn" data-animation-duration="2000" data-animation-direction="">
+              <div class="u-container-layout u-similar-container u-container-layout-2">
+                <h4 class="u-align-center u-custom-font u-text u-text-body-alt-color u-text-3">{% trans "Never miss a beat" %}</h4>
+                <p class="u-align-justify u-custom-font u-text u-text-grey-30 u-text-4"> {% trans "With our real-time notification system, you’ll always be updated" %}</p>
+              </div>
+            </div>
+            <div class="u-container-style u-gradient u-list-item u-opacity u-opacity-70 u-repeater-item u-video-cover u-list-item-3" data-animation-name="zoomIn" data-animation-duration="2000" data-animation-direction="">
+              <div class="u-container-layout u-similar-container u-container-layout-3">
+                <h4 class="u-align-center u-custom-font u-text u-text-body-alt-color u-text-5">{%trans "Your work, your way" %} </h4>
+                <p class="u-align-justify u-custom-font u-text u-text-grey-30 u-text-6"> {%trans "Our data dashboard gives you complete visibility over your projects" %}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="u-clearfix u-valign-middle-xs u-section-4" id="carousel_f63e">
+      <div class="custom-expanded data-layout-selected u-clearfix u-gutter-30 u-layout-wrap u-layout-wrap-1">
+        <div class="u-layout">
+          <div class="u-layout-row">
+            <div class="u-size-35">
+              <div class="u-layout-row">
+                <div class="u-align-center u-container-style u-layout-cell u-size-60 u-layout-cell-1" data-animation-name="zoomIn" data-animation-duration="2000" data-animation-direction="">
+                  <div class="u-container-layout u-valign-middle u-container-layout-1">
+                    <img class="u-expanded-width u-image u-image-round u-radius u-image-1" src="{% static 'accounts/img/InteImg2.jpg'%}" alt="" data-image-width="474" data-image-height="292">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="u-size-25">
+              <div class="u-layout-col">
+                <div class="u-container-style u-layout-cell u-size-60 u-layout-cell-2">
+                  <div class="u-container-layout u-container-layout-2">
+                    <h2 class="u-align-left u-custom-font u-text u-text-custom-color-4 u-text-1"> {% trans "Explore countless projects, tailored to your expertise" %}</h2>
+                    <p class="u-align-justify u-custom-font u-text u-text-2"> {% trans "Discover opportunities that align perfectly with your skills and passions, helping you grow and thrive as a freelancer." %}</p>
+                    <a href="#about_to_register" class="u-btn u-button-style u-none u-text-custom-color-2 u-text-hover-palette-2-base u-btn-1">Get started </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="u-clearfix u-valign-middle-lg u-valign-middle-md u-valign-middle-sm u-valign-middle-xl u-section-5" id="carousel_9ae7">
+      <div class="custom-expanded data-layout-selected u-clearfix u-gutter-30 u-layout-wrap u-layout-wrap-1">
+        <div class="u-layout">
+          <div class="u-layout-row">
+            <div class="u-size-29">
+              <div class="u-layout-col">
+                <div class="u-container-style u-layout-cell u-size-60 u-layout-cell-1">
+                  <div class="u-container-layout u-container-layout-1">
+                    <h2 class="u-align-left u-custom-font u-text u-text-custom-color-4 u-text-1"> {% trans "Connect with a vast network of skilled professionals" %}</h2>
+                    <p class="u-align-justify u-custom-font u-text u-text-2"> {% trans "Access a global community of talented freelancers ready to bring your projects to life, no matter the size or scope." %}</p>
+                    <a href="#about_to_register" class="u-btn u-button-style u-none u-text-custom-color-2 u-text-hover-palette-2-base u-btn-1">Get started </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="u-size-31">
+              <div class="u-layout-row">
+                <div class="u-align-center u-container-style u-layout-cell u-size-60 u-layout-cell-2" data-animation-name="zoomIn" data-animation-duration="2000" data-animation-direction="">
+                  <div class="u-container-layout u-container-layout-2"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="custom-expanded data-layout-selected u-clearfix u-gutter-0 u-layout-wrap u-layout-wrap-2">
+        <div class="u-layout">
+          <div class="u-layout-row">
+            <div class="u-size-30 u-size-60-md">
+              <div class="u-layout-col">
+                <div class="u-container-style u-layout-cell u-size-40 u-layout-cell-3">
+                  <div class="u-container-layout u-valign-top u-container-layout-3">
+                    <img class="custom-expanded u-image u-image-round u-radius u-image-1" src="{% static 'accounts/img/InteImg3.jfif'%}" data-image-width="417" data-image-height="626">
+                  </div>
+                </div>
+                <div class="u-container-style u-layout-cell u-radius u-size-20 u-layout-cell-4">
+                  <div class="u-container-layout u-valign-top u-container-layout-4">
+                    <img class="custom-expanded u-image u-image-round u-radius u-image-2" src="{% static 'accounts/img/InteImg6.jfif'%}" data-image-width="734" data-image-height="413">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="u-size-30 u-size-60-md">
+              <div class="u-layout-col">
+                <div class="u-container-style u-layout-cell u-radius u-size-20 u-layout-cell-5">
+                  <div class="u-container-layout u-valign-bottom u-container-layout-5">
+                    <img class="custom-expanded u-image u-image-round u-radius u-image-3" src="{% static 'accounts/img/InteImg5.jfif'%}" data-image-width="735" data-image-height="490">
+                  </div>
+                </div>
+                <div class="u-container-style u-layout-cell u-size-40 u-layout-cell-6">
+                  <div class="u-container-layout u-valign-bottom-lg u-valign-bottom-xl u-container-layout-6">
+                    <img class="u-image u-image-round u-radius u-image-4" src="{% static 'accounts/img/InteImg4.jfif'%}" alt="" data-image-width="417" data-image-height="626">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="u-clearfix u-section-6" id="sec-3cfe">
+      <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+        <div class="data-layout-selected u-clearfix u-expanded-width u-layout-wrap u-layout-wrap-1">
+          <div class="u-layout">
+            <div class="u-layout-row">
+              <div class="u-container-style u-layout-cell u-size-14 u-layout-cell-1">
+                <div class="u-container-layout u-container-layout-1">
+                  <img class="custom-expanded u-image u-image-round u-radius u-image-1" src="{% static 'accounts/img/InteImg7.jfif'%}" alt="" data-image-width="736" data-image-height="950">
+                </div>
+              </div>
+              <div class="u-container-style u-layout-cell u-size-14 u-layout-cell-2">
+                <div class="u-container-layout u-valign-top u-container-layout-2">
+                  <img class="u-expanded-width u-image u-image-round u-preserve-proportions u-radius u-image-2" src="{% static 'accounts/img/InteImg8.jfif'%}" alt="" data-image-width="736" data-image-height="736">
+                </div>
+              </div>
+              <div class="u-container-style u-layout-cell u-size-32 u-layout-cell-3">
+                <div class="u-container-layout u-container-layout-3">
+                  <h2 class="u-align-left u-custom-font u-text u-text-custom-color-4 u-text-1"> {% trans "Unlock endless potential for growth" %}</h2>
+                  <p class="u-align-justify u-custom-font u-text u-text-2"> {% trans "Discover new challenges, grow your career, or scale your business with the myriad of opportunities available at your fingertips" %}.</p>
+                  <a href="#about_to_register" class="u-btn u-button-style u-none u-text-custom-color-2 u-text-hover-palette-2-base u-btn-1">Get started </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="pricing1" id ="about_to_register">
+      <section class="features">
+        <div class="feature-card">
+          <h3 class="feature-title">{% trans "New account" %}</h3>
+          <p class="feature-subtitle">{% trans "Client" %}</p>
+          <ul class="feature-list">
+            <li>{% trans "Find top talent" %}</li>
+            <li>{% trans "Grow your business" %}</li>
+            <li>{% trans "Manage projects easily" %}</li>
+            <li>{% trans "Flexible and scalable" %}</li>
+            <li>{% trans "Cost-effective solutions" %}</li>
+          </ul>
+          <a id="register-client" class="cta-button" href="{% url 'clientRegister' %}">{% trans "Join us" %}</a>
+        </div>
+        <div class="feature-card">
+          <h3 class="feature-title">{% trans "New account" %}</h3>
+          <p class="feature-subtitle">{% trans "Freelancer" %}</p>
+          <ul class="feature-list">
+            <li>{% trans "Access global opportunities" %}</li>
+            <li>{% trans "Flexible schedule" %}</li>
+            <li>{% trans "Professional growth" %}</li>
+            <li>{% trans "Financial independence" %}</li>
+            <li>{% trans "Build your reputation" %}</li>
+          </ul>
+          <a id="register-freelancer" class="cta-button" href="{% url 'freelancerRegister' %}">{% trans "Join us" %}</a>
+        </div>
+      </section>
+    </div>
+
+    {% include 'footer.html' %}
+	
+</body>
+
+</html>

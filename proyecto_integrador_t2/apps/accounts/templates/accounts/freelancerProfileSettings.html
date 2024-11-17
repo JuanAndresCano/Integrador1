@@ -1,0 +1,267 @@
+{% load static %}
+{% load i18n %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% trans "Profile Settings" %}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link type='text/css' href="{% static 'accounts/css/freelancerProfileSettings.css' %}" rel='stylesheet'/>
+</head>
+<body>
+    {% include 'navbarFreelancer.html' %}
+
+    <div class="settings-container">
+        <div class="settings-header">
+            <h1>{% trans "Profile Settings" %}</h1>
+            <p>{% trans "Manage your personal information and account settings" %}</p>
+        </div>
+
+        <div class="settings-content">
+            <!-- Profile Card -->
+            <div class="profile-card">
+                <div class="profile-header">
+                    <div class="profile-image-container">
+                        {% if request.user.freelancer.profile_pic %}
+                            <img src="{{ request.user.freelancer.profile_pic.url }}" alt="Profile">
+                        {% else %}
+                            <img src="{% static 'img/default.png' %}" alt="Default">
+                        {% endif %}
+                    </div>
+                    <div class="profile-info">
+                        <h2>{{ request.user.first_name }} {{ request.user.last_name }}</h2>
+                        <p>{{ request.user.freelancer.email }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Settings Form -->
+            <form method="POST" action="" enctype="multipart/form-data" class="settings-form">
+                {% csrf_token %}
+                
+                <div class="form-section">
+                    <h3>{% trans "Basic Information" %}</h3>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>{% trans "Profile Picture" %}</label>
+                            <div class="file-input-container">
+                                <input type="file" id="id_profile_pic" name="profile_pic" accept=".jpg, .jpeg, .png">
+                                <label for="id_profile_pic" class="file-label">
+                                    <i class="fas fa-upload"></i>
+                                    {% trans "Choose File" %}
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>{% trans "Experience Level" %}</label>
+                            {{ form.experience_level }}
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label>{% trans "Description" %}</label>
+                            {{ form.description }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>{% trans "Social Links" %}</h3>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label><i class="fab fa-linkedin"></i> LinkedIn</label>
+                            {{ form.linkedin_url }}
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fab fa-github"></i> GitHub</label>
+                            {{ form.github_url }}
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fab fa-instagram"></i> Instagram</label>
+                            {{ form.instagram_url }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>{% trans "Upload Your CV" %}</h3>
+                    <div class="file-input-container">
+                        <input type="file" id="id_resume" name="resume" accept="*/*">
+                        <label for="id_resume" class="file-label">
+                            <i class="fas fa-file-pdf"></i>
+                            {% trans "Upload CV" %}
+                        </label>
+                    </div>
+                </div>
+                <div class="form-section">
+                    <h3>{% trans "Skills & Expertise" %}</h3>
+                    <div class="skills-container">
+                        {% for skill in form.skillExpertises.field.queryset %}
+                            <div class="skill-card">
+                                <input 
+                                    class="form-check-input" 
+                                    type="checkbox" 
+                                    name="skillExpertises" 
+                                    id="skill-{{ skill.id }}" 
+                                    value="{{ skill.id }}" 
+                                    {% if skill in form.skillExpertises.value %} checked {% endif %}
+                                >
+                                <label class="skill-card-label" for="skill-{{ skill.id }}">
+                                    {{ skill.name }}
+                                </label>
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="new-skills-input">
+                        <label for="new_skills">{% trans "Add New Skills" %}</label>
+                        <div class="input-with-hint">
+                            <input type="text" 
+                                   id="new_skills" 
+                                   name="new_skills" 
+                                   placeholder="{% trans 'e.g., Django, React, SQL' %}">
+                            <span class="hint-text">{% trans "Separate multiple skills with commas" %}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section portfolio-experience-section">
+                    <h3>{% trans "Enhance Your Profile" %}</h3>
+                    <p class="section-description">{% trans "Add your work samples and professional experience to stand out" %}</p>
+                    
+                    <div class="action-buttons-container">
+                        {% if portfolios|length < 9 %}
+                        <button type="button" class="btn-action" data-bs-toggle="modal" data-bs-target="#portfolioModal">
+                            <i class="fas fa-folder-plus"></i>
+                            {% trans "Add Portfolio" %}
+                        </button>
+                        {% endif %}
+                        <button type="button" class="btn-action" data-bs-toggle="modal" data-bs-target="#experiencieModal">
+                            <i class="fas fa-briefcase"></i>
+                            {% trans "Add Experience" %}
+                        </button>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-submit">
+                    <i class="fas fa-save"></i>
+                    {% trans "Save Changes" %}
+                </button>
+            </form>
+        </div>
+    </div>
+
+<!-- Modal de Portfolio -->
+<div class="modal fade" id="portfolioModal" tabindex="-1" aria-labelledby="portfolioModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="portfolioModalLabel">
+                    <i class="fas fa-folder-plus"></i>
+                    {% trans "Add New Portfolio" %}
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="POST" action="" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="modal-form-group">
+                        <label for="project_name">{% trans "Project Name" %}</label>
+                        <input type="text" id="project_name" name="project_name" required>
+                    </div>
+                    
+                    <div class="modal-form-group">
+                        <label for="project_description">{% trans "Project Description" %}</label>
+                        <textarea id="project_description" name="project_description" rows="3" required></textarea>
+                    </div>
+
+                    <div class="modal-form-group">
+                        <div class="modal-file-input">
+                            <label class="modal-file-label">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                {% trans "Upload Project Image" %}
+                                <input type="file" id="project_image" name="project_image" accept=".jpg, .jpeg, .png">
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="modal-form-group">
+                        <label for="project_duration_months">{% trans "Project Duration (months)" %}</label>
+                        <input type="number" id="project_duration_months" name="project_duration_months" min="1" required>
+                    </div>
+
+                    <div class="modal-form-group">
+                        <label for="project_link">{% trans "Project Link" %} ({% trans "optional" %})</label>
+                        <input type="url" id="project_link" name="project_link" placeholder="https://...">
+                    </div>
+
+                    <button type="submit" class="modal-submit-btn">
+                        <i class="fas fa-save"></i>
+                        {% trans "Save Portfolio" %}
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de Experiencia (similar estructura) -->
+<div class="modal fade" id="experiencieModal" tabindex="-1" aria-labelledby="experienceModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="experienceModalLabel">
+                    <i class="fas fa-briefcase"></i>
+                    {% trans "Add Work Experience" %}
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="POST" action="" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="modal-form-group">
+                        <label for="job">{% trans "Position" %}</label>
+                        <input type="text" id="job" name="job" required>
+                    </div>
+
+                    <div class="modal-form-group">
+                        <label for="company">{% trans "Company" %}</label>
+                        <input type="text" id="company" name="company" required>
+                    </div>
+
+                    <div class="modal-form-group">
+                        <label for="start_date">{% trans "Start Date" %}</label>
+                        <input type="date" id="start_date" name="start_date" required>
+                    </div>
+
+                    <div class="modal-form-group">
+                        <label for="end_date">{% trans "End Date" %}</label>
+                        <input type="date" id="end_date" name="end_date" required>
+                    </div>
+
+                    <div class="modal-form-group">
+                        <label for="job_description">{% trans "Job Description" %}</label>
+                        <textarea id="job_description" name="job_description" rows="3" required></textarea>
+                    </div>
+
+                    <button type="submit" class="modal-submit-btn">
+                        <i class="fas fa-save"></i>
+                        {% trans "Save Experience" %}
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+    <br>
+    <!-- FOOTER -->
+    {% include 'footer.html' %}
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

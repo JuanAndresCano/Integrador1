@@ -1,0 +1,1605 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-11-11 13:46-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Spanish <es@li.org>\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\apps\accounts\forms.py:17
+msgid "First Name"
+msgstr "Nombre"
+
+#: .\apps\accounts\forms.py:21
+msgid "Last Name"
+msgstr "Apellido"
+
+#: .\apps\accounts\forms.py:25 .\apps\accounts\templates\accounts\login.html:18
+msgid "Username"
+msgstr "Nombre de usuario"
+
+#: .\apps\accounts\forms.py:29
+#: .\apps\accounts\templates\accounts\recoverPassword.html:23
+msgid "Email"
+msgstr "Correo electrónico"
+
+#: .\apps\accounts\forms.py:33 .\apps\accounts\templates\accounts\login.html:21
+msgid "Password"
+msgstr "Contraseña"
+
+#: .\apps\accounts\forms.py:37
+msgid "Confirm Password"
+msgstr "Confirmar contraseña"
+
+#: .\apps\accounts\forms.py:41
+msgid "Identification"
+msgstr "Identificación"
+
+#: .\apps\accounts\forms.py:45
+msgid "Phone Number"
+msgstr "Número de teléfono"
+
+#: .\apps\accounts\forms.py:240
+msgid "Type your comment here"
+msgstr "Escribe tu comentario aquí"
+
+#: .\apps\accounts\templates\accounts\clientProfile.html:8
+#: .\apps\accounts\templates\accounts\freelancerProfileSettings.html:9
+#: .\apps\accounts\templates\accounts\freelancerProfileSettings.html:20
+msgid "Profile Settings"
+msgstr "Configuración de Perfil"
+
+#: .\apps\accounts\templates\accounts\clientProfile.html:20
+msgid "Company Profile"
+msgstr "Perfil de la Empresa"
+
+#: .\apps\accounts\templates\accounts\clientProfile.html:21
+msgid "Manage your company information and account settings"
+msgstr "Administra la información de tu empresa y la configuración de tu cuenta"
+
+#: .\apps\accounts\templates\accounts\clientProfile.html:48
+#: .\apps\accounts\templates\accounts\freelancerProfileSettings.html:47
+msgid "Basic Information"
+msgstr "Información Básica"
+
+#: .\apps\accounts\templates\accounts\clientProfile.html:51
+#: .\apps\accounts\templates\accounts\freelancerProfileSettings.html:50
+#: .\apps\projects\templates\projects\freelancer\FreelancerFinancialControl.html:25
+msgid "Profile Picture"
+msgstr "Foto de Perfil"
+
+#: .\apps\accounts\templates\accounts\clientProfile.html:56
+#: .\apps\accounts\templates\accounts\freelancerProfileSettings.html:55
+msgid "Choose File"
+msgstr "Elegir Archivo"
+
+#: .\apps\accounts\templates\accounts\clientProfile.html:62
+msgid "Company Description"
+msgstr "Descripción de la Empresa"
+
+#: .\apps\accounts\templates\accounts\clientProfile.html:69
+msgid "Company Details"
+msgstr "Detalles de la Empresa"
+
+#: .\apps\accounts\templates\accounts\clientProfile.html:72
+msgid "Full Name"
+msgstr "Nombre Completo"
+
+#: .\apps\accounts\templates\accounts\clientProfile.html:76
+msgid "Company Name"
+msgstr "Nombre de la Empresa"
+
+#: .\apps\accounts\templates\accounts\clientProfile.html:80
+msgid "Company Type"
+msgstr "Tipo de Empresa"
+
+#: .\apps\accounts\templates\accounts\clientProfile.html:88
+#: .\apps\accounts\templates\accounts\freelancerProfileSettings.html:152
+msgid "Save Changes"
+msgstr "Guardar Cambios"
+
+#: .\apps\accounts\templates\accounts\clientRegister.html:19
+msgid "Sign up as a client"
+msgstr "Regístrate como cliente"
+
+#: .\apps\accounts\templates\accounts\clientRegister.html:20
+#: .\apps\accounts\templates\accounts\freelancerRegister.html:21
+msgid "To get started, you need to sign up here."
+msgstr "Para comenzar, necesitas registrarte aquí."
+
+#: .\apps\accounts\templates\accounts\clientRegister.html:142
+msgid "Country:"
+msgstr "País:"
+
+#: .\apps\accounts\templates\accounts\clientRegister.html:175
+msgid "City:"
+msgstr "Ciudad:"
+
+#: .\apps\accounts\templates\accounts\clientRegister.html:191
+#: .\apps\accounts\templates\accounts\freelancerRegister.html:61
+msgid "Create an account"
+msgstr "Crear una cuenta"
+
+#: .\apps\accounts\templates\accounts\freelancerProfile.html:8
+msgid "Freelancer Profile"
+msgstr "Perfil del Freelancer"
+
+#: .\apps\accounts\templates\accounts\freelancerProfile.html:30
+#: .\apps\projects\templates\projects\client\applyProjectFreelancer.html:78
+msgid "Approve"
+msgstr "Aprobar"
+
+#: .\apps\accounts\templates\accounts\freelancerProfile.html:37
+#: .\apps\projects\templates\projects\client\applyProjectFreelancer.html:84
+#: .\apps\projects\templates\projects\client\clientDeliverable.html:111
+msgid "Reject"
+msgstr "Rechazar"
+
+#: .\apps\accounts\templates\accounts\freelancerProfile.html:47
+#: .\apps\accounts\templates\accounts\freelancerProfile.html:61
+msgid "Talk with"
+msgstr "Hablar con"
+
+#: .\apps\accounts\templates\accounts\freelancerProfile.html:69
+msgid "My name is"
+msgstr "Mi nombre es"
+
+#: .\apps\accounts\templates\accounts\freelancerProfile.html:120
+msgid "My Works"
+msgstr "Mis Trabajos"
+
+#: .\apps\accounts\templates\accounts\freelancerProfile.html:121
+msgid "Featured Portfolios"
+msgstr "Portafolios Destacados"
+
+#: .\apps\accounts\templates\accounts\freelancerProfile.html:131
+msgid "Default Thumbnail"
+msgstr "Miniatura Predeterminada"
+
+#: .\apps\accounts\templates\accounts\freelancerProfile.html:137
+msgid "months ago"
+msgstr "hace meses"
+
+#: .\apps\accounts\templates\accounts\freelancerProfile.html:142
+msgid "   View Project"
+msgstr "   Ver Proyecto"
+
+#: .\apps\accounts\templates\accounts\freelancerProfile.html:165
+msgid "CAREER PATH"
+msgstr "TRAYECTORIA PROFESIONAL"
+
+#: .\apps\accounts\templates\accounts\freelancerProfile.html:166
+msgid "Work Experiences"
+msgstr "Experiencias Laborales"
+
+#: .\apps\accounts\templates\accounts\freelancerProfile.html:170
+#: .\apps\accounts\templates\accounts\freelancerProfileSettings.html:61
+#: .\apps\projects\templates\projects\client\createProject.html:65
+msgid "Experience Level"
+msgstr "Nivel de Experiencia"
+
+#: .\apps\accounts\templates\accounts\freelancerProfile.html:201
+msgid "No work experience yet."
+msgstr "Aún no hay experiencia laboral."
+
+#: .\apps\accounts\templates\accounts\freelancerProfile.html:208
+msgid "MY RESUME"
+msgstr "MI CURRÍCULUM"
+
+#: .\apps\accounts\templates\accounts\freelancerProfile.html:209
+#: .\apps\accounts\templates\accounts\freelancerProfile.html:218
+msgid "Download CV"
+msgstr "Descargar CV"
+
+#: .\apps\accounts\templates\accounts\freelancerProfile.html:214
+msgid "Get a detailed look at my experience and qualifications"
+msgstr "Obtén una mirada detallada a mi experiencia y cualificaciones"
+
+#: .\apps\accounts\templates\accounts\freelancerProfile.html:226
+msgid "FEEDBACK"
+msgstr "RETROALIMENTACIÓN"
+
+#: .\apps\accounts\templates\accounts\freelancerProfile.html:227
+msgid "Ratings & Reviews"
+msgstr "Calificaciones y Reseñas"
+
+#: .\apps\accounts\templates\accounts\freelancerProfile.html:268
+msgid "Freelancer's Response"
+msgstr "Respuesta del Freelancer"
+
+#: .\apps\accounts\templates\accounts\freelancerProfile.html:281
+msgid "Respond"
+msgstr "Responder"
+
+#: .\apps\accounts\templates\accounts\freelancerProfile.html:292
+msgid "Share Your Experience"
+msgstr "Comparte Tu Experiencia"
+
+#: .\apps\accounts\templates\accounts\freelancerProfile.html:296
+msgid "Your Rating"
+msgstr "Tu Calificación"
+
+#: .\apps\accounts\templates\accounts\freelancerProfile.html:300
+msgid "stars"
+msgstr "estrellas"
+
+#: .\apps\accounts\templates\accounts\freelancerProfile.html:312
+msgid "Submit Review"
+msgstr "Enviar Reseña"
+
+#: .\apps\accounts\templates\accounts\freelancerProfileSettings.html:21
+msgid "Manage your personal information and account settings"
+msgstr "Administra tu información personal y la configuración de tu cuenta"
+
+#: .\apps\accounts\templates\accounts\freelancerProfileSettings.html:66
+#: .\apps\projects\templates\projects\client\applyProjectFreelancer.html:27
+#: .\apps\projects\templates\projects\client\applyProjectFreelancer.html:56
+#: .\apps\projects\templates\projects\client\clientDeliverable.html:28
+#: .\apps\projects\templates\projects\client\clientDeliverable.html:71
+#: .\apps\projects\templates\projects\client\createProject.html:46
+#: .\apps\projects\templates\projects\freelancer\ApplyProject.html:48
+#: .\apps\projects\templates\projects\freelancer\ApplyProject.html:85
+#: .\apps\projects\templates\projects\freelancer\ApplyProject.html:107
+#: .\apps\projects\templates\projects\freelancer\addDeliverablesProject.html:27
+#: .\apps\projects\templates\projects\freelancer\addMilestoneDeliverable.html:40
+#: .\apps\projects\templates\projects\freelancer\deliverablesProject.html:39
+#: .\apps\projects\templates\projects\freelancer\deliverablesProject.html:79
+#: .\apps\projects\templates\projects\freelancer\informationProject.html:27
+#: .\apps\projects\templates\projects\freelancer\milestone.html:14
+msgid "Description"
+msgstr "Descripción"
+
+#: .\apps\accounts\templates\accounts\freelancerProfileSettings.html:73
+msgid "Social Links"
+msgstr "Enlaces Sociales"
+
+#: .\apps\accounts\templates\accounts\freelancerProfileSettings.html:91
+msgid "Upload Your CV"
+msgstr "Sube Tu CV"
+
+#: .\apps\accounts\templates\accounts\freelancerProfileSettings.html:96
+msgid "Upload CV"
+msgstr "Subir CV"
+
+#: .\apps\accounts\templates\accounts\freelancerProfileSettings.html:101
+msgid "Skills & Expertise"
+msgstr "Habilidades y Experiencia"
+
+#: .\apps\accounts\templates\accounts\freelancerProfileSettings.html:121
+msgid "Add New Skills"
+msgstr "Agregar Nuevas Habilidades"
+
+#: .\apps\accounts\templates\accounts\freelancerProfileSettings.html:126
+msgid "e.g., Django, React, SQL"
+msgstr "p.ej., Django, React, SQL"
+
+#: .\apps\accounts\templates\accounts\freelancerProfileSettings.html:127
+msgid "Separate multiple skills with commas"
+msgstr "Separa múltiples habilidades con comas"
+
+#: .\apps\accounts\templates\accounts\freelancerProfileSettings.html:133
+msgid "Enhance Your Profile"
+msgstr "Mejora Tu Perfil"
+
+#: .\apps\accounts\templates\accounts\freelancerProfileSettings.html:134
+msgid "Add your work samples and professional experience to stand out"
+msgstr "Añade tus muestras de trabajo y experiencia profesional para destacar"
+
+#: .\apps\accounts\templates\accounts\freelancerProfileSettings.html:140
+msgid "Add Portfolio"
+msgstr "Agregar Portafolio"
+
+#: .\apps\accounts\templates\accounts\freelancerProfileSettings.html:145
+msgid "Add Experience"
+msgstr "Agregar Experiencia"
+
+#: .\apps\accounts\templates\accounts\freelancerProfileSettings.html:165
+msgid "Add New Portfolio"
+msgstr "Agregar Nuevo Portafolio"
+
+#: .\apps\accounts\templates\accounts\freelancerProfileSettings.html:173
+msgid "Project Name"
+msgstr "Nombre del Proyecto"
+
+#: .\apps\accounts\templates\accounts\freelancerProfileSettings.html:178
+msgid "Project Description"
+msgstr "Descripción del Proyecto"
+
+#: .\apps\accounts\templates\accounts\freelancerProfileSettings.html:186
+msgid "Upload Project Image"
+msgstr "Subir Imagen del Proyecto"
+
+#: .\apps\accounts\templates\accounts\freelancerProfileSettings.html:193
+msgid "Project Duration (months)"
+msgstr "Duración del Proyecto (meses)"
+
+#: .\apps\accounts\templates\accounts\freelancerProfileSettings.html:198
+msgid "Project Link"
+msgstr "Enlace del Proyecto"
+
+#: .\apps\accounts\templates\accounts\freelancerProfileSettings.html:198
+msgid "optional"
+msgstr "opcional"
+
+#: .\apps\accounts\templates\accounts\freelancerProfileSettings.html:204
+msgid "Save Portfolio"
+msgstr "Guardar Portafolio"
+
+#: .\apps\accounts\templates\accounts\freelancerProfileSettings.html:219
+msgid "Add Work Experience"
+msgstr "Agregar Experiencia Laboral"
+
+#: .\apps\accounts\templates\accounts\freelancerProfileSettings.html:227
+msgid "Position"
+msgstr "Posición"
+
+#: .\apps\accounts\templates\accounts\freelancerProfileSettings.html:232
+#: .\templates\footer.html:33
+msgid "Company"
+msgstr "Compañía"
+
+#: .\apps\accounts\templates\accounts\freelancerProfileSettings.html:237
+msgid "Start Date"
+msgstr "Fecha de Inicio"
+
+#: .\apps\accounts\templates\accounts\freelancerProfileSettings.html:242
+#: .\apps\projects\templates\projects\freelancer\FreelancerFinancialControl.html:86
+msgid "End Date"
+msgstr "Fecha de Finalización"
+
+#: .\apps\accounts\templates\accounts\freelancerProfileSettings.html:247
+msgid "Job Description"
+msgstr "Descripción del Trabajo"
+
+#: .\apps\accounts\templates\accounts\freelancerProfileSettings.html:253
+msgid "Save Experience"
+msgstr "Guardar Experiencia"
+
+#: .\apps\accounts\templates\accounts\freelancerRegister.html:8
+msgid "Sign up as a freelancer - SkillUp"
+msgstr "Regístrate como freelancer - SkillUp"
+
+#: .\apps\accounts\templates\accounts\freelancerRegister.html:20
+msgid "Sign up as a freelancer"
+msgstr "Regístrate como freelancer"
+
+#: .\apps\accounts\templates\accounts\freelancerRegister.html:69
+msgid "Already have an account?"
+msgstr "¿Ya tienes una cuenta?"
+
+#: .\apps\accounts\templates\accounts\freelancerRegister.html:69
+#: .\apps\accounts\templates\accounts\recoverPassword.html:36
+msgid "Sign in now"
+msgstr "Inicia sesión ahora"
+
+#: .\apps\accounts\templates\accounts\landpage.html:114
+msgid "Elevate your work experience"
+msgstr "Eleva tu experiencia laboral"
+
+#: .\apps\accounts\templates\accounts\landpage.html:116
+#: .\templates\footer.html:20
+msgid "Discover top talent or exciting opportunities with ease. Connect, collaborate, and achieve your goals effortlessly."
+msgstr "Descubre talento de primer nivel u oportunidades emocionantes con facilidad. Conéctate, colabora y logra tus objetivos sin esfuerzo."
+
+#: .\apps\accounts\templates\accounts\landpage.html:132
+msgid "Stay connected, stay efficient"
+msgstr "Mantente conectado, mantente eficiente"
+
+#: .\apps\accounts\templates\accounts\landpage.html:133
+msgid "Our messaging system ensures seamless communication between clients and freelancers"
+msgstr "Nuestro sistema de mensajería garantiza una comunicación fluida entre clientes y freelancers"
+
+#: .\apps\accounts\templates\accounts\landpage.html:138
+msgid "Never miss a beat"
+msgstr "No te pierdas ni un momento"
+
+#: .\apps\accounts\templates\accounts\landpage.html:139
+msgid "With our real-time notification system, you’ll always be updated"
+msgstr "Con nuestro sistema de notificaciones en tiempo real, siempre estarás actualizado"
+
+#: .\apps\accounts\templates\accounts\landpage.html:144
+msgid "Your work, your way"
+msgstr "Tu trabajo, a tu manera"
+
+#: .\apps\accounts\templates\accounts\landpage.html:145
+msgid "Our data dashboard gives you complete visibility over your projects"
+msgstr "Nuestro panel de datos te brinda visibilidad completa sobre tus proyectos"
+
+#: .\apps\accounts\templates\accounts\landpage.html:169
+msgid "Explore countless projects, tailored to your expertise"
+msgstr "Explora innumerables proyectos, adaptados a tu experiencia"
+
+#: .\apps\accounts\templates\accounts\landpage.html:170
+msgid "Discover opportunities that align perfectly with your skills and passions, helping you grow and thrive as a freelancer."
+msgstr "Descubre oportunidades que se alinean perfectamente con tus habilidades y pasiones, ayudándote a crecer y prosperar como freelancer."
+
+#: .\apps\accounts\templates\accounts\landpage.html:188
+msgid "Connect with a vast network of skilled professionals"
+msgstr "Conéctate con una amplia red de profesionales calificados"
+
+#: .\apps\accounts\templates\accounts\landpage.html:189
+msgid "Access a global community of talented freelancers ready to bring your projects to life, no matter the size or scope."
+msgstr "Accede a una comunidad global de freelancers talentosos listos para darle vida a tus proyectos, sin importar el tamaño o el alcance."
+
+#: .\apps\accounts\templates\accounts\landpage.html:257
+msgid "Unlock endless potential for growth"
+msgstr "Desbloquea un potencial infinito de crecimiento"
+
+#: .\apps\accounts\templates\accounts\landpage.html:258
+msgid "Discover new challenges, grow your career, or scale your business with the myriad of opportunities available at your fingertips"
+msgstr "Descubre nuevos desafíos, haz crecer tu carrera o amplía tu negocio con la gran cantidad de oportunidades disponibles a tu alcance"
+
+#: .\apps\accounts\templates\accounts\landpage.html:271
+#: .\apps\accounts\templates\accounts\landpage.html:283
+msgid "New account"
+msgstr "Nueva Cuenta"
+
+#: .\apps\accounts\templates\accounts\landpage.html:272
+msgid "Client"
+msgstr "Cliente"
+
+#: .\apps\accounts\templates\accounts\landpage.html:274
+msgid "Find top talent"
+msgstr "Encuentra los mejores talentos"
+
+#: .\apps\accounts\templates\accounts\landpage.html:275
+msgid "Grow your business"
+msgstr "Haz crecer tu negocio"
+
+#: .\apps\accounts\templates\accounts\landpage.html:276
+msgid "Manage projects easily"
+msgstr "Gestiona proyectos fácilmente"
+
+#: .\apps\accounts\templates\accounts\landpage.html:277
+msgid "Flexible and scalable"
+msgstr "Flexible y escalable"
+
+#: .\apps\accounts\templates\accounts\landpage.html:278
+msgid "Cost-effective solutions"
+msgstr "Soluciones rentables"
+
+#: .\apps\accounts\templates\accounts\landpage.html:280
+#: .\apps\accounts\templates\accounts\landpage.html:292
+msgid "Join us"
+msgstr "Únete a Nosotros"
+
+#: .\apps\accounts\templates\accounts\landpage.html:284
+msgid "Freelancer"
+msgstr "Freelancer"
+
+#: .\apps\accounts\templates\accounts\landpage.html:286
+msgid "Access global opportunities"
+msgstr "Accede a oportunidades globales"
+
+#: .\apps\accounts\templates\accounts\landpage.html:287
+msgid "Flexible schedule"
+msgstr "Horario flexible"
+
+#: .\apps\accounts\templates\accounts\landpage.html:288
+msgid "Professional growth"
+msgstr "Crecimiento profesional"
+
+#: .\apps\accounts\templates\accounts\landpage.html:289
+msgid "Financial independence"
+msgstr "Independencia financiera"
+
+#: .\apps\accounts\templates\accounts\landpage.html:290
+msgid "Build your reputation"
+msgstr "Construye tu reputación"
+
+#: .\apps\accounts\templates\accounts\login.html:8
+#: .\apps\accounts\templates\accounts\login.html:15
+#: .\apps\accounts\templates\accounts\login.html:24
+msgid "Login"
+msgstr "Iniciar Sesión"
+
+#: .\apps\accounts\templates\accounts\login.html:19
+msgid "Enter username"
+msgstr "Ingresa tu nombre de usuario"
+
+#: .\apps\accounts\templates\accounts\login.html:22
+msgid "Enter password"
+msgstr "Ingresa tu contraseña"
+
+#: .\apps\accounts\templates\accounts\login.html:30
+msgid "Don't have an account?"
+msgstr "¿No tienes una cuenta?"
+
+#: .\apps\accounts\templates\accounts\login.html:30
+msgid "Register here"
+msgstr "Regístrate aquí"
+
+#: .\apps\accounts\templates\accounts\recoverPassword.html:19
+msgid "Reset Password"
+msgstr "Restablecer Contraseña"
+
+#: .\apps\accounts\templates\accounts\recoverPassword.html:20
+msgid "Enter your email to get reset link"
+msgstr "Ingresa tu correo electrónico para recibir el enlace de restablecimiento"
+
+#: .\apps\accounts\templates\accounts\recoverPassword.html:31
+msgid "Send Reset Link"
+msgstr "Enviar Enlace de Restablecimiento"
+
+#: .\apps\accounts\templates\accounts\recoverPassword.html:36
+msgid "Remembered the password?"
+msgstr "¿Recordaste la contraseña?"
+
+#: .\apps\accounts\templates\accounts\recoverPasswordDone.html:18
+msgid "Password Reset Complete"
+msgstr "Restablecimiento de Contraseña Completo"
+
+#: .\apps\accounts\templates\accounts\recoverPasswordDone.html:22
+msgid "Your password has been set. You may go ahead and log in now."
+msgstr "Tu contraseña ha sido establecida. Puedes iniciar sesión ahora."
+
+#: .\apps\accounts\templates\accounts\recoverPasswordDone.html:24
+msgid "Log in"
+msgstr "Iniciar Sesión"
+
+#: .\apps\accounts\templates\accounts\recoverPasswordForm.html:20
+msgid "Enter New Password"
+msgstr "Ingresa Nueva Contraseña"
+
+#: .\apps\accounts\templates\accounts\recoverPasswordForm.html:21
+msgid "Please enter your new password twice so we can verify you typed it in correctly"
+msgstr "Por favor, ingresa tu nueva contraseña dos veces para verificar que la has escrito correctamente"
+
+#: .\apps\accounts\templates\accounts\recoverPasswordForm.html:27
+msgid "New Password"
+msgstr "Nueva Contraseña"
+
+#: .\apps\accounts\templates\accounts\recoverPasswordForm.html:31
+msgid "Confirm New Password"
+msgstr "Confirmar Nueva Contraseña"
+
+#: .\apps\accounts\templates\accounts\recoverPasswordForm.html:34
+msgid "Update Password"
+msgstr "Actualizar Contraseña"
+
+#: .\apps\accounts\templates\accounts\recoverPasswordSent.html:18
+msgid "Password Reset Sent"
+msgstr "Restablecimiento de Contraseña Enviado"
+
+#: .\apps\accounts\templates\accounts\recoverPasswordSent.html:22
+msgid "We’ve emailed you instructions for setting your password, if an account exists with the email you entered. You should receive them shortly."
+msgstr "Te hemos enviado por correo electrónico instrucciones para establecer tu contraseña, si existe una cuenta con el correo que ingresaste. Deberías recibirlas en breve."
+
+#: .\apps\accounts\templates\accounts\recoverPasswordSent.html:23
+msgid "If you don’t receive an email, please make sure you’ve entered the address you registered with, and check your spam folder."
+msgstr "Si no recibes un correo electrónico, asegúrate de haber ingresado la dirección con la que te registraste y revisa tu carpeta de spam."
+
+#: .\apps\accounts\templates\accounts\recoverPasswordSent.html:29
+msgid "Want to return to the homepage?"
+msgstr "¿Quieres regresar a la página principal?"
+
+#: .\apps\accounts\templates\accounts\recoverPasswordSent.html:29
+msgid "Click here"
+msgstr "Haz clic aquí"
+
+#: .\apps\accounts\templates\accounts\recoverPasswordSent.html:29
+msgid "to go back."
+msgstr "para regresar."
+
+#: .\apps\communications\templates\communications\clientMessageHome.html:46
+#: .\apps\communications\templates\communications\freelancerMessageHome.html:45
+msgid "Welcome to SkillUp"
+msgstr "Bienvenido a SkillUp"
+
+#: .\apps\communications\templates\communications\clientMessageHome.html:47
+#: .\apps\communications\templates\communications\freelancerMessageHome.html:46
+msgid "Stay connected and manage your freelance projects effortlessly. Select a chat to get started or explore your latest messages."
+msgstr "Mantente conectado y gestiona tus proyectos freelance sin esfuerzo. Selecciona un chat para comenzar o explora tus últimos mensajes."
+
+#: .\apps\communications\templates\communications\clientMessageHome.html:50
+#: .\apps\communications\templates\communications\freelancerMessageHome.html:49
+msgid "Latest Chat"
+msgstr "Último Chat"
+
+#: .\apps\dashboard\templates\dashboard\clientAnalysis.html:17
+#: .\apps\dashboard\templates\dashboard\freelancerAnalysis.html:16
+msgid "Analysis Dashboard"
+msgstr "Panel de Análisis"
+
+#: .\apps\dashboard\templates\dashboard\clientAnalysis.html:22
+#: .\apps\dashboard\templates\dashboard\dashboardClient.html:146
+msgid "Project Progress"
+msgstr "Progreso del Proyecto"
+
+#: .\apps\dashboard\templates\dashboard\clientAnalysis.html:30
+msgid "Project Complexity Distribution"
+msgstr "Distribución de Complejidad del Proyecto"
+
+#: .\apps\dashboard\templates\dashboard\clientAnalysis.html:38
+msgid "Deliverables (Completed vs. Pending)"
+msgstr "Entregables (Completados vs. Pendientes)"
+
+#: .\apps\dashboard\templates\dashboard\dashboardClient.html:29
+#: .\apps\dashboard\templates\dashboard\dashboardFreelancer.html:29
+msgid "Welcome"
+msgstr "Bienvenido"
+
+#: .\apps\dashboard\templates\dashboard\dashboardClient.html:33
+#: .\apps\dashboard\templates\dashboard\dashboardFreelancer.html:33
+msgid "Get started with SkillUp"
+msgstr "Comienza con SkillUp"
+
+#: .\apps\dashboard\templates\dashboard\dashboardClient.html:50
+#: .\apps\dashboard\templates\dashboard\dashboardFreelancer.html:50
+msgid "My Projects"
+msgstr "Mis Proyectos"
+
+#: .\apps\dashboard\templates\dashboard\dashboardClient.html:72
+#: .\apps\dashboard\templates\dashboard\dashboardFreelancer.html:72
+msgid "No projects available."
+msgstr "No hay proyectos disponibles."
+
+#: .\apps\dashboard\templates\dashboard\dashboardClient.html:84
+#: .\apps\dashboard\templates\dashboard\dashboardFreelancer.html:84
+#: .\apps\projects\templates\projects\freelancer\FreelancerProject.html:19
+#: .\templates\navbarClient.html:19 .\templates\navbarFreelancer.html:18
+msgid "Messages"
+msgstr "Mensajes"
+
+#: .\apps\dashboard\templates\dashboard\dashboardClient.html:107
+#: .\apps\dashboard\templates\dashboard\dashboardFreelancer.html:107
+msgid "No messages available."
+msgstr "No hay mensajes disponibles."
+
+#: .\apps\dashboard\templates\dashboard\dashboardClient.html:120
+#: .\apps\dashboard\templates\dashboard\dashboardFreelancer.html:119
+msgid "My Finances"
+msgstr "Mis Finanzas"
+
+#: .\apps\dashboard\templates\dashboard\dashboardClient.html:135
+#: .\apps\dashboard\templates\dashboard\dashboardFreelancer.html:134
+msgid "Analysis"
+msgstr "Análisis"
+
+#: .\apps\dashboard\templates\dashboard\dashboardClient.html:154
+msgid "Project Complexity"
+msgstr "Complejidad del Proyecto"
+
+#: .\apps\dashboard\templates\dashboard\dashboardClient.html:162
+msgid "Deliverables Status"
+msgstr "Estado de los Entregables"
+
+#: .\apps\dashboard\templates\dashboard\dashboardFreelancer.html:145
+msgid "Time Distribution"
+msgstr "Distribución del Tiempo"
+
+#: .\apps\dashboard\templates\dashboard\dashboardFreelancer.html:153
+msgid "Deliverables Progress"
+msgstr "Progreso de los Entregables"
+
+#: .\apps\dashboard\templates\dashboard\dashboardFreelancer.html:161
+msgid "Project Completion Success"
+msgstr "Éxito en la Finalización del Proyecto"
+
+#: .\apps\dashboard\templates\dashboard\dashboardFreelancer.html:169
+#: .\apps\dashboard\templates\dashboard\freelancerAnalysis.html:29
+msgid "Projects by Complexity"
+msgstr "Proyectos por Complejidad"
+
+#: .\apps\dashboard\templates\dashboard\freelancerAnalysis.html:21
+msgid "Success in Project Completion"
+msgstr "Éxito en la Finalización del Proyecto"
+
+#: .\apps\dashboard\templates\dashboard\freelancerAnalysis.html:38
+msgid "Deliverables Progress by Project"
+msgstr "Progreso de los Entregables por Proyecto"
+
+#: .\apps\notifications\templates\notify.html:23
+#: .\apps\projects\templates\projects\freelancer\FreelancerProject.html:20
+#: .\templates\navbarClient.html:21 .\templates\navbarFreelancer.html:21
+msgid "Notifications"
+msgstr "Notificaciones"
+
+#: .\apps\notifications\templates\notify.html:28
+#: .\apps\projects\templates\projects\client\clientFinancialControl.html:31
+#: .\apps\projects\templates\projects\client\clientFinancialControl.html:76
+#: .\apps\projects\templates\projects\freelancer\deliverablesProject.html:85
+msgid "Pending"
+msgstr "Pendiente"
+
+#: .\apps\notifications\templates\notify.html:31
+msgid "Readed"
+msgstr "Leído"
+
+#: .\apps\notifications\templates\notify.html:34
+#: .\apps\projects\templates\projects\client\clientFinancialControl.html:75
+msgid "All"
+msgstr "Todos"
+
+#: .\apps\notifications\templates\notify.html:69
+msgid "Mark as read"
+msgstr "Marcar como leído"
+
+#: .\apps\notifications\templates\notify.html:77
+msgid "Read"
+msgstr "Leído"
+
+#: .\apps\notifications\templates\notify.html:82
+msgid "No notifications available"
+msgstr "No hay notificaciones disponibles"
+
+#: .\apps\projects\templates\projects\client\applyProjectFreelancer.html:29
+#: .\apps\projects\templates\projects\client\clientDeliverable.html:30
+#: .\apps\projects\templates\projects\freelancer\ApplyProject.html:50
+#: .\apps\projects\templates\projects\freelancer\addDeliverablesProject.html:29
+#: .\apps\projects\templates\projects\freelancer\deliverablesProject.html:41
+#: .\apps\projects\templates\projects\freelancer\informationProject.html:29
+msgid "Date Posted"
+msgstr "Fecha de Publicación"
+
+#: .\apps\projects\templates\projects\client\applyProjectFreelancer.html:30
+#: .\apps\projects\templates\projects\client\clientDeliverable.html:31
+#: .\apps\projects\templates\projects\client\createProject.html:39
+#: .\apps\projects\templates\projects\freelancer\ApplyProject.html:51
+#: .\apps\projects\templates\projects\freelancer\addDeliverablesProject.html:30
+#: .\apps\projects\templates\projects\freelancer\deliverablesProject.html:42
+#: .\apps\projects\templates\projects\freelancer\informationProject.html:30
+msgid "Required Position"
+msgstr "Posición Requerida"
+
+#: .\apps\projects\templates\projects\client\applyProjectFreelancer.html:31
+#: .\apps\projects\templates\projects\client\clientDeliverable.html:32
+#: .\apps\projects\templates\projects\freelancer\ApplyProject.html:52
+#: .\apps\projects\templates\projects\freelancer\addDeliverablesProject.html:31
+#: .\apps\projects\templates\projects\freelancer\deliverablesProject.html:43
+#: .\apps\projects\templates\projects\freelancer\informationProject.html:31
+msgid "Days Duration"
+msgstr "Duración en Días"
+
+#: .\apps\projects\templates\projects\client\applyProjectFreelancer.html:32
+#: .\apps\projects\templates\projects\client\clientDeliverable.html:33
+#: .\apps\projects\templates\projects\client\createProject.html:74
+#: .\apps\projects\templates\projects\freelancer\ApplyProject.html:53
+#: .\apps\projects\templates\projects\freelancer\FreelancerFinancialControl.html:85
+#: .\apps\projects\templates\projects\freelancer\addDeliverablesProject.html:32
+#: .\apps\projects\templates\projects\freelancer\deliverablesProject.html:44
+#: .\apps\projects\templates\projects\freelancer\informationProject.html:32
+msgid "Budget"
+msgstr "Presupuesto"
+
+#: .\apps\projects\templates\projects\client\applyProjectFreelancer.html:35
+#: .\apps\projects\templates\projects\client\clientDeliverable.html:36
+#: .\apps\projects\templates\projects\client\createProject.html:82
+#: .\apps\projects\templates\projects\freelancer\ApplyProject.html:56
+#: .\apps\projects\templates\projects\freelancer\addDeliverablesProject.html:35
+#: .\apps\projects\templates\projects\freelancer\deliverablesProject.html:47
+#: .\apps\projects\templates\projects\freelancer\informationProject.html:35
+msgid "Skills and Expertise"
+msgstr "Habilidades y Experiencia"
+
+#: .\apps\projects\templates\projects\client\applyProjectFreelancer.html:51
+#: .\apps\projects\templates\projects\freelancer\ApplyProject.html:100
+#: .\apps\projects\templates\projects\freelancer\milestone.html:9
+msgid "Deliverables"
+msgstr "Entregables"
+
+#: .\apps\projects\templates\projects\client\applyProjectFreelancer.html:55
+#: .\apps\projects\templates\projects\client\clientFinancialControl.html:102
+#: .\apps\projects\templates\projects\freelancer\ApplyProject.html:81
+#: .\apps\projects\templates\projects\freelancer\addMilestoneDeliverable.html:39
+#: .\apps\projects\templates\projects\freelancer\milestone.html:13
+msgid "Name"
+msgstr "Nombre"
+
+#: .\apps\projects\templates\projects\client\applyProjectFreelancer.html:57
+#: .\apps\projects\templates\projects\freelancer\ApplyProject.html:108
+msgid "Deadline"
+msgstr "Fecha Límite"
+
+#: .\apps\projects\templates\projects\client\applyProjectFreelancer.html:57
+#: .\apps\projects\templates\projects\client\clientDeliverable.html:85
+#: .\apps\projects\templates\projects\freelancer\ApplyProject.html:108
+#: .\apps\projects\templates\projects\freelancer\ApplyProject.html:125
+#: .\apps\projects\templates\projects\freelancer\addMilestoneDeliverable.html:41
+#: .\apps\projects\templates\projects\freelancer\milestone.html:15
+msgid "days"
+msgstr "días"
+
+#: .\apps\projects\templates\projects\client\applyProjectFreelancer.html:58
+#: .\apps\projects\templates\projects\client\applyProjectFreelancer.html:60
+#: .\apps\projects\templates\projects\freelancer\addMilestoneDeliverable.html:42
+#: .\apps\projects\templates\projects\freelancer\addMilestoneDeliverable.html:44
+#: .\apps\projects\templates\projects\freelancer\milestone.html:16
+#: .\apps\projects\templates\projects\freelancer\milestone.html:18
+msgid "Requires evidence"
+msgstr "Requiere evidencia"
+
+#: .\apps\projects\templates\projects\client\applyProjectFreelancer.html:62
+#: .\apps\projects\templates\projects\freelancer\addMilestoneDeliverable.html:46
+#: .\apps\projects\templates\projects\freelancer\milestone.html:20
+msgid "Does not require evidence"
+msgstr "No requiere evidencia"
+
+#: .\apps\projects\templates\projects\client\applyProjectFreelancer.html:88
+#: .\apps\projects\templates\projects\client\clientDeliverable.html:129
+msgid "About the freelancer"
+msgstr "Sobre el freelancer"
+
+#: .\apps\projects\templates\projects\client\applyProjectFreelancer.html:97
+#: .\apps\projects\templates\projects\client\clientDeliverable.html:136
+msgid "Go to freelancer profile"
+msgstr "Ir al perfil del freelancer"
+
+#: .\apps\projects\templates\projects\client\clientDeliverable.html:9
+msgid "Client Deliverable"
+msgstr "Entregable del Cliente"
+
+#: .\apps\projects\templates\projects\client\clientDeliverable.html:72
+#: .\apps\projects\templates\projects\freelancer\deliverablesProject.html:80
+msgid "Deadline Days"
+msgstr "Días para la Fecha Límite"
+
+#: .\apps\projects\templates\projects\client\clientDeliverable.html:85
+#: .\apps\projects\templates\projects\freelancer\ApplyProject.html:125
+msgid "Due in"
+msgstr "Vence en"
+
+#: .\apps\projects\templates\projects\client\clientDeliverable.html:92
+msgid "Pending Approval"
+msgstr "Aprobación Pendiente"
+
+#: .\apps\projects\templates\projects\client\clientDeliverable.html:94
+#: .\apps\projects\templates\projects\freelancer\deliverablesProject.html:85
+msgid "Completed"
+msgstr "Completado"
+
+#: .\apps\projects\templates\projects\client\clientDeliverable.html:96
+msgid "Rejected"
+msgstr "Rechazado"
+
+#: .\apps\projects\templates\projects\client\clientDeliverable.html:108
+msgid "Accept"
+msgstr "Aceptar"
+
+#: .\apps\projects\templates\projects\client\clientDeliverable.html:119
+msgid "No deliverables available."
+msgstr "No hay entregables disponibles."
+
+#: .\apps\projects\templates\projects\client\clientDeliverable.html:141
+#: .\apps\projects\templates\projects\freelancer\deliverablesProject.html:163
+msgid "Project Timeline"
+msgstr "Cronograma del Proyecto"
+
+#: .\apps\projects\templates\projects\client\clientDeliverable.html:160
+msgid "Finish Job"
+msgstr "Finalizar Trabajo"
+
+#: .\apps\projects\templates\projects\client\clientDeliverable.html:165
+msgid "The job has been marked as finished."
+msgstr "El trabajo ha sido marcado como finalizado."
+
+#: .\apps\projects\templates\projects\client\clientFinancialControl.html:8
+msgid "Financial Control"
+msgstr "Control Financiero"
+
+#: .\apps\projects\templates\projects\client\clientFinancialControl.html:24
+msgid "Summary"
+msgstr "Resumen"
+
+#: .\apps\projects\templates\projects\client\clientFinancialControl.html:39
+#: .\apps\projects\templates\projects\client\clientFinancialControl.html:77
+msgid "In Progress"
+msgstr "En Progreso"
+
+#: .\apps\projects\templates\projects\client\clientFinancialControl.html:50
+#: .\apps\projects\templates\projects\client\clientFinancialControl.html:104
+msgid "Status"
+msgstr "Estado"
+
+#: .\apps\projects\templates\projects\client\clientFinancialControl.html:50
+msgid "Active"
+msgstr "Activo"
+
+#: .\apps\projects\templates\projects\client\clientFinancialControl.html:60
+msgid "Active freelancers"
+msgstr "Freelancers Activos"
+
+#: .\apps\projects\templates\projects\client\clientFinancialControl.html:66
+msgid "Transactions"
+msgstr "Transacciones"
+
+#: .\apps\projects\templates\projects\client\clientFinancialControl.html:73
+msgid "Status:"
+msgstr "Estado:"
+
+#: .\apps\projects\templates\projects\client\clientFinancialControl.html:78
+msgid "Done"
+msgstr "Hecho"
+
+#: .\apps\projects\templates\projects\client\clientFinancialControl.html:79
+msgid "Overdue"
+msgstr "Vencido"
+
+#: .\apps\projects\templates\projects\client\clientFinancialControl.html:86
+msgid "Sort by Budget:"
+msgstr "Ordenar por Presupuesto:"
+
+#: .\apps\projects\templates\projects\client\clientFinancialControl.html:88
+msgid "High to Low"
+msgstr "De Mayor a Menor"
+
+#: .\apps\projects\templates\projects\client\clientFinancialControl.html:89
+msgid "Low to High"
+msgstr "De Menor a Mayor"
+
+#: .\apps\projects\templates\projects\client\clientFinancialControl.html:94
+#: .\apps\projects\templates\projects\client\clientProject.html:71
+#: .\apps\projects\templates\projects\client\browseProject.html:78
+msgid "Apply Filters"
+msgstr "Aplicar Filtros"
+
+#: .\apps\projects\templates\projects\client\clientFinancialControl.html:103
+msgid "Assigned to"
+msgstr "Asignado a"
+
+#: .\apps\projects\templates\projects\client\clientFinancialControl.html:105
+msgid "End date"
+msgstr "Fecha de Finalización"
+
+#: .\apps\projects\templates\projects\client\clientFinancialControl.html:106
+msgid "Total"
+msgstr "Total"
+
+#: .\apps\projects\templates\projects\client\clientFinancialControl.html:129
+#: .\apps\projects\templates\projects\client\clientProject.html:109
+#: .\apps\projects\templates\projects\freelancer\FreelancerFinancialControl.html:102
+msgid "No projects found."
+msgstr "No se encontraron proyectos."
+
+#: .\apps\projects\templates\projects\freelancer\browseOwnProjects.html:57
+#: .\apps\projects\templates\projects\client\clientProject.html:41
+msgid "Manage your current projects"
+msgstr "Gestiona tus proyectos actuales"
+
+#: .\apps\projects\templates\projects\client\clientProject.html:49
+msgid "Search by project title"
+msgstr "Buscar por título del proyecto"
+
+#: .\apps\projects\templates\projects\client\clientProject.html:50
+#: .\apps\projects\templates\projects\freelancer\FreelancerProject.html:37
+msgid "Search"
+msgstr "Buscar"
+
+#: .\apps\projects\templates\projects\client\clientProject.html:59
+#: .\apps\projects\templates\projects\freelancer\FreelancerProject.html:25
+#: .\apps\projects\templates\projects\freelancer\browseOwnProjects.html:65
+#: .\apps\projects\templates\projects\freelancer\browseProject.html:64
+msgid "Filters"
+msgstr "Filtros"
+
+#: .\apps\projects\templates\projects\freelancer\browseOwnProjects.html:85
+msgid "Projects your're working on"
+msgstr "Proyectos en los que trabaja"
+
+#: .\apps\projects\templates\projects\client\clientProject.html:63
+#: .\apps\projects\templates\projects\freelancer\FreelancerProject.html:29
+#: .\apps\projects\templates\projects\freelancer\browseProject.html:70
+msgid "Sort by:"
+msgstr "Ordenar por:"
+
+#: .\apps\projects\templates\projects\client\clientProject.html:65
+#: .\apps\projects\templates\projects\freelancer\FreelancerProject.html:31
+#: .\apps\projects\templates\projects\freelancer\browseProject.html:72
+msgid "Date Posted (Newest First)"
+msgstr "Fecha de Publicación (Más Reciente Primero)"
+
+#: .\apps\projects\templates\projects\client\clientProject.html:66
+#: .\apps\projects\templates\projects\freelancer\FreelancerProject.html:32
+#: .\apps\projects\templates\projects\freelancer\browseProject.html:73
+msgid "Date Posted (Oldest First)"
+msgstr "Fecha de Publicación (Más Antiguo Primero)"
+
+#: .\apps\projects\templates\projects\client\clientProject.html:67
+#: .\apps\projects\templates\projects\freelancer\FreelancerProject.html:33
+#: .\apps\projects\templates\projects\freelancer\browseProject.html:74
+msgid "Budget (High to Low)"
+msgstr "Presupuesto (De Mayor a Menor)"
+
+#: .\apps\projects\templates\projects\client\clientProject.html:68
+#: .\apps\projects\templates\projects\freelancer\FreelancerProject.html:34
+#: .\apps\projects\templates\projects\freelancer\browseProject.html:75
+msgid "Budget (Low to High)"
+msgstr "Presupuesto (De Menor a Mayor)"
+
+#: .\apps\projects\templates\projects\freelancer\browseProject.html:56
+msgid "Browse jobs that match your skills"
+msgstr "Busca proyectos acorde a tus habilidades"
+
+#: .\apps\projects\templates\projects\freelancer\browseProject.html:86
+msgid "Projects"
+msgstr "Proyectos"
+
+#: .\apps\projects\templates\projects\client\clientProject.html:79
+msgid "Your Projects"
+msgstr "Tus Proyectos"
+
+#: .\apps\projects\templates\projects\client\clientProject.html:80
+msgid "New Project"
+msgstr "Nuevo Proyecto"
+
+#: .\apps\projects\templates\projects\client\clientProject.html:100
+msgid "Edit"
+msgstr "Editar"
+
+#: .\apps\projects\templates\projects\client\clientProject.html:104
+#: .\apps\projects\templates\projects\freelancer\FreelancerProject.html:50
+msgid "Budget:"
+msgstr "Presupuesto:"
+
+#: .\apps\projects\templates\projects\client\clientProject.html:105
+msgid "Duration:"
+msgstr "Duración:"
+
+#: .\apps\projects\templates\projects\client\confirmedPayment.html:8
+msgid "Pago Exitoso"
+msgstr "Pago Exitoso"
+
+#: .\apps\projects\templates\projects\client\confirmedPayment.html:37
+msgid "Volver al Inicio"
+msgstr "Volver al Inicio"
+
+#: .\apps\projects\templates\projects\client\createProject.html:22
+#: .\apps\projects\templates\projects\client\createProject.html:102
+msgid "Create Project"
+msgstr "Crear Proyecto"
+
+#: .\apps\projects\templates\projects\client\createProject.html:32
+#: .\apps\projects\templates\projects\freelancer\FreelancerFinancialControl.html:84
+msgid "Project Title"
+msgstr "Título del Proyecto"
+
+#: .\apps\projects\templates\projects\client\createProject.html:56
+msgid "Project Duration"
+msgstr "Duración del Proyecto"
+
+#: .\apps\projects\templates\projects\client\createProject.html:100
+msgid "Update Project"
+msgstr "Actualizar Proyecto"
+
+#: .\apps\projects\templates\projects\client\createProject.html:110
+msgid "About me"
+msgstr "Sobre mí"
+
+#: .\apps\projects\templates\projects\client\createProject.html:126
+#: .\apps\projects\templates\projects\freelancer\addDeliverablesProject.html:111
+#: .\apps\projects\templates\projects\freelancer\addMilestoneDeliverable.html:97
+#: .\apps\projects\templates\projects\freelancer\deliverablesProject.html:158
+#: .\apps\projects\templates\projects\freelancer\informationProject.html:54
+#, python-format
+msgid "%(totalProjects)s published works"
+msgstr "%(totalProjects)s trabajos publicados"
+
+#: .\apps\projects\templates\projects\client\gateWay.html:8
+msgid "Pasarela de Pagos"
+msgstr "Pasarela de Pagos"
+
+#: .\apps\projects\templates\projects\client\gateWay.html:17
+msgid "Realizar Pago"
+msgstr "Realizar Pago"
+
+#: .\apps\projects\templates\projects\client\gateWay.html:22
+msgid "Tarjeta"
+msgstr "Tarjeta"
+
+#: .\apps\projects\templates\projects\client\gateWay.html:26
+msgid "PayPal"
+msgstr "PayPal"
+
+#: .\apps\projects\templates\projects\client\gateWay.html:33
+msgid "Número de Tarjeta"
+msgstr "Número de Tarjeta"
+
+#: .\apps\projects\templates\projects\client\gateWay.html:34
+msgid "1234 5678 9012 3456"
+msgstr "1234 5678 9012 3456"
+
+#: .\apps\projects\templates\projects\client\gateWay.html:39
+msgid "Fecha de Expiración"
+msgstr "Fecha de Expiración"
+
+#: .\apps\projects\templates\projects\client\gateWay.html:40
+msgid "MM/AA"
+msgstr "MM/AA"
+
+#: .\apps\projects\templates\projects\client\gateWay.html:43
+msgid "CVV"
+msgstr "CVV"
+
+#: .\apps\projects\templates\projects\client\gateWay.html:44
+msgid "123"
+msgstr "123"
+
+#: .\apps\projects\templates\projects\client\gateWay.html:49
+msgid "Nombre en la Tarjeta"
+msgstr "Nombre en la Tarjeta"
+
+#: .\apps\projects\templates\projects\client\gateWay.html:50
+msgid "Juan Pérez"
+msgstr "Juan Pérez"
+
+#: .\apps\projects\templates\projects\client\gateWay.html:56
+msgid "Pagar"
+msgstr "Pagar"
+
+#: .\apps\projects\templates\projects\client\gateWay.html:64
+msgid "Serás redirigido a PayPal para completar tu pago de forma segura."
+msgstr "Serás redirigido a PayPal para completar tu pago de forma segura."
+
+#: .\apps\projects\templates\projects\client\gateWay.html:68
+msgid "Correo Electrónico de PayPal"
+msgstr "Correo Electrónico de PayPal"
+
+#: .\apps\projects\templates\projects\client\gateWay.html:69
+msgid "ejemplo@correo.com"
+msgstr "ejemplo@correo.com"
+
+#: .\apps\projects\templates\projects\client\gateWay.html:73
+msgid "País/Región"
+msgstr "País/Región"
+
+#: .\apps\projects\templates\projects\client\gateWay.html:75
+msgid "Selecciona tu país"
+msgstr "Selecciona tu país"
+
+#: .\apps\projects\templates\projects\client\gateWay.html:76
+msgid "España"
+msgstr "España"
+
+#: .\apps\projects\templates\projects\client\gateWay.html:77
+msgid "México"
+msgstr "México"
+
+#: .\apps\projects\templates\projects\client\gateWay.html:78
+msgid "Argentina"
+msgstr "Argentina"
+
+#: .\apps\projects\templates\projects\client\gateWay.html:79
+msgid "Colombia"
+msgstr "Colombia"
+
+#: .\apps\projects\templates\projects\client\gateWay.html:85
+msgid "Continuar con PayPal"
+msgstr "Continuar con PayPal"
+
+#: .\apps\projects\templates\projects\client\gateWay.html:92
+#, python-format
+msgid "Pago 100%% seguro y encriptado"
+msgstr "Pago 100%% seguro y encriptado"
+
+#: .\apps\projects\templates\projects\client\gateWay.html:103
+msgid "Empresas que confían en nosotros"
+msgstr "Empresas que confían en nosotros"
+
+#: .\apps\projects\templates\projects\client\gateWay.html:104
+msgid "Partner 1"
+msgstr "Partner 1"
+
+#: .\apps\projects\templates\projects\client\gateWay.html:105
+msgid "Partner 2"
+msgstr "Partner 2"
+
+#: .\apps\projects\templates\projects\client\gateWay.html:106
+msgid "Partner 3"
+msgstr "Partner 3"
+
+#: .\apps\projects\templates\projects\client\gateWay.html:114
+msgid "Términos y Condiciones"
+msgstr "Términos y Condiciones"
+
+#: .\apps\projects\templates\projects\client\gateWay.html:115
+msgid "Política de Privacidad"
+msgstr "Política de Privacidad"
+
+#: .\apps\projects\templates\projects\client\gateWay.html:116
+msgid "Soporte"
+msgstr "Soporte"
+
+#: .\apps\projects\templates\projects\client\listFreelancer.html:8
+msgid "SkillUp - Project Freelancers"
+msgstr "SkillUp - Freelancers de Proyectos"
+
+#: .\apps\projects\templates\projects\client\listFreelancer.html:31
+msgid "Review your project freelancers"
+msgstr "Revisa a tus freelancers de proyectos"
+
+#: .\apps\projects\templates\projects\client\listFreelancer.html:41
+msgid "Profile"
+msgstr "Perfil"
+
+#: .\apps\projects\templates\projects\client\listFreelancer.html:42
+msgid "Job Title"
+msgstr "Título del Trabajo"
+
+#: .\apps\projects\templates\projects\client\listFreelancer.html:43
+msgid "Payment"
+msgstr "Pago"
+
+#: .\apps\projects\templates\projects\client\listFreelancer.html:44
+msgid "Project Completion"
+msgstr "Finalización del Proyecto"
+
+#: .\apps\projects\templates\projects\client\listFreelancer.html:62
+msgid "Job title pending"
+msgstr "Título del trabajo pendiente"
+
+#: .\apps\projects\templates\projects\freelancer\ApplyProject.html:9
+msgid "Freelancer Project Application"
+msgstr "Solicitud de Proyecto para Freelancer"
+
+#: .\apps\projects\templates\projects\freelancer\ApplyProject.html:77
+#: .\apps\projects\templates\projects\freelancer\ApplyProject.html:96
+msgid "Add Deliverable"
+msgstr "Agregar Entregable"
+
+#: .\apps\projects\templates\projects\freelancer\ApplyProject.html:89
+msgid "Deadline (in days)"
+msgstr "Fecha Límite (en días)"
+
+#: .\apps\projects\templates\projects\freelancer\ApplyProject.html:94
+#: .\apps\projects\templates\projects\freelancer\ApplyProject.html:110
+msgid "Requires Evidence"
+msgstr "Requiere Evidencia"
+
+#: .\apps\projects\templates\projects\freelancer\ApplyProject.html:112
+msgid "Yes"
+msgstr "Sí"
+
+#: .\apps\projects\templates\projects\freelancer\ApplyProject.html:114
+msgid "No"
+msgstr "No"
+
+#: .\apps\projects\templates\projects\freelancer\ApplyProject.html:131
+#: .\apps\projects\templates\projects\freelancer\milestone.html:27
+msgid "No deliverables added yet."
+msgstr "Aún no se han añadido entregables."
+
+#: .\apps\projects\templates\projects\freelancer\ApplyProject.html:137
+msgid "Apply for the Job"
+msgstr "Postularse para el Trabajo"
+
+#: .\apps\projects\templates\projects\freelancer\ApplyProject.html:144
+#: .\apps\projects\templates\projects\freelancer\addDeliverablesProject.html:101
+#: .\apps\projects\templates\projects\freelancer\addMilestoneDeliverable.html:97
+#: .\apps\projects\templates\projects\freelancer\deliverablesProject.html:148
+#: .\apps\projects\templates\projects\freelancer\informationProject.html:54
+msgid "About the client"
+msgstr "Sobre el cliente"
+
+#: .\apps\projects\templates\projects\freelancer\ApplyProject.html:146
+msgid "Logo de Globant"
+msgstr "Logo de Globant"
+
+#: .\apps\projects\templates\projects\freelancer\ApplyProject.html:149
+msgid "Globant is a multinational technology services and consulting company that specializes in creating innovative digital solutions and business transformation. Founded in 2003 and headquartered in Buenos Aires, Argentina."
+msgstr "Globant es una empresa multinacional de servicios tecnológicos y consultoría que se especializa en crear soluciones digitales innovadoras y transformación de negocios. Fundada en 2003 y con sede en Buenos Aires, Argentina."
+
+#: .\apps\projects\templates\projects\freelancer\ApplyProject.html:150
+msgid "76 published works"
+msgstr "76 trabajos publicados"
+
+#: .\apps\projects\templates\projects\freelancer\ApplyProject.html:151
+msgid "$49K spent in total"
+msgstr "$49K gastados en total"
+
+#: .\apps\projects\templates\projects\freelancer\FreelancerFinancialControl.html:8
+msgid "Freelancer Financial Control"
+msgstr "Control Financiero del Freelancer"
+
+#: .\apps\projects\templates\projects\freelancer\FreelancerFinancialControl.html:30
+msgid "Experience Level:"
+msgstr "Nivel de Experiencia:"
+
+#: .\apps\projects\templates\projects\freelancer\FreelancerFinancialControl.html:33
+msgid "LinkedIn"
+msgstr "LinkedIn"
+
+#: .\apps\projects\templates\projects\freelancer\FreelancerFinancialControl.html:36
+msgid "GitHub"
+msgstr "GitHub"
+
+#: .\apps\projects\templates\projects\freelancer\FreelancerFinancialControl.html:39
+msgid "Instagram"
+msgstr "Instagram"
+
+#: .\apps\projects\templates\projects\freelancer\FreelancerFinancialControl.html:42
+msgid "Download Resume"
+msgstr "Descargar Currículum"
+
+#: .\apps\projects\templates\projects\freelancer\FreelancerFinancialControl.html:51
+msgid "Financial Summary"
+msgstr "Resumen Financiero"
+
+#: .\apps\projects\templates\projects\freelancer\FreelancerFinancialControl.html:57
+msgid "Total Balance"
+msgstr "Saldo Total"
+
+#: .\apps\projects\templates\projects\freelancer\FreelancerFinancialControl.html:65
+msgid "Total Received (Completed Payments)"
+msgstr "Total Recibido (Pagos Completados)"
+
+#: .\apps\projects\templates\projects\freelancer\FreelancerFinancialControl.html:73
+msgid "Total Pending (Awaiting Payments)"
+msgstr "Total Pendiente (Pagos Pendientes)"
+
+#: .\apps\projects\templates\projects\freelancer\FreelancerFinancialControl.html:79
+msgid "Projects Linked to Freelancer"
+msgstr "Proyectos Vinculados al Freelancer"
+
+#: .\apps\projects\templates\projects\freelancer\FreelancerFinancialControl.html:87
+msgid "Actions"
+msgstr "Acciones"
+
+#: .\apps\projects\templates\projects\freelancer\FreelancerFinancialControl.html:97
+msgid "View"
+msgstr "Ver"
+
+#: .\apps\projects\templates\projects\freelancer\FreelancerFinancialControl.html:109
+msgid "Transaction History"
+msgstr "Historial de Transacciones"
+
+#: .\apps\projects\templates\projects\freelancer\FreelancerFinancialControl.html:113
+msgid "Pending Payments"
+msgstr "Pagos Pendientes"
+
+#: .\apps\projects\templates\projects\freelancer\FreelancerFinancialControl.html:118
+#: .\apps\projects\templates\projects\freelancer\FreelancerFinancialControl.html:147
+msgid "Project"
+msgstr "Proyecto"
+
+#: .\apps\projects\templates\projects\freelancer\FreelancerFinancialControl.html:119
+#: .\apps\projects\templates\projects\freelancer\FreelancerFinancialControl.html:148
+msgid "Amount"
+msgstr "Cantidad"
+
+#: .\apps\projects\templates\projects\freelancer\FreelancerFinancialControl.html:120
+#: .\apps\projects\templates\projects\freelancer\FreelancerFinancialControl.html:149
+msgid "Date"
+msgstr "Fecha"
+
+#: .\apps\projects\templates\projects\freelancer\FreelancerFinancialControl.html:132
+msgid "No pending transactions."
+msgstr "No hay transacciones pendientes."
+
+#: .\apps\projects\templates\projects\freelancer\FreelancerFinancialControl.html:142
+msgid "Completed Payments"
+msgstr "Pagos Completados"
+
+#: .\apps\projects\templates\projects\freelancer\FreelancerFinancialControl.html:161
+msgid "No completed transactions."
+msgstr "No hay transacciones completadas."
+
+#: .\apps\projects\templates\projects\freelancer\FreelancerProject.html:7
+msgid "Freelancer Project"
+msgstr "Proyecto del Freelancer"
+
+#: .\apps\projects\templates\projects\freelancer\FreelancerProject.html:17
+msgid "Find work"
+msgstr "Buscar Trabajo"
+
+#: .\apps\projects\templates\projects\freelancer\FreelancerProject.html:18
+msgid "Deliver work"
+msgstr "Entregar Trabajo"
+
+#: .\apps\projects\templates\projects\freelancer\FreelancerProject.html:40
+msgid "Projects:"
+msgstr "Proyectos:"
+
+#: .\apps\projects\templates\projects\freelancer\FreelancerProject.html:44
+msgid "Title:"
+msgstr "Título:"
+
+#: .\apps\projects\templates\projects\freelancer\FreelancerProject.html:46
+msgid "Description:"
+msgstr "Descripción:"
+
+#: .\apps\projects\templates\projects\freelancer\FreelancerProject.html:47
+msgid "Date Posted:"
+msgstr "Fecha de Publicación:"
+
+#: .\apps\projects\templates\projects\freelancer\FreelancerProject.html:48
+msgid "Required Position:"
+msgstr "Posición Requerida:"
+
+#: .\apps\projects\templates\projects\freelancer\FreelancerProject.html:49
+msgid "Days Duration:"
+msgstr "Duración en Días:"
+
+#: .\apps\projects\templates\projects\freelancer\addDeliverablesProject.html:56
+#: .\apps\projects\templates\projects\freelancer\addDeliverablesProject.html:74
+msgid "Add Milestone"
+msgstr "Agregar Hito"
+
+#: .\apps\projects\templates\projects\freelancer\addDeliverablesProject.html:65
+msgid "Milestone Name"
+msgstr "Nombre del Hito"
+
+#: .\apps\projects\templates\projects\freelancer\addDeliverablesProject.html:95
+msgid "Send Proposal"
+msgstr "Enviar Propuesta"
+
+#: .\apps\projects\templates\projects\freelancer\addMilestoneDeliverable.html:33
+msgid "Delete Milestone"
+msgstr "Eliminar Hito"
+
+#: .\apps\projects\templates\projects\freelancer\addMilestoneDeliverable.html:51
+msgid "Delete Deliverable"
+msgstr "Eliminar Entregable"
+
+#: .\apps\projects\templates\projects\freelancer\addMilestoneDeliverable.html:82
+msgid "Save"
+msgstr "Guardar"
+
+#: .\apps\projects\templates\projects\freelancer\addMilestoneDeliverable.html:87
+msgid "Save and add another"
+msgstr "Guardar y añadir otro"
+
+#: .\apps\projects\templates\projects\freelancer\deliverablesProject.html:9
+msgid "Freelancer Deliverable"
+msgstr "Entregable del Freelancer"
+
+#: .\apps\projects\templates\projects\freelancer\deliverablesProject.html:96
+msgid "Mark as Completed"
+msgstr "Marcar como Completado"
+
+#: .\apps\projects\templates\projects\freelancer\deliverablesProject.html:108
+msgid "Approval Requested"
+msgstr "Solicitud de Aprobación"
+
+#: .\apps\projects\templates\projects\freelancer\deliverablesProject.html:108
+msgid "Request Approval"
+msgstr "Solicitar Aprobación"
+
+#: .\apps\projects\templates\projects\freelancer\deliverablesProject.html:123
+msgid "Upload Evidence"
+msgstr "Subir Evidencia"
+
+#: .\apps\projects\templates\projects\freelancer\deliverablesProject.html:127
+msgid "Uploaded Evidence"
+msgstr "Evidencia Subida"
+
+#: .\apps\projects\templates\projects\freelancer\deliverablesProject.html:131
+msgid "Delete Evidence"
+msgstr "Eliminar Evidencia"
+
+#: .\apps\projects\templates\projects\freelancer\informationProject.html:50
+msgid "Apply Project"
+msgstr "Postularse al Proyecto"
+
+#: .\proyecto_integrador_t2\settings.py:154
+msgid "English"
+msgstr "Inglés"
+
+#: .\proyecto_integrador_t2\settings.py:155
+msgid "Spanish"
+msgstr "Español"
+
+#: .\templates\footer.html:35
+msgid "About us"
+msgstr "Sobre nosotros"
+
+#: .\templates\footer.html:36
+msgid "Contact us"
+msgstr "Contáctanos"
+
+#: .\templates\footer.html:37
+msgid "Careers"
+msgstr "Carreras"
+
+#: .\templates\footer.html:38
+msgid "Press"
+msgstr "Prensa"
+
+#: .\templates\footer.html:43
+msgid "Product"
+msgstr "Producto"
+
+#: .\templates\footer.html:45
+msgid "Features"
+msgstr "Características"
+
+#: .\templates\footer.html:46
+msgid "Pricing"
+msgstr "Precios"
+
+#: .\templates\footer.html:47
+msgid "News"
+msgstr "Noticias"
+
+#: .\templates\footer.html:48
+msgid "Help desk"
+msgstr "Mesa de ayuda"
+
+#: .\templates\footer.html:49
+msgid "FAQ"
+msgstr "Preguntas frecuentes"
+
+#: .\templates\footer.html:50
+msgid "Support"
+msgstr "Soporte"
+
+#: .\templates\footer.html:55
+msgid "Services"
+msgstr "Servicios"
+
+#: .\templates\footer.html:57
+msgid "Digital Marketing"
+msgstr "Marketing Digital"
+
+#: .\templates\footer.html:58
+msgid "Content Writing"
+msgstr "Redacción de Contenidos"
+
+#: .\templates\footer.html:59
+msgid "SEO for Business"
+msgstr "SEO para Negocios"
+
+#: .\templates\footer.html:60
+msgid "UI Design"
+msgstr "Diseño de UI"
+
+#: .\templates\footer.html:65
+msgid "Legal"
+msgstr "Legal"
+
+#: .\templates\footer.html:67
+msgid "Privacy Policy"
+msgstr "Política de Privacidad"
+
+#: .\templates\footer.html:68
+msgid "Terms & Conditions"
+msgstr "Términos y Condiciones"
+
+#: .\templates\navbarClient.html:15 .\templates\navbarFreelancer.html:14
+msgid "SkillUp"
+msgstr "SkillUp"
+
+#: .\templates\navbarClient.html:17
+msgid "My projects"
+msgstr "Mis proyectos"
+
+#: .\templates\navbarClient.html:18
+msgid "Manage finances"
+msgstr "Gestionar finanzas"
+
+#: .\templates\navbarClient.html:63 .\templates\navbarFreelancer.html:62
+msgid "View Profile"
+msgstr "Ver Perfil"
+
+#: .\templates\navbarClient.html:65 .\templates\navbarFreelancer.html:66
+msgid "Log Out"
+msgstr "Cerrar Sesión"
+
+#: .\templates\navbarFreelancer.html:16
+msgid "Find Work"
+msgstr "Buscar Trabajo"
+
+#: .\templates\navbarFreelancer.html:17
+msgid "Deliver Work"
+msgstr "Entregar Trabajo"
+
+#: .\templates\navbarFreelancer.html:19
+msgid "Manage Finances"
+msgstr "Gestionar Finanzas"
+
+#: .\templates\navbarFreelancer.html:64
+msgid "Customize Profile"
+msgstr "Personalizar Perfil"
+
+

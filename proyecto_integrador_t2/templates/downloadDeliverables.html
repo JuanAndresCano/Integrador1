@@ -1,0 +1,18 @@
+<!-- DESCARGAR ARCHIVOS -->
+
+<div class="col-md-4 d-flex align-items-center justify-content-end">
+    {% if deliverable.requiresEvidence and deliverable.evidenceFile %}
+        <a href="{{ deliverable.evidenceFile.url }}" class="btn btn-outline-primary btn-sm" download style="margin-left: 5px;">
+            Download File
+        </a>
+    {% elif deliverable.requiresEvidence %}
+        <span class="badgeUltra no-evidence-uploaded text-uppercase fw-semibold">No evidence uploaded</span>
+    {% else %}
+        <span class="badgeUltra no-evidence-required text-uppercase fw-semibold">No evidence required</span>
+    {% endif %}
+</div>
+    
+
+
+
+<!-- DESCARGAR ARCHIVOS -->

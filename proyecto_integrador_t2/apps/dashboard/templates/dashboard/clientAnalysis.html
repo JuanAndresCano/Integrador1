@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    {% load i18n %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Project Analysis</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link type='text/css' href="{% static 'dashboard/css/clientAnalysis.css' %}" rel='stylesheet'/>
+
+</head>
+<body>
+    {% include 'navbarClient.html' %}
+    <div class="container mt-5">
+        <h1 class="analysis-title">{% trans "Analysis Dashboard" %}</h1>
+
+        <div class="grid-container">
+            <!-- Gráfico de Progreso del Proyecto centrado -->
+            <div class="dashboard-card">
+                <h5 class="card-title">{% trans "Project Progress" %}</h5>
+                <div class="chart-container">
+                    <canvas id="progressChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Gráfico de Complejidad del Proyecto -->
+            <div class="dashboard-card">
+                <h5 class="card-title">{% trans "Project Complexity Distribution" %}</h5>
+                <div class="chart-container">
+                    <canvas id="complexityChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Gráfico de Entregables ocupa todo el ancho -->
+            <div class="dashboard-card full-width">
+                <h5 class="card-title">{% trans "Deliverables (Completed vs. Pending)" %}</h5>
+                <div class="chart-container">
+                    <canvas id="deliverablesChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% include 'footer.html' %}
+    <script>
+        // Datos de los gráficos
+        const projectTitles = JSON.parse("{{ project_titles|escapejs }}");
+        const projectProgress = JSON.parse("{{ project_progress|escapejs }}");
+        const complexityLabels = JSON.parse("{{ complexity_labels|escapejs }}");
+        const complexityCounts = JSON.parse("{{ complexity_counts|escapejs }}");
+        const deliverablesCompleted = JSON.parse("{{ deliverables_completed|escapejs }}");
+        const deliverablesPending = JSON.parse("{{ deliverables_pending|escapejs }}");
+
+        // Colores ajustados al tema
+        const primaryColor = 'rgba(71, 59, 240, 0.7)';         // Color primario (morado)
+        const primaryBorderColor = 'rgba(71, 59, 240, 1)';
+        const secondaryColor = 'rgba(59, 175, 218, 0.6)';      // Color secundario (turquesa)
+        const secondaryBorderColor = 'rgba(59, 175, 218, 1)';
+        const accentColor = 'rgba(46, 204, 113, 0.7)';         // Color de acento (verde)
+        const accentBorderColor = 'rgba(46, 204, 113, 1)';
+
+        // Gráfico de Progreso del Proyecto
+        new Chart(document.getElementById('progressChart'), {
+            type: 'bar',
+            data: {
+                labels: projectTitles,
+                datasets: [{
+                    label: 'Project Progress (%)',
+                    data: projectProgress,
+                    backgroundColor: primaryColor,
+                    borderColor: primaryBorderColor,
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: { y: { beginAtZero: true, max: 100 } }
+            }
+        });
+
+        // Gráfico de Complejidad del Proyecto
+        new Chart(document.getElementById('complexityChart'), {
+            type: 'pie',
+            data: {
+                labels: complexityLabels,
+                datasets: [{
+                    data: complexityCounts,
+                    backgroundColor: [primaryColor, secondaryColor, accentColor],
+                    borderColor: [primaryBorderColor, secondaryBorderColor, accentBorderColor],
+                    borderWidth: 1
+                }]
+            },
+            options: { responsive: true }
+        });
+
+        // Gráfico de Entregables (Completados vs. Pendientes)
+        new Chart(document.getElementById('deliverablesChart'), {
+            type: 'bar',
+            data: {
+                labels: projectTitles,
+                datasets: [
+                    {
+                        label: 'Completed',
+                        data: deliverablesCompleted,
+                        backgroundColor: primaryColor,
+                        borderColor: primaryBorderColor,
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Pending',
+                        data: deliverablesPending,
+                        backgroundColor: secondaryColor,
+                        borderColor: secondaryBorderColor,
+                        borderWidth: 1
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                scales: { y: { beginAtZero: true } }
+            }
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

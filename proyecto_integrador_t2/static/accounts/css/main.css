@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    color: #161C2D; /* Color negro que mencionaste */
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-size: 16px; /* Tamaño base del texto en el cuerpo */
+}
+
+h1 {
+    font-size: 60px; /* Tamaño grande para el encabezado principal */
+    font-weight: 700; /* Negrita si lo deseas */
+}
+
+h2 {
+    font-size: 48px; /* Un poco más pequeño que el h1 */
+    font-weight: 600;
+}
+
+h3 {
+    font-size: 36px; /* Más pequeño que el h2 */
+    font-weight: 500;
+}
+
+h4 {
+    font-size: 28px; /* Un tamaño más pequeño */
+}
+
+h5 {
+    font-size: 22px; /* Más pequeño aún */
+}
+
+h6 {
+    font-size: 17px; /* Menor tamaño */
+}

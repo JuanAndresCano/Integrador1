@@ -1,0 +1,186 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% trans "Client Deliverable" %}</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- CSS LISTFREELANCER PROJECT -->
+    <link type='text/css' href="{% static 'projects/css/informationProject.css' %}" rel='stylesheet'/>
+    <!-- JS LISTFREELANCER PROJECT -->
+    <script type="text/javascript" src="{% static 'projects/js/deliverablesJs.js' %}" defer></script>
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+    <!-- HEADER -->
+    {% include 'navbarClient.html' %}
+
+    <!-- MAIN CONTENT -->
+    <main class="container my-5 flex-grow-1">
+        <div class="row">
+            <!-- Contenido principal -->
+            <div class="col-lg-8 col-md-7">
+                <h1>{{ projectContributor.title }}</h1>
+                <strong>{% trans "Description" %}:</strong> {{ projectContributor.description }}<br>
+                <hr>
+                <strong>{% trans "Date Posted" %}:</strong> {{ projectContributor.startDate }}<br>
+                <strong>{% trans "Required Position" %}:</strong> {{ projectContributor.requiredPosition }}<br>
+                <strong>{% trans "Days Duration" %}:</strong> {{ projectContributor.daysDuration }}<br>
+                <strong>{% trans "Budget" %}:</strong> {{ projectContributor.budget }}<br>
+                <hr>
+
+                <label class="form-label">{% trans "Skills and Expertise" %}</label>
+                <div class="skills-container">
+                    <div class="skill-card">
+                        {% for skill in skills %}
+                            <label class="skill-card-label">{{ skill.name }}</label>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <hr>
+
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert 
+                            {% if message.tags == 'success' %}alert-success
+                            {% elif message.tags == 'error' %}alert-danger
+                            {% endif %}" 
+                            role="alert">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+
+                {% for milestone in milestones %}
+                <div class="milestone card shadow-sm mb-4">
+                    <div class="card-header">
+                        <h4 class="milestone-title">{{ milestone.name }}</h4>
+                        
+                    </div>
+                    {% for deliverable in milestone.deliverables.all %}
+                    <div class="card shadow-sm mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ deliverable.name }}</h5>
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <p class="mb-0 text-justify"><strong>{% trans "Description" %}:</strong> {{ deliverable.description }}</p>
+                                    <p class="mb-0"><strong>{% trans "Deadline Days" %}:</strong> {{ deliverable.deadlineInDays }} </p>
+                                </div>
+                                
+                                {% include 'downloadDeliverables.html' %}
+                        
+                            </div>
+                    
+                            <hr class="my-3">
+                    
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="d-flex align-items-center">
+                                    <i class="bi bi-calendar-check text-success me-2"></i>
+                                    <p class="mb-0 text-muted">
+                                        <small>{% trans "Due in" %} {{ deliverable.deadlineInDays }} {% trans "days" %}</small>
+                                    </p>
+                                </div>
+                                
+                                <div>
+                                    <!-- Muestra el estado del entregable -->
+                                    {% if deliverable.awaiting_approval %}
+                                        <span class="badge bg-warning">{% trans "Pending Approval" %}</span>
+                                    {% elif deliverable.done %}
+                                        <span class="badge bg-success">{% trans "Completed" %}</span>
+                                    {% else %}
+                                        <span class="badge bg-danger">{% trans "Rejected" %}</span>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            
+                            <!-- Mostrar botones de Aceptar/Rechazar solo si está en espera de aprobación -->
+                            {% if deliverable.awaiting_approval and deliverable.approval_requested %}
+                                <div class="d-flex justify-content-between mt-3">
+                                    <form action="" method="post" style="display:inline;">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="deliverable_id" value="{{ deliverable.id }}">
+                                        <button type="submit" name="action" value="accept" class="btn btn-success btn-sm">
+                                            {% trans "Accept" %}
+                                        </button>
+                                        <button type="submit" name="action" value="reject" class="btn btn-danger btn-sm">
+                                            {% trans "Reject" %}
+                                        </button>
+                                    </form>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% empty %}
+                    <p>{% trans "No deliverables available." %}</p>
+                {% endfor %}
+                    
+                </div>
+                {% endfor %}
+            </div>
+
+            <!-- Sección Acerca de Mí -->
+            <div class="col-lg-4 col-md-5 about-section">
+                <!-- Información del Freelancer -->
+                <div class="about-freelancer">
+                    <h2>{% trans "About the freelancer" %}</h2>
+                    <div class="freelancer-header">
+                        <img src="{{ projectContributor.freelancer.profile_pic.url|default:'static/img/default.png' }}"class="company-logo mb-3">
+                        <div class="freelancer-info">
+                            <h3 class="freelancer-name">{{ projectContributor.freelancer }}</h3>
+                            <a href="{% url 'freelancerProfile' projectContributor.freelancer.user_id %}" class="profile-link">
+                                {% trans 'View Profile' %}
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                        <!-- LINEA DEL TIEMPO -->
+                        <div class="timeline-container">
+                            <h3>{% trans "Project Timeline" %}</h3>
+                            <div class="timeline">
+                                {% for deliverable in deliverables %}
+                                <div class="timeline-node {% if deliverable.done %}completed{% endif %}">
+                                    <p class="timeline-deadline">{{ deliverable.deadline|date:"d M Y" }}</p>
+                                    <div class="timeline-content">
+                                        <p>{{ deliverable.name }}</p>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Botón para marcar el trabajo como terminado si todos los entregables están completados -->
+                    {% if all_deliverables_completed and not projectContributor.finishJob %}
+                        <form action="" method="post" class="mt-4">
+                            {% csrf_token %}
+                            <button type="submit" name="finish_job" class="btn btn-lg btn-primary w-100">
+                                {% trans "Finish Job" %}
+                            </button>
+                        </form>
+                    {% elif projectContributor.finishJob %}
+                        <div class="alert alert-success mt-4">
+                            {% trans "The job has been marked as finished." %}
+                        </div>
+                    {% endif %}
+
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    {% include 'footer.html' %}
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

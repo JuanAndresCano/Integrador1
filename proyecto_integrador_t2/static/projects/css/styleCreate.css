@@ -1,0 +1,462 @@
+/* General Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins'; 
+    font-size: 16px;
+    color: #161C2D;
+    background-color: white;
+}
+
+h2, h5 {
+    color: #161C2D;
+}
+.badge {
+    font-size: 1rem;
+    padding: 0.5em 0.75em;
+}
+
+.badge-custom {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    color: #161C2D;
+    padding: 0.5em 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Badge al pasar el ratón */
+.badge-custom:hover {
+    background-color: #f0f0f0;
+    border-color: #bbb;
+    transform: scale(1.08); /* Aumenta el tamaño ligeramente */
+}
+
+.badge-custom.selected {
+    background-color: #473BF0; /* Color azul cuando está seleccionado */
+    color: white; /* Texto blanco cuando está seleccionado */
+    border-color: #473BF0; /* Borde azul cuando está seleccionado */
+}
+/* Estilo para el botón "Agregar +" */
+.badge-add {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #161C2D   ;
+    color: white;
+    font-size: 1.2em;
+    font-weight: bold;
+    border: none;
+    border-radius: 50%; /* Forma circular */
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  } 
+
+  /* Efecto hover en el botón "Agregar +" */
+  .badge-add:hover {
+    background-color: #473BF0;
+    transform: scale(1.1); /* Aumenta el tamaño ligeramente */
+  }
+
+  /* Estilo del modal para agregar habilidades */
+  #addSkillModal {
+    display: none; /* Inicialmente oculto */
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
+    justify-content: center;
+    align-items: center;
+  }
+.form-control {
+font-size: 1rem;
+color: #495057;
+background-color: #fff;
+border: 1px solid #ced4da;
+}
+.form-control:focus {border-color: #473BF0;
+    box-shadow: 0 0 0 0.2rem rgba(71, 59, 240, 0.25);
+}
+
+/* Header Styles */
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 40px;
+    background-color: white;
+    border-bottom: 1px solid #E7E9ED;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: 700;
+    color: #161C2D ;
+}
+
+.nav-link {
+    font-size: 14px;
+    color: #6C757D;
+    font-weight: 500;
+    margin-right: 20px;
+}
+
+.nav-link.active, .nav-link:hover {
+    color: #473BF0;
+}
+
+.search-bar .search-input {
+    padding: 10px 15px;
+    border-radius: 8px;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+}
+
+/* Project Details */A
+.project-details {
+    padding: 40px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.project-title {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.project-role {
+    font-size: 16px;
+    color: #6C757D;
+}
+
+.about-section {
+    text-align: center;
+    padding: 20px;
+    color: white;
+    font-family: 'Poppins';
+}
+
+.create-project-btn {
+    background-color: #473BF0;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-bottom: 30px;
+    transition: background-color 0.3s ease;
+}
+
+.create-project-btn:hover {
+    background-color: #5500cc;
+}
+.create-project-btn:active {
+    background-color: #3a32b8;
+    transform: scale(0.98); 
+}
+.about-me {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.about-me h2 {
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.company-info {
+    display: flex;
+    align-items: center;
+    text-align: left;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.company-logo {
+    width: 50px;
+    height: 50px;
+    margin-right: 15px;
+    border-radius: 50%;
+}
+
+.company-details {
+    flex: 1;
+}
+
+.company-details h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #161C2D;
+}
+
+.company-details p {
+    font-size: 14px;
+    margin: 5px 0;
+    color: #161C2D;
+}
+/* Footer */
+/* Footer */
+.footer {
+    background-color: #161C2D;
+    padding: 80px 40px;
+    color: white;
+    font-family: 'Poppins';
+    position: absolute; /* Hace que sea independiente de otros elementos */
+    width: 100%;
+    left: 0; /* Asegura que comience desde el borde izquierdo de la pantalla */
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    box-sizing: border-box; /* Asegura que el padding se incluya dentro del width */
+}
+
+.footer h4 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.footer .footer-description {
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.footer .footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+.footer .footer-links li {
+    margin-bottom: 10px;
+}
+
+.footer .footer-links a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer .footer-links a:hover {
+    color: #473BF0;
+    text-decoration: underline;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.social-icons img {
+    width: 24px;
+    filter: brightness(0) invert(1); /* Blanco sobre fondo oscuro */
+    transition: opacity 0.3s ease;
+}
+
+.social-icons img:hover {
+    opacity: 0.7;
+}
+
+
+/* Diseño responsivo para pantallas más pequeñas */
+@media (max-width: 768px) {
+    .footer {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .social-icons {
+        justify-content: center;
+    }
+}
+
+
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo translúcido */
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.3s ease; /* Transición de aparición/desaparición */
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 12px; /* Bordes más redondeados */
+    width: 400px;
+    max-width: 90%; /* Responsive */
+    text-align: center;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra suave */
+    position: relative;
+    animation: slide-down 0.4s ease; /* Animación de aparición */
+}
+
+/* Animación para la entrada del modal */
+@keyframes slide-down {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal-content input {
+    width: 100%;
+    padding: 12px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px; /* Bordes más suaves */
+    font-size: 1rem; /* Tamaño de fuente ajustado */
+    box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1); /* Sombra interna */
+}
+
+.modal-content button {
+    padding: 10px 20px;
+    background-color: #473BF0; /* Mantener el color del botón */
+    color: white;
+    border: none;
+    border-radius: 8px; /* Bordes más redondeados */
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Transición suave */
+}
+
+.modal-content button:hover {
+    background-color: #5500cc; /* Cambio de color suave al pasar el ratón */
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666;
+    transition: color 0.3s ease;
+}
+
+.close:hover {
+    color: #161C2D; /* Color al pasar el ratón por encima */
+}
+.close-job {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666;
+    transition: color 0.3s ease;
+}
+.close-skill {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666;
+    transition: color 0.3s ease;
+}
+.close-job:hover {
+    color: #161C2D; /* Color al pasar el ratón por encima */
+}
+
+/* Clickable title style */
+.clickable-title {
+    cursor: pointer;
+    color: #161C2D;
+    font-weight: 600; /* Resaltar un poco más el título */
+    transition: color 0.2s ease;
+}
+
+.clickable-title:hover {
+    color: #473BF0; /* Cambio de color al pasar el ratón */
+}
+.clickable-job {
+    cursor: pointer;
+    color: #6C757D;
+    font-weight: 800; /* Resaltar un poco más el texto */
+    transition: color 0.2s ease;
+}
+
+.clickable-job:hover {
+    color: #473BF0; /* Cambio de color al pasar el ratón */
+}
+
+/* Notification Styles */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #28a745;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    font-size: 1rem;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-20px);
+    transition: opacity 0.4s ease, visibility 0.4s ease, transform 0.4s ease;
+    z-index: 9999; /* Make sure it's on top */
+}
+
+.notification.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.notification.error {
+    background-color: #dc3545; /* Color for errors (red) */
+}
+
+#editor-container {
+    min-height: 200px;
+    border: 1px solid #ced4da;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+}
+
+
+  /* Añadir un indicador visual cuando el editor está en modo edición */
+  #editor-container.editable {
+    background-color: #fff;
+    border-color: #007bff;
+  }
+
+  /* Ocultar la barra de herramientas inicialmente */
+  .ql-toolbar {
+    display: none;
+  }
+
+  /* Mostrar la barra de herramientas solo cuando el editor está habilitado */
+  #editor-container.editable + .ql-toolbar {
+    display: block;
+}
+

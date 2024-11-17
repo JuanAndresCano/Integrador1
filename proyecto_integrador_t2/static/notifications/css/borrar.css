@@ -1,0 +1,262 @@
+/* Estilos generales */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #ffff;
+    color: #161C2D;
+}
+
+/* Estilo para el contenedor principal */
+.container {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* Estilo para el encabezado de la página */
+h1 {
+    font-size: 2.5rem;
+    font-weight: 700; /* Ajuste de peso a 700 */
+    color: #161C2D; /* Color del título */
+}
+
+/* Estilo para las tarjetas de notificaciones */
+.list-group-item {
+    position: relative;
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para dar profundidad */
+    border: 1px solid rgba(71, 59, 240, 0.2); /* Borde en línea con el color principal */
+    transition: transform 0.3s, box-shadow 0.3s; /* Efecto de transición suave */
+    overflow: hidden; /* Ocultar desbordamiento */
+}
+
+.list-group-item.hiding {
+    animation: slideOut 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.list-group-item:hover {
+    transform: translateY(-5px); /* Efecto de elevación al hacer hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Sombra más intensa al hacer hover */
+}
+
+/* Estilo para el nombre del actor y mensaje */
+.list-group-item h5 {
+    margin-bottom: 5px;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #473BF0; /* Color destacado */
+}
+
+.list-group-item p {
+    font-size: 1rem;
+    color: #4a5568; /* Color para el mensaje */
+}
+
+/* Estilo para la fecha */
+.list-group-item small {
+    color: #adb5bd;  /* Color gris suave para la fecha */
+}
+
+/* Estilo para la imagen del perfil */
+.list-group-item img {
+    border: 2px solid #473BF0;  /* Borde azul para las imágenes */
+    border-radius: 50px; /* Bordes redondeados */
+}
+
+.list-group-item:hover .profile-pic {
+    transform: scale(1.1); /* Animación de la imagen de perfil al hacer hover */
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* Transición suave */
+}
+
+/* Estilo específico para el botón Mark as read */
+.list-group-item .btn-primary {
+    background-color: #473BF0;
+    color: #ffffff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.875rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(71, 59, 240, 0.2);
+}
+
+.list-group-item .btn-primary:hover {
+    background-color: #3929d9; /* Una versión más oscura del color principal */
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(71, 59, 240, 0.3);
+}
+
+.list-group-item .btn-primary:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(71, 59, 240, 0.2);
+}
+
+/* Estilo para el estado "Read" */
+.list-group-item .text-muted {
+    color: #8e97a4 !important;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+/* Estilo para la alerta de "no hay notificaciones" */
+.alert-warning {
+    font-size: 1rem;
+    text-align: center;
+    background-color: #ffefd5;  /* Fondo de alerta suave */
+    border-color: #f5c6a5;
+    color: #856404;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+}
+
+/* Estilos del botón */
+.btn-mark-read {
+    background-color: #473BF0;
+    color: #ffffff;
+    border: none;
+    padding: 2px 16px;
+    border-radius: 50px;
+    font-weight: 500;
+    font-size: 0.813rem;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    min-width: 115px;
+    height: 30px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.btn-mark-read:hover {
+    background-color: #3929d9;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(71, 59, 240, 0.3);
+    color: #ffffff;
+    text-decoration: none;
+}
+
+/* Estilos del botón cuando está en modo "checking" */
+.btn-mark-read.checking {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    min-width: 32px;
+    height: 32px;
+    padding: 0;
+    border-radius: 50%;
+    background-color: #473BF0;
+}
+
+/* Estilos del texto del botón */
+.btn-mark-read .button-text {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    white-space: nowrap;
+    font-size: 0.813rem;
+    font-weight: 500;
+    line-height: 0.2; /* Ajusta este valor según el efecto deseado */
+}
+
+
+/* Ocultar el texto completamente cuando está en modo "checking" */
+.btn-mark-read.checking .button-text {
+    display: none;
+}
+
+/* Estilos del contenedor del checkmark */
+.checkmark-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    opacity: 0;
+    transform: scale(0) rotate(-90deg);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Cuando el botón está en modo "checking", mostrar el checkmark centrado */
+.btn-mark-read.checking .checkmark-container {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+    animation: pulseCheck 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Estilos del SVG del checkmark */
+.checkmark-svg {
+    width: 18px;
+    height: 18px;
+    stroke: #ffffff;
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transform-origin: center;
+}
+
+.btn-mark-read.checking .checkmark-svg path {
+    animation: drawCheck 0.4s ease forwards;
+}
+
+/* Animaciones */
+@keyframes slideOut {
+    0% {
+        transform: translateX(0);
+        opacity: 1;
+        max-height: 200px;
+        margin-bottom: 1.5rem;
+        padding: 1.5rem;
+    }
+    100% {
+        transform: translateX(100%);
+        opacity: 0;
+        max-height: 0;
+        margin-bottom: 0;
+        padding: 0;
+    }
+}
+
+@keyframes drawCheck {
+    0% {
+        stroke-dasharray: 50;
+        stroke-dashoffset: 50;
+    }
+    100% {
+        stroke-dasharray: 50;
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes pulseCheck {
+    0% {
+        transform: scale(0.8);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+
+/* Estilo para evitar que los enlaces se subrayen */
+.list-group-item a {
+    text-decoration: none;
+}
+
+/* Opcional: Si quieres cambiar el color cuando el enlace es clicado (en foco) */
+.list-group-item a:focus, 
+.list-group-item a:hover {
+    color: inherit; /* Mantén el color original */
+    text-decoration: none; /* Asegura que no se subraye en hover o focus */
+}
+
+/* Estilo para las migas de pan cuando estás en la página de notificaciones */
+.nav-link#notifications-link {
+    color: #473BF0 !important; /* Color morado */
+}

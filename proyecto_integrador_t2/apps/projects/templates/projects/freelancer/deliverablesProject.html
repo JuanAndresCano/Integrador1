@@ -1,0 +1,198 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% trans "Freelancer Deliverable" %}</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- CSS LISTFREELANCER PROJECT -->
+    <link type='text/css' href="{% static 'projects/css/informationProject.css' %}" rel='stylesheet'/>
+
+    <!-- JS LISTFREELANCER PROJECT -->
+    <script type="text/javascript" src="{% static 'projects/js/deliverablesJs.js' %}" defer></script>
+    <link rel="stylesheet" href="{% static 'GLOBAL/css/borrar.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        /* Ajuste de tamaño de la imagen de la empresa */
+        .company-logo {
+            max-width: 100%;
+            height: auto;
+            max-height: 200px; /* Limitar la altura máxima para evitar que la imagen se agrande demasiado */
+            object-fit: contain; /* Asegurar que la imagen mantenga sus proporciones */
+        }
+    </style>
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+    <!-- HEADER -->
+    {% include 'navbarFreelancer.html' %}
+
+    <!-- MAIN CONTENT -->
+    <main class="container my-5 flex-grow-1">
+        <div class="row">
+            <!-- Contenido principal -->
+            <div class="col-lg-8 col-md-7">
+                <h1>{{ projectContributor.title }}</h1>
+                <strong>{% trans "Description" %}:</strong> {{ projectContributor.description }}<br>
+                <hr>
+                <strong>{% trans "Date Posted" %}:</strong> {{ projectContributor.startDate }}<br>
+                <strong>{% trans "Required Position" %}:</strong> {{ projectContributor.requiredPosition }}<br>
+                <strong>{% trans "Days Duration" %}:</strong> {{ projectContributor.daysDuration }}<br>
+                <strong>{% trans "Budget" %}:</strong> {{ projectContributor.budget }}<br>
+                <strong>{% trans "Experience level" %}:</strong> {{ project.complexity }}<br>
+
+                <hr>
+
+                <label class="form-label">{% trans "Skills and Expertise" %}</label>
+                <div class="skills-container">
+                    <div class="skill-card">
+                        {% for skill in projectContributor.project.skillExpertises.all %}
+                            <label class="skill-card-label">{{ skill.name }}</label>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <hr>
+                <!-- Mensaje de alerta PARA ENVIAR MENSAJES -->
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert 
+                            {% if message.tags == 'success' %}alert-success
+                            {% elif message.tags == 'error' %}alert-danger
+                            {% endif %}" 
+                            role="alert">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+
+                {% for milestone in milestones %}
+                    <div class="milestone card shadow-sm mb-4">
+                        <div class="card-header">
+                            <h4 class="milestone-title">{{ milestone.name }}</h4>
+                        </div>
+                        <div class="card-body">
+                            {% for deliverable in milestone.deliverables.all %}
+                            <div class="deliverable-item">
+                                <h5 class="deliverable-title">{{ deliverable.name }}</h5>
+                                <p><strong>{% trans "Description" %}:</strong> {{ deliverable.description }}</p>
+                                <p><strong>{% trans "Deadline Days" %}:</strong> {{ deliverable.deadlineInDays }}</p>
+                                
+                                <!-- Estado del entregable -->
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="badge {% if deliverable.done %}bg-success{% else %}bg-warning{% endif %}">
+                                        {% if deliverable.done %}{% trans "Completed" %}{% else %}{% trans "Pending" %}{% endif %}
+                                    </span>
+                                    
+                                    <!-- Formulario para cambiar el estado del entregable -->
+                                    <form action="" method="post" style="display:inline;">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="deliverable_id" value="{{ deliverable.id }}">
+                                        
+                                        <!-- Mostrar botón "Mark as Completed" solo si no requiere evidencia -->
+                                        {% if not deliverable.requiresEvidence and not deliverable.done %}
+                                            <button type="submit" name="mark_as_completed" class="btn btn-sm btn-primary">
+                                                {% trans "Mark as Completed" %}
+                                            </button>
+                                        {% endif %}
+                                    </form>
+
+                                    <!-- Botón de solicitud de aprobación si requiere evidencia -->
+                                    {% if deliverable.requiresEvidence %}
+                                    <form action="" method="post" style="display:inline;">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="deliverable_id" value="{{ deliverable.id }}">
+                                        <button type="submit" class="btn btn-sm {% if deliverable.approval_requested %}btn-secondary{% else %}btn-primary{% endif %}" 
+                                                {% if deliverable.approval_requested%}disabled{% endif %}>
+                                            {% if deliverable.approval_requested %}{% trans "Approval Requested" %}{% else %}{% trans "Request Approval" %}{% endif %}
+                                        </button>
+                                    </form>                                
+                                    {% endif %}
+                                </div>
+
+                                <!-- Opciones para subir y eliminar evidencia -->
+                                {% if deliverable.requiresEvidence %}
+                                    <div class="mt-2">
+                                        {% if not deliverable.evidenceFile %}
+                                            <!-- Subir archivo de evidencia si no existe -->
+                                            <form action="" method="post" enctype="multipart/form-data" style="display:inline;">
+                                                {% csrf_token %}
+                                                <input type="hidden" name="deliverable_id" value="{{ deliverable.id }}">
+                                                <input type="file" name="evidenceFile" class="form-control mb-2">
+                                                <button type="submit" class="btn btn-sm btn-secondary">{% trans "Upload Evidence" %}</button>
+                                            </form>
+                                        {% else %}
+                                            <!-- Mostrar archivo de evidencia existente y opción de eliminar -->
+                                            <p><strong>{% trans "Uploaded Evidence" %}:</strong> <a href="{{ deliverable.evidenceFile.url }}" target="_blank">{{ deliverable.evidenceFile.name }}</a></p>
+                                            <form action="" method="post" style="display:inline;">
+                                                {% csrf_token %}
+                                                <input type="hidden" name="deliverable_id" value="{{ deliverable.id }}">
+                                                <button type="submit" name="deleteFile" class="btn btn-sm btn-danger"{% if deliverable.done%}disabled{% endif %}>{% trans "Delete Evidence" %}</button>
+                                            </form>
+                                        {% endif %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                            <hr class="my-3">
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <!-- Sección Acerca de Mí -->
+            <div class="col-lg-4 col-md-5 about-section">
+                <div class="about-me">
+                    
+                    <h2>{% trans "About the client" %}</h2>
+                    <div class="company-info">
+                        {% if img %}
+                            <img src="{{ img.url }}"class="company-logo mb-3">
+                        {% else %}
+                            <img src="{% static 'img/default.png' %}" class="company-logo mb-3">
+                        {% endif %}
+                        <a href="{% url 'freelancerCreateComprobateChat' project.client.user.username %}" class="chat-button">
+                            <div class="chat-icon">
+                                <i class="fas fa-comments"></i>
+                            </div>
+                        </a>
+                        <div class="company-details">
+                            <h3>{{ project.client.companyName }}</h3>
+                            <p>{{ project.client.description_company }}</p>
+                            <p>{% blocktrans %}{{ totalProjects }} published works{% endblocktrans %}</p>
+                        </div>
+
+                        <!-- LINEA DEL TIEMPO -->
+                        <div class="timeline-container">
+                            <h3>{% trans "Project Timeline" %}</h3>
+                            <div class="timeline">
+                                {% for deliverable in deliverables %}
+                                <div class="timeline-node {% if deliverable.done %}completed{% endif %}">
+                                    <p class="timeline-deadline">{{ deliverable.deadline|date:"d M Y" }}</p>
+                                    <div class="timeline-content">
+                                        <p>{{ deliverable.name }}</p>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    {% include 'footer.html' %}
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

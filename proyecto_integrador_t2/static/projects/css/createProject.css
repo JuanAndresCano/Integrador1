@@ -1,0 +1,171 @@
+/* Form Styles */
+.project-form {
+    background-color: #ffffff !important;
+    padding: 30px !important;
+    border-radius: 12px !important;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1) !important;
+    border: 1px solid #e3e3e3 !important;
+}
+
+.project-form .form-group {
+    margin-bottom: 1.5rem !important;
+}
+
+.project-form .form-label {
+    font-weight: 600 !important;
+    color: #161C2D !important;
+    font-size: 16px !important;
+}
+
+.project-form input[type="text"], 
+.project-form textarea {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #E7E9ED;
+    border-radius: 8px;
+    margin-top: 8px;
+    background-color: #fff;
+}
+
+.project-form input[type="text"]:focus, 
+.project-form textarea:focus {
+    border-color: #473BF0 !important;
+    outline: none !important ;
+    box-shadow: 0 0 5px rgba(71, 59, 240, 0.2)!important;
+}
+
+/* Button Style */
+.create-project-btn {
+    width: 100% !important;
+    padding: 12px !important;
+    background-color: #473BF0 !important;
+    border: none !important;
+    color: white !important;
+    border-radius: 8px !important;
+    font-size: 16px !important ;
+    transition: background-color 0.3s ease !important;
+}
+
+.create-project-btn:hover {
+    background-color: #473BF0 !important;
+}
+
+.create-project-btn:active {
+    background-color: #3729d0 !important;
+    transform: scale(0.98) !important; 
+}
+
+.form-group label {
+    font-weight: bold;
+}
+
+/* Estilos de inputs y selects */
+input, select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+/* Mejorar el espaciado del formulario */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.company-logo {
+    max-width: 100%;
+    height: auto;
+    width: 100px;
+}
+
+.skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.skill-card {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.skill-card input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.skill-card-label {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 16px;
+    background-color: #f0f0f0;
+    border-radius: 20px;
+    font-size: 14px;
+    color: #333;
+    transition: all 0.3s ease;
+}
+
+.skill-card:hover .skill-card-label {
+    background-color: #e0e0e0;
+}
+
+.skill-card input[type="checkbox"]:checked + .skill-card-label {
+    background-color: #f0f0f0;
+    padding-left: 40px; /* Espacio para el círculo de check */
+}
+
+.skill-card input[type="checkbox"]:checked + .skill-card-label::before {
+    content: '✓';
+    position: absolute;
+    left: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    background-color: #473BF0;
+    border-radius: 50%;
+    color: white;
+    font-size: 12px;
+}
+
+.nav-link#projects-link {
+    color: #473BF0 !important; /* Color morado */
+}
+.toast-container {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1050;
+}
+.toast {
+    background-color: #f8d7da;
+    color: #721c24;
+    border-color: #f5c6cb;
+    position: relative;
+    overflow: hidden;
+}
+.toast-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: var(--primary-color);
+    animation: progressBar 3s linear forwards;
+}
+@keyframes progressBar {
+    from { width: 100%; }
+    to { width: 0; }
+}

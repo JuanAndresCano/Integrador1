@@ -1,0 +1,118 @@
+{% load static %}
+{% load i18n %}  
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% trans "SkillUp - Project Freelancers" %}</title>  <!-- Translated title -->
+        
+        <!-- Bootstrap CSS and Icons -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+        
+        <!-- Global CSS -->
+        <link type="text/css" href="{% static 'GLOBAL/css/borrar.css' %}" rel="stylesheet"/>
+        
+        <!-- CSS LISTFREELANCER PROJECT -->
+        <link type='text/css' href="{% static 'projects/css/listFreelancer1.css' %}" rel='stylesheet'/>
+        
+    </head>
+<body>
+
+    <!-- ___________________Header_______________________ -->
+    {% include 'navbarClient.html' %}
+    <!-- ___________________Header_______________________ -->
+
+    <!-- Main content -->
+    <main class="container mt-5">
+        <div class="page-header">
+            <h1>{{ project.title }}</h1>
+            <h2>{% trans "Review your project freelancers" %}</h2>
+        </div>
+
+        <div class="card">
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0">
+                        <thead>
+                            <tr>
+                                <th class="text-center px-4">{% trans "Profile" %}</th>
+                                <th class="text-center px-4">{% trans "Job Title" %}</th>
+                                <th class="text-center px-4">{% trans "Payment" %}</th>
+                                <th class="text-center px-4">{% trans "Project Completion" %}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for projectContributor in projectContributors %}
+                            <tr>
+                                <td>
+                                    <div class="freelancer-profile">
+                                        {% if projectContributor.freelancer.profile_pic %}
+                                            <img src="{{ projectContributor.freelancer.profile_pic.url }}" 
+                                                alt="{{ projectContributor.freelancer }}" 
+                                                class="profile-image">
+                                        {% else %}
+                                            <img src="{% static 'img/default.png' %}" 
+                                                alt="{{ projectContributor.freelancer }}" 
+                                                class="profile-image">
+                                        {% endif %}
+                                        <a href="{% url 'clientDeliverable' projectContributor.id %}" 
+                                        class="freelancer-name">
+                                            {{ projectContributor.freelancer }}
+                                        </a>
+                                    </div>
+                                </td>
+                                <td class="text-center">{% trans "Job title pending" %}</td>
+                                
+                                <td class="text-center">
+                                    {% if projectContributor.finishJob %}
+                                        {% if not projectContributor.payment_completed %}
+                                            <a href="{% url 'gateWay' projectContributor.id %}" 
+                                            class="btn-payment">
+                                                Pay ${{ projectContributor.budget }}
+                                            </a>
+                                        {% else %}
+                                            <span class="payment-completed">
+                                                {% trans "Payment Completed" %}
+                                            </span>
+                                        {% endif %}
+                                    {% else %}
+                                        ${{ projectContributor.budget }}
+                                    {% endif %}
+                                </td>
+                                
+                                <td>
+                                    <div class="progress-wrapper">
+                                        <div class="progress flex-grow-1">
+                                            <div class="progress-bar" 
+                                                role="progressbar"style="width:{{ projectContributor.progress }}%"
+                                                aria-valuenow="{{ projectContributor.progress }}" 
+                                                aria-valuemin="0" 
+                                                aria-valuemax="100">
+                                            </div>
+                                        </div>
+                                        <span class="progress-value">{{ projectContributor.progress }}%</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>        
+    </main>
+     <!-- ___________________Footer_______________________ -->
+    {% include 'footer.html' %}
+     <!-- ___________________Footer_______________________ -->
+
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+
+    
+
+</body>
+</html>
+

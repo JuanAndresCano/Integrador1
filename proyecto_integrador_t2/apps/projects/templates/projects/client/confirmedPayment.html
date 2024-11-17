@@ -1,0 +1,44 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% trans "Pago Exitoso" %}</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link type='text/css' href="{% static 'projects/css/confirmedPayment.css' %}" rel='stylesheet' />
+</head>
+<body>
+    <div class="invoice-container">
+        <div class="success-icon">
+            <i class="fas fa-check"></i>
+        </div>
+        
+        <h2>¡Pago Confirmado!</h2>
+        <p>Tu transacción se ha procesado exitosamente</p>
+        
+        <div class="transaction-details">
+            <div class="detail-item" style="animation-delay: 0.1s"><span>Fecha</span><span>{{transaction.transaction_date}}</span></div>
+
+            <div class="detail-item" style="animation-delay: 0.2s"><span>Método de Pago</span><span><i class="fab fa-cc-visa me-2"></i>****</span></div>
+            <div class="detail-item" style="animation-delay: 0.3s"><span>Subtotal</span><span>${{ budget }}</span></div>
+            <div class="detail-item" style="animation-delay: 0.4s"><span>Impuestos</span><span>${{ impuestos }}</span></div>
+            <div class="detail-item" style="animation-delay: 0.5s"><span>Total</span><span>${{ total }}</span></div>
+            
+
+        </div>
+        
+        <button type="button" class="btn btn-outline d-block w-100" onclick="window.location.href='{% url 'listFreelancer' project.id %}' ">
+            {% trans "Volver al Inicio" %}
+        </button>
+
+        <footer class="invoice-footer">
+            <span class="brand-seal">Skill<span class="highlight">Up</span></span>
+        </footer>
+    </div>
+
+    <script src="{% static 'projects/js/confirmedPayment.js' %}"></script>
+</body>
+</html>

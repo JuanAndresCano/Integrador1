@@ -1,0 +1,142 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Information Project</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- CSS LISTFREELANCER PROJECT -->
+    <link type='text/css' href="{% static 'projects/css/informationProject.css' %}" rel='stylesheet'/>
+    <!-- JS LISTFREELANCER PROJECT -->
+    <script type="text/javascript" src="{% static 'projects/js/deliverablesJs.js' %}" defer></script>
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <!-- HEADER -->
+    {% include 'navbarFreelancer.html' %}
+
+    <!-- MAIN CONTENT -->
+    <main class="container my-5 flex-grow-1">
+        <div class="row">
+            <!-- Contenido principal -->
+            <div class="col-lg-8 col-md-7">
+                <h1>{{ milestone.projectContributor.title }}</h1>
+                
+                <hr>
+                
+                <div class="milestone-header">
+                    <a href="{% url 'addDeliverablesProject' milestone.projectContributor.id %}" class="milestone-title-link">
+                        <h3>{{ milestone.name }}</h3>
+                    </a>
+
+                    <form action="{% url 'deleteMilestone' milestone.id %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="action-button btn-danger">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                            </svg>
+                            {% trans "Delete Milestone" %}
+                        </button>
+                    </form>
+                </div>
+
+                <hr>
+
+                <!-- Lista de Deliverables -->
+                <div class="deliverables-list">
+                    {% for deliverable in milestone.deliverables.all %}
+                        <div class="deliverable-item">
+                            <div class="deliverable-content">
+                                <strong>{% trans "Name" %}:</strong> {{ deliverable.name }}<br>
+                                <strong>{% trans "Description" %}:</strong> {{ deliverable.description }}<br>
+                                <strong>{% trans "Deadline" %}:</strong> {{ deliverable.deadlineInDays }} {% trans "days" %} <br>
+                                <strong>{% trans "Requires evidence" %}:</strong>
+                                {% if deliverable.requiresEvidence %}
+                                    {% trans "Requires evidence" %}
+                                {% else %}
+                                    {% trans "Does not require evidence" %}
+                                {% endif %}
+                            </div>
+                            <form action="{% url 'deleteDeliverable' deliverable.id %}" method="post">
+                                {% csrf_token %}
+                                <button type="submit" class="action-button btn-danger">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                                    </svg>
+                                    {% trans "Delete Deliverable" %}
+                                </button>
+                            </form>
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <!-- Formulario para añadir nuevo deliverable -->
+                <div class="add-deliverable-section">
+                    <h3>{% trans "Add new deliverable" %}</h3>
+                    <form action="" method="POST" id="deliverable-form">
+                        {% csrf_token %}
+                        <div id="deliverable-forms">
+                            <div class="deliverable-form">
+                                <div class="form-group">
+                                    <label>{% trans "Name" %}:</label>
+                                    {{ form.name }}
+                                </div>
+                                <div class="form-group">
+                                    <label>{% trans "Description" %}:</label>
+                                    {{ form.description }}
+                                </div>
+                                <div class="form-group">
+                                    <label>{% trans "Days deadline" %}:</label>
+                                    {{ form.deadlineInDays }}
+                                </div>
+                                <div class="form-group checkbox-group">
+                                    <label class="custom-checkbox">
+                                        {{ form.requiresEvidence }}
+                                        <span class="checkbox-indicator"></span>
+                                        <span class="checkbox-label">{% trans "Requires evidence" %}</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-buttons">
+                            <button type="submit" name="save" class="btn btn-primary">
+                                {% trans "Save" %}
+                            </button>
+                            <button type="submit" name="save_add_another" class="btn btn-secondary">
+                                {% trans "Save and add another" %}
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Sección Acerca de Mí -->
+            <div class="col-lg-4 col-md-5 about-section">
+                <div class="about-me">
+                    <h2>{% trans "About the client" %}</h2>
+                    <div class="company-info">
+                        {% if img %}
+                            <img src="{{ img.url }}" class="company-logo mb-3" alt="Company Logo">
+                        {% else %}
+                            <img src="{% static 'img/default.png' %}" class="company-logo mb-3" alt="Default Company Logo">
+                        {% endif %}
+                        <div class="company-details">
+                            <h3>{{ milestone.projectContributor.project.client.companyName }}</h3>
+                            <p>{{ milestone.projectContributor.project.client.description_company }}</p>
+                            <p>{% blocktrans %}{{ totalProjects }} published works{% endblocktrans %}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    {% include 'footer.html' %}
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+</body>
+</html>

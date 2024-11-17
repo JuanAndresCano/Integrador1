@@ -1,0 +1,158 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freelancer Financial Control</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link type='text/css' href="{% static 'GLOBAL/css/global.css' %}" rel='stylesheet'/>
+    <link type='text/css' href="{% static 'projects/css/financialControl.css' %}" rel='stylesheet'/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+    <!-- HEADER -->
+    {% include 'navbarFreelancer.html' %}
+
+    <!-- MAIN CONTENT -->
+    <main class="container-fluid mt-4">
+        <div class="container">
+            <!-- Freelancer Profile Section -->
+            <div class="profile-section">
+                <div class="row">
+                    <div class="col-md-3 text-center">
+                        {% if freelancer.profile_pic %}
+                            <img src="{{ freelancer.profile_pic.url }}" alt="{% trans 'Profile Picture' %}" class="profile-image">
+                        {% else %}
+                            <img src="{% static 'img/default.png' %}" alt="Default Profile" class="profile-image">
+                        {% endif %}
+                    </div>
+                    <div class="col-md-9 profile-info">
+                        <h2>{{ freelancer.user.first_name }} {{ freelancer.user.last_name }}</h2>
+                        <p class="freelancer-description">{{ freelancer.description }}</p>
+                        <p class="experience-level"><strong>{% trans "Experience Level:" %}</strong> {{ freelancer.get_experience_level_display }}</p>
+                        <div class="social-links">
+                            {% if freelancer.linkedin_url %}
+                                <a href="{{ freelancer.linkedin_url }}" target="_blank" class="social-link">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                            {% endif %}
+                            {% if freelancer.github_url %}
+                                <a href="{{ freelancer.github_url }}" target="_blank" class="social-link">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            {% endif %}
+                            {% if freelancer.instagram_url %}
+                                <a href="{{ freelancer.instagram_url }}" target="_blank" class="social-link">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            {% endif %}
+                            {% if freelancer.resume %}
+                            <a href="{{ freelancer.resume.url }}" class="social-btn resume" download="Resume">
+                                {% trans "Download Resume" %}
+                            </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Financial Summary Section -->
+            <div class="summary-section">
+                <h2 class="section-title">{% trans "Financial Summary" %}</h2>
+                <div class="row text-center">
+                    <div class="col-md-4 mb-4">
+                        <div class="summary-card">
+                            <h5 class="card-title">${{ balance|floatformat:2 }}</h5>
+                            <p class="card-text">{% trans "Total Balance" %}</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="summary-card">
+                            <h5 class="card-title">${{ total_received|floatformat:2 }}</h5>
+                            <p class="card-text">{% trans "Total Received" %}</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="summary-card">
+                            <h5 class="card-title">${{ last_payment_received|floatformat:2 }}</h5>
+                            <p class="card-text">{% trans "Last Payment Received" %}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Projects Table Section -->
+            <div class="table-container">
+                <h3 class="table-title">{% trans "Projects Linked to Freelancer" %}</h3>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Project Title</th>
+                                <th>Budget</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for project in projects %}
+                            <tr>
+                                <td>{{ project.project.title }}</td>
+                                <td>${{ project.budget|floatformat:2 }}</td>
+                                <td>
+                                    <span class="status-badge {% if project.get_project_status_display == 'Active' %}status-active{% else %}status-pending{% endif %}">
+                                        {{ project.get_project_status_display }}
+                                    </span>
+                                </td>
+                            </tr>
+                            {% empty %}
+                            <tr>
+                                <td colspan="3" class="text-center">No projects found.</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Completed Payments Table -->
+            <div class="table-container">
+                <h3 class="table-title">{% trans "Completed Payments" %}</h3>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Project</th>
+                                <th>Amount</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for transaction in completed_transactions %}
+                            <tr>
+                                <td>{{ transaction.project.title }}</td>
+                                <td>${{ transaction.amount|floatformat:2 }}</td>
+                                <td>{{ transaction.transaction_date|date:"M d, Y" }}</td>
+                            </tr>
+                            {% empty %}
+                            <tr>
+                                <td colspan="3" class="text-center">No completed transactions.</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    {% include 'footer.html' %}
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

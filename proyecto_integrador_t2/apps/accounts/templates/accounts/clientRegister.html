@@ -1,0 +1,240 @@
+{% load static %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up as a client - SkillUp</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'accounts/css/clientRegister.css' %}">
+    <script src="{% static 'accounts/js/citySelector.js' %}"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="header-left">
+                {% include 'accounts/nav.html' %}
+            </div>
+            <div class="language-selector">
+                <form action="{% url 'set_language' %}" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="next" value="{{ redirect_to }}" />
+                    <input type="hidden" name="language" value="es" />
+                    <button type="submit" class="language-btn">
+                        <img src="{% static 'GLOBAL/img/colombia.png' %}" alt="Español">
+                    </button>
+                </form>
+                
+                <form action="{% url 'set_language' %}" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="next" value="{{ redirect_to }}" />
+                    <input type="hidden" name="language" value="en" />
+                    <button type="submit" class="language-btn">
+                        <img src="{% static 'GLOBAL/img/usa.png' %}" alt="English">
+                    </button>
+                </form>
+            </div>
+        </div>
+    </header>
+
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-md-8">
+                <main>
+                    <h2 class="text-center mb-4">{% trans "Sign up as a client" %}</h2>
+                    <p class="text-center text-muted mb-4">{% trans "To get started, you need to sign up here." %}</p>
+
+                    <form method="POST" action="">
+                        {% csrf_token %}
+
+                        {% if form.non_field_errors %}
+                            <div class="alert alert-danger">
+                                {{ form.non_field_errors }}
+                            </div>
+                        {% endif %}
+
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                {{ form.first_name.label_tag }}
+                                {{ form.first_name }}
+                                {% if form.first_name.errors %}
+                                    <div class="text-danger">{{ form.first_name.errors }}</div>
+                                {% endif %}
+                            </div>
+                            <div class="col-md-6">
+                                {{ form.last_name.label_tag }}
+                                {{ form.last_name }}
+                                {% if form.last_name.errors %}
+                                    <div class="text-danger">{{ form.last_name.errors }}</div>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            {{ form.username.label_tag }}
+                            {{ form.username }}
+                            {% if form.username.errors %}
+                                <div class="text-danger">{{ form.username.errors }}</div>
+                            {% endif %}
+                        </div>
+
+                        <div class="mb-3">
+                            {{ form.email.label_tag }}
+                            {{ form.email }}
+                            {% if form.email.errors %}
+                                <div class="text-danger">{{ form.email.errors }}</div>
+                            {% endif %}
+                        </div>
+
+                        <div class="mb-3">
+                            {{ form.password1.label_tag }}
+                            {{ form.password1 }}
+                            {% if form.password1.errors %}
+                                <div class="text-danger">{{ form.password1.errors }}</div>
+                            {% endif %}
+                        </div>
+
+                        <div class="mb-3">
+                            {{ form.password2.label_tag }}
+                            {{ form.password2 }}
+                            {% if form.password2.errors %}
+                                <div class="text-danger">{{ form.password2.errors }}</div>
+                            {% endif %}
+                        </div>
+
+                        <div class="mb-3">
+                            {{ form.phoneNumber.label_tag }}
+                            {{ form.phoneNumber }}
+                            {% if form.phoneNumber.errors %}
+                                <div class="text-danger">{{ form.phoneNumber.errors }}</div>
+                            {% endif %}
+                        </div>
+
+                        <div class="mb-3">
+                            {{ form.taxId.label_tag }}
+                            {{ form.taxId }}
+                            {% if form.taxId.errors %}
+                                <div class="text-danger">{{ form.taxId.errors }}</div>
+                            {% endif %}
+                        </div>
+
+                        <div class="mb-3">
+                            {{ form.companyName.label_tag }}
+                            {{ form.companyName }}
+                            {% if form.companyName.errors %}
+                                <div class="text-danger">{{ form.companyName.errors }}</div>
+                            {% endif %}
+                        </div>
+
+                        <div class="mb-3">
+                            {{ form.typeOfCompany.label_tag }}
+                            {{ form.typeOfCompany }}
+                            {% if form.typeOfCompany.errors %}
+                                <div class="text-danger">{{ form.typeOfCompany.errors }}</div>
+                            {% endif %}
+                        </div>
+
+                        <div class="mb-3">
+                            {{ form.businessVertical.label_tag }}
+                            {{ form.businessVertical }}
+                            {% if form.businessVertical.errors %}
+                                <div class="text-danger">{{ form.businessVertical.errors }}</div>
+                            {% endif %}
+                        </div>
+
+                        <div class="mb-3">
+                            {{ form.country|as_crispy_field }}  <!-- Renderizado del campo country desde el formulario -->
+                        </div>
+                        
+                        <div class="mb-3">
+                            {{ form.city|as_crispy_field }}  <!-- Renderizado del campo city desde el formulario -->
+                        </div>
+                        
+
+                        <div class="mb-3">
+                            {{ form.address.label_tag }}
+                            {{ form.address }}
+                            {% if form.address.errors %}
+                                <div class="text-danger">{{ form.address.errors }}</div>
+                            {% endif %}
+                        </div>
+                        <button type="submit" class="btn-submit">
+                            <i class="fas fa-user-plus"></i>
+                            {% trans "Create an account" %}
+                        </button>
+                    </form>
+
+                        
+                    <div class="text-center mt-4">
+                        <p>{% trans "Already have an account?" %} 
+                            <a href="{% url 'login' %}">{% trans "Sign in now" %}</a>
+                        </p>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </div>
+
+    {% include 'footer.html' %}
+    <!---
+    
+    <script>
+        // Diccionario que contiene los países y sus respectivas ciudades
+        const citiesByCountry = {
+            // América Latina
+            'AR': ['Buenos Aires', 'Córdoba', 'Rosario', 'Mendoza'],
+            'BR': ['São Paulo', 'Rio de Janeiro', 'Brasilia', 'Salvador'],
+            'CL': ['Santiago', 'Valparaíso', 'Concepción', 'La Serena'],
+            'CO': ['Bogotá', 'Medellín', 'Cali', 'Cartagena'],
+            'PE': ['Lima', 'Cusco', 'Arequipa', 'Trujillo'],
+            'MX': ['Ciudad de México', 'Guadalajara', 'Monterrey', 'Puebla'],
+
+            // América del Norte
+            'US': ['New York', 'Los Angeles', 'Chicago', 'Houston'],
+            'CA': ['Toronto', 'Vancouver', 'Montreal', 'Calgary'],
+
+            // Europa
+            'ES': ['Madrid', 'Barcelona', 'Valencia', 'Sevilla'],
+            'FR': ['Paris', 'Lyon', 'Marseille', 'Toulouse'],
+            'DE': ['Berlin', 'Hamburg', 'Munich', 'Frankfurt'],
+            'IT': ['Rome', 'Milan', 'Naples', 'Turin'],
+            'UK': ['London', 'Manchester', 'Birmingham', 'Liverpool'],
+
+            // Asia
+            'CN': ['Beijing', 'Shanghai', 'Shenzhen', 'Guangzhou'],
+            'JP': ['Tokyo', 'Osaka', 'Kyoto', 'Yokohama'],
+            'IN': ['Mumbai', 'Delhi', 'Bangalore', 'Chennai'],
+            'KR': ['Seoul', 'Busan', 'Incheon', 'Daegu'],
+            'SG': ['Singapore'],
+            'ID': ['Jakarta', 'Surabaya', 'Bandung', 'Medan'],
+            'TH': ['Bangkok', 'Chiang Mai', 'Pattaya', 'Phuket']
+        };
+
+        // Función que se ejecuta cuando se selecciona un país
+        function updateCities() {
+            const countrySelect = document.getElementById('country');
+            const citySelect = document.getElementById('city');
+            const selectedCountry = countrySelect.value;
+
+            // Limpiar las opciones previas de la ciudad
+            citySelect.innerHTML = '';
+
+            // Obtener las ciudades del país seleccionado
+            const cities = citiesByCountry[selectedCountry];
+
+            // Agregar las nuevas opciones de ciudades
+            cities.forEach(city => {
+                const option = document.createElement('option');
+                option.value = city;
+                option.textContent = city;
+                citySelect.appendChild(option);
+            });
+        }
+    </script>
+    -->
+</body>
+</html>

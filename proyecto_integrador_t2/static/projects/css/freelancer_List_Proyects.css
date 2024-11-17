@@ -1,0 +1,187 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f9fa;
+}
+.hero-banner {
+    position: relative; /* Asegura que los elementos dentro se posicionen relativos a este contenedor */
+    width: 100%; /* Asegura que el contenedor ocupe todo el ancho disponible */
+}
+
+.hero-banner img {
+    width: 100%; /* La imagen ocupa todo el ancho del contenedor */
+    border-radius: 10px; /* Borde redondeado */
+}
+
+.banner-text {
+    position: absolute; /* Posición absoluta para situar el texto sobre la imagen */
+    bottom: 20px; /* Coloca el texto 20px desde la parte inferior de la imagen */
+    left: 20px; /* Coloca el texto 20px desde la parte izquierda de la imagen */
+    color: white; /* El texto es blanco */
+    font-size: 32px; /* Tamaño de fuente más grande para mayor visibilidad */
+    font-weight: bold; /* Texto en negrita */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Sombra para mejorar la visibilidad del texto sobre la imagen */
+}
+
+.btn-primary {
+    background-color: #473BF0;
+    border-color: #473BF0;
+}
+
+.project-item {
+    border: 1px solid #e9ecef;
+    transition: box-shadow 0.3s ease;
+}
+
+.project-item:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.project-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #161C2D;
+    margin-bottom: 10px;
+}
+
+.project-description {
+    font-size: 14px;
+    color: #6C757D;
+    margin-bottom: 15px;
+}
+
+.badge {
+    font-size: 12px;
+    font-weight: normal;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    background-color: #f1f3f5;
+    color: #495057;
+}
+
+.project-info {
+    font-size: 12px;
+}
+
+.btn-outline-primary {
+    color: #473BF0;
+    border-color: #473BF0;
+}
+
+.btn-outline-primary:hover {
+    background-color: #473BF0;
+    color: white;
+}
+
+.user-info, .sort-options {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.form-check-input:checked {
+    background-color: #473BF0;
+    border-color: #473BF0;
+}
+
+/* Header Styles */
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 40px;
+    background-color: white;
+    border-bottom: 1px solid #E7E9ED;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: 700;
+    color: #161C2D ;
+}
+
+.nav-link {
+    font-size: 14px;
+    color: #6C757D;
+    font-weight: 500;
+    margin-right: 20px;
+}
+
+.nav-link.active, .nav-link:hover {
+    color: #473BF0;
+}
+
+.search-bar .search-input {
+    padding: 10px 15px;
+    border-radius: 8px;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+}
+
+/* Estilos adicionales para el footer */
+footer {
+    background-color: #3929d1;
+    font-family: 'Poppins', sans-serif;
+}
+
+footer h5 {
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+footer h6 {
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+footer p {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+footer ul li {
+    margin-bottom: 0.5rem;
+}
+
+footer ul li a {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+}
+
+footer ul li a:hover {
+    opacity: 1;
+    text-decoration: underline;
+}
+
+.social-icon {
+    width: 24px;  /* Ajusta un tamaño uniforme */
+    height: 24px; /* Mantén las proporciones constantes */
+    filter: brightness(0) invert(1);  /* Estilo de color que ya tienes */
+    transition: opacity 0.3s ease;
+    object-fit: cover;
+}
+
+.social-icon:hover {
+    opacity: 0.7;
+}
+
+.custom-margin-bottom {
+    margin-bottom: 50px; /* O la cantidad de espacio que prefieras */
+}
+
+@media (max-width: 992px) {
+    footer h5 {
+        font-size: 1.3rem;
+    }
+    
+    footer h6 {
+        font-size: 0.9rem;
+    }
+    
+    footer p, footer ul li a {
+        font-size: 0.8rem;
+    }
+}

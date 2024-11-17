@@ -1,0 +1,102 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% trans "Login" %}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'accounts/css/loginStyle.css' %}">
+    <link rel="stylesheet" href="{% static 'GLOBAL/css/borrar.css' %}">
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="header-left">
+                {% include 'accounts/nav.html' %}
+            </div>
+            <div class="language-selector">
+                <form action="{% url 'set_language' %}" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="next" value="{{ redirect_to }}" />
+                    <input type="hidden" name="language" value="es" />
+                    <button type="submit" class="language-btn">
+                        <img src="{% static 'GLOBAL/img/colombia.png' %}" alt="Español">
+                    </button>
+                </form>
+                
+                <form action="{% url 'set_language' %}" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="next" value="{{ redirect_to }}" />
+                    <input type="hidden" name="language" value="en" />
+                    <button type="submit" class="language-btn">
+                        <img src="{% static 'GLOBAL/img/usa.png' %}" alt="English">
+                    </button>
+                </form>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <h2>{% trans "Welcome Back" %}</h2>
+            <form method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="username">{% trans "Username" %}</label>
+                    <input type="text" id="username" name="username" placeholder="{% trans 'Enter your username' %}" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">{% trans "Password" %}</label>
+                    <div class="password-input-container">
+                        <input type="password" id="password" name="password" placeholder="{% trans 'Enter your password' %}" required>
+                        <button type="button" class="password-toggle" onclick="togglePassword()">
+                            <i class="far fa-eye" id="toggleIcon"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <a href="{% url 'recoverPassword' %}" class="forgot-password">{% trans "Forgot Password?" %}</a>
+
+                <button id="buttonLogin" type="submit">
+                    <i class="fas fa-sign-in-alt"></i>
+                    {% trans "Login" %}
+                </button>
+            </form>
+
+            {% for message in messages %}
+                <p id="messagesk">{{message}}</p>
+            {% endfor %}
+
+            <div class="register-section">
+                <p>
+                    {% trans "Don't have an account?" %}
+                    <a href="{% url 'landpage'%}#about_to_register" class="register-link">
+                        {% trans "Register here" %}
+                    </a>
+                </p>
+            </div>
+        </div>
+    </main>
+    {% include 'footer.html' %}
+    <script>
+        function togglePassword() {
+            const passwordInput = document.getElementById('password');
+            const toggleIcon = document.getElementById('toggleIcon');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleIcon.classList.remove('fa-eye');
+                toggleIcon.classList.add('fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                toggleIcon.classList.remove('fa-eye-slash');
+                toggleIcon.classList.add('fa-eye');
+            }
+        }
+    </script>
+</body>
+</html>

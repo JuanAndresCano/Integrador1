@@ -1,0 +1,321 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% trans "Freelancer Profile" %}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link type="text/css" href="{% static 'accounts/css/freelancerProfile.css' %}" rel="stylesheet"/>
+</head>
+<body>
+    {% if request.user.is_authenticated %}
+        {% if request.user.is_client %}
+            {% include 'navbarClient.html' %}
+        {% elif request.user.is_freelancer %}
+            {% include 'navbarFreelancer.html' %}
+        {% endif %}
+    {% endif %}
+
+    <section class="profile-section">
+        {% if show %}
+        <div class="profile-actions">
+            <div class="action-buttons">
+                <form action="{% url 'approveProfileFreelancer' projectContributor.id %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn-profile-action btn-approve">
+                        <i class="fas fa-check"></i>
+                        <span>{% trans "Approve" %}</span>
+                    </button>
+                </form>
+                <form action="{% url 'rejectProfileFreelancer' projectContributor.id %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn-profile-action btn-reject">
+                        <i class="fas fa-times"></i>
+                        <span>{% trans "Reject" %}</span>
+                    </button>
+                </form>
+            </div>
+            
+            <a href="" class="chat-button">
+                <div class="chat-icon">
+                    <i class="fas fa-comments"></i>
+                </div>
+                <div class="chat-tooltip">
+                    <span>{% trans "Talk with" %}</span>
+                    <strong>{{ freelancer.user.first_name }}</strong>
+                </div>
+            </a>
+        </div>
+        {% endif %}
+        {% if not show %}
+            {% if talkMessage %}
+            <div class="profile-actions">
+                <a href="{% url 'clientCreateComprobateChat' freelancer.user.username %}" class="chat-button">
+                    <div class="chat-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <div class="chat-tooltip">
+                        <span>{% trans "Talk with" %}</span>
+                        <strong>{{ freelancer.user.first_name }}</strong>
+                    </div>
+                </a>
+            </div>
+            {% endif %}
+        {% endif %}
+        <div class="content-wrapper">
+            <div class="name-prefix">{% trans "My name is" %}</div>
+            <h1 class="name">
+                {{ freelancer.user.first_name }} 
+                <span class="highlight">{{ freelancer.user.last_name }}</span>
+            </h1>
+
+            <!-- Descripción -->
+            <p class="description">
+                {{ freelancer.description|default:"Creative front-end developer with more than +5 years of experience in enterprise companies and startups. Proficient in JavaScript, Angular, and React. Passionate about UI/UX" }}
+            </p>
+
+            <!-- Redes Sociales -->
+            <div class="social-links">
+                {% if freelancer.linkedin_url %}
+                    <a href="{{ freelancer.linkedin_url }}" target="_blank" class="social-link">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                {% endif %}
+                {% if freelancer.github_url %}
+                    <a href="{{ freelancer.github_url }}" target="_blank" class="social-link">
+                        <i class="fab fa-github"></i>
+                    </a>
+                {% endif %}
+                {% if freelancer.instagram_url %}
+                    <a href="{{ freelancer.instagram_url }}" target="_blank" class="social-link">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                {% endif %}
+            </div>
+
+            <!-- Skills y experiencia -->
+            <div class="skill-tags">
+                {% for skill in freelancer.skillExpertises.all %}
+                    <span class="skill-tag">{{ skill.name }}</span>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Imagen del perfil -->
+        <div class="image-wrapper">
+            <img 
+                src="{{ freelancer.profile_pic.url }}" 
+                alt="Profile Picture" 
+                class="profile-image"
+            >
+            <div class="image-backdrop"></div>
+        </div>
+    </section>
+    
+    <section class="portfolio-section">
+        <div class="section-title">
+            <span>{% trans "My Works" %}</span>
+            <h2>{% trans "Featured Portfolios" %}</h2>
+        </div>
+    
+        <div class="portfolio-grid">
+            {% for portfolio in freelancer.portfolios.all %}
+                <div class="portfolio-card">
+                    <div class="portfolio-thumbnail">
+                        {% if portfolio.project_image %}
+                            <img src="{{ portfolio.project_image.url }}" alt="{{ portfolio.project_name }}">
+                        {% else %}
+                            <img src="{% static 'img/default-portfolio-thumbnail.jpg' %}" alt="{% trans 'Default Thumbnail' %}">
+                        {% endif %}
+                    </div>
+                    <div class="portfolio-content">
+                        <h3 class="portfolio-title">{{ portfolio.project_name }}</h3>
+                        <div class="portfolio-duration">
+                            <i class="fas fa-clock"></i> {{ portfolio.project_duration_months }} {% trans "months ago" %}
+                        </div>
+                        <p class="portfolio-description">{{ portfolio.project_description|truncatewords:15 }}</p>
+                        {% if portfolio.project_link %}
+                            <a href="{{ portfolio.project_link }}" target="_blank" class="portfolio-link">
+                                <i class="fas fa-link"></i> {% trans "   View Project" %}
+                            </a>
+                        {% endif %}
+                    </div>
+                    {% if request.user.is_authenticated %}
+                        {% if request.user.is_freelancer %}
+                            <!-- Botón de eliminar -->
+                            <form method="POST" action="{% url 'delete_portfolio' portfolio.id %}" class="delete-portfolio-form">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger btn-sm delete-portfolio-btn">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>
+                            </form>
+                        {% endif %}
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>        
+    </section>
+    <section class="work-experiences">
+        <div class="experience-header">
+            <div class="title-wrapper">
+                <div class="section-title">
+                    <span>{% trans "CAREER PATH" %}</span>
+                    <h2>{% trans "Work Experiences" %}</h2>
+                </div>
+    
+                <div class="experience-level-box">
+                    <div class="level-label">{% trans "Experience Level" %}</div>
+                    <div class="level-value">
+                        <i class="fas fa-award"></i>
+                        {{ freelancer.experience_level }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="experience-timeline">
+            <div class="timeline-line"></div>
+            
+            {% for experience in freelancer.experiences.all %}
+                <div class="experience-item" style="--order: {{ forloop.counter }}">
+                    <div class="job-header">
+                        <div class="job-title">
+                            <h4>{{ experience.job }}</h4>
+                            <div class="company-name">
+                                <i class="fas fa-building"></i>
+                                {{ experience.company }}
+                            </div>
+                            <div class="job-duration">
+                                <i class="far fa-calendar-alt"></i>
+                                <span>{{ experience.start_date }} - {{ experience.end_date }}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="job-description">{{ experience.job_description }}</p>
+                </div>
+            {% empty %}
+                <div class="experience-item">
+                    <p class="no-experience">{% trans "No work experience yet." %}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+    <section class="download-cv-section">
+        <div class="section-title">
+            <span>{% trans "MY RESUME" %}</span>
+            <h2>{% trans "Download CV" %}</h2>
+        </div>
+        
+        <div class="download-cv-container">
+            <div class="cv-text">
+                <p>{% trans "Get a detailed look at my experience and qualifications" %}</p>
+            </div>
+            {% if freelancer.resume %}
+            <a href="{{ freelancer.resume.url }}" class="cv-download-btn" download>
+                <span>{% trans "Download CV" %}</span>
+                <i class="fas fa-file-download"></i>
+            </a>
+            {% endif %}
+        </div>
+    </section>
+    <section class="comments-section">
+        <div class="section-title">
+            <span>{% trans "FEEDBACK" %}</span>
+            <h2>{% trans "Ratings & Reviews" %}</h2>
+        </div>
+    
+     <!-- Lista de comentarios -->
+        <div class="comments-container">
+            {% for rating in ratings %}
+            <div class="comment-card">
+                <div class="comment-header">
+                    <div class="commenter-info">
+                        <div class="commenter-avatar">
+                            <div class="commenter-avatar">
+                                {% if rating.client.profile_pic %}
+                                    <img src="{{ rating.client.profile_pic.url }}" alt="{{ rating.client.user.first_name }} {{ rating.client.user.last_name }}" class="avatar-img">
+                                {% else %}
+                                    <img src="{% static 'path/to/default-avatar.png' %}" alt="Default Avatar" class="avatar-img">
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="commenter-details">
+                            <h4>{{ rating.client.user.first_name }}</h4>
+                            <span class="comment-date">
+                                <i class="far fa-calendar-alt"></i>
+                                {{ rating.date_posted|date:"M d, Y" }}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="rating-stars">
+                        {% for i in "12345" %}
+                        <i class="fas fa-star {% if forloop.counter <= rating.rating %}active{% endif %}"></i>
+                        {% endfor %}
+                    </div>
+                </div>
+    
+                <div class="comment-content">
+                    <p>{{ rating.comment }}</p>
+                </div>
+    
+                {% if rating.response %}
+                <div class="freelancer-response">
+                    <div class="response-header">
+                        <i class="fas fa-reply"></i>
+                        <span>{% trans "Freelancer's Response" %}</span>
+                    </div>
+                    <p>{{ rating.response }}</p>
+                </div>
+                {% elif request.user.is_freelancer and request.user.freelancer == freelancer %}
+                <form method="POST" action="" class="response-form">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        {{ response_form.response }}
+                        <input type="hidden" name="rating_id" value="{{ rating.id }}">
+                    </div>
+                    <button type="submit" name="response_form" class="btn-respond">
+                        <i class="fas fa-reply"></i>
+                        {% trans "Respond" %}
+                    </button>
+                </form>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+    
+        <!-- Formulario para agregar calificación -->
+        {% if request.user.is_client and not show %}
+        <div class="add-rating-container">
+            <h3>{% trans "Share Your Experience" %}</h3>
+            <form method="POST" action="" class="rating-form">
+                {% csrf_token %}
+                <div class="star-rating">
+                    <p>{% trans "Your Rating" %}</p>
+                    <div class="stars">
+                        {% for i in "54321" %}
+                            <input type="radio" name="rating" id="star{{ i }}" value="{{ i }}" class="star-input">
+                            <label for="star{{ i }}" class="star-label" title="{{ i }} {% trans 'stars' %}">
+                                <i class="fas fa-star"></i>
+                            </label>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="comment-input">
+                    {{ rating_form.comment }}
+                </div>
+        
+                <button type="submit" name="rating_form" class="btn-submit">
+                    <i class="fas fa-paper-plane"></i>
+                    {% trans "Submit Review" %}
+                </button>
+            </form>
+        </div>
+        {% endif %}
+    </section>
+    {% include 'footer.html' %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

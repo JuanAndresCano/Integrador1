@@ -1,0 +1,11 @@
+{% load static %}
+
+{% if message.author == user %}
+<div class="message right-message">
+    <p>{{ message.body }}</p>
+</div>
+{% else %}
+<div class="message left-message">
+    <p>{{ message.body }}</p>
+</div>
+{% endif %}

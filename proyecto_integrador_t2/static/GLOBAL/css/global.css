@@ -1,0 +1,215 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap');
+
+/* General Styles
+--------------------------------------------- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    color: #161C2D;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    height: 100%;
+
+}
+
+h2, h5 {
+    color: #161C2D !important;
+}
+
+/* Header Styles
+--------------------------------------------- */
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 40px;
+    background-color: white;
+    border-bottom: 1px solid #E7E9ED;
+}
+
+.logo {
+    font-size: 22px !important;
+    font-weight: 700 !important;
+    color: #161C2D !important;
+}
+
+.logo.active, 
+.logo:hover {
+    color: #473BF0 !important; 
+}
+.nav-link {
+    font-size: 14px !important;
+    color: #6C757D !important;
+    font-weight: 500 !important;
+    margin-right: 20px !important;
+    transition: color 0.3s !important;
+}
+
+.nav-link.active, 
+.nav-link:hover {
+    color: #473BF0 !important; 
+}
+
+.search-bar .search-input {
+    padding: 10px 15px !important;
+    border-radius: 8px !important;
+    padding-right: 30px !important;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+}
+
+/* Estilos para el selector de idioma en el header */
+.language-selector .form-select {
+    width: auto !important;
+    min-width: 120px !important;
+    border-radius: 5px !important;
+}
+
+.language-selector .form-select:focus {
+    box-shadow: none;
+    border-color: #6c757d;
+}
+.search-icon {
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+
+/* Footer Styles
+--------------------------------------------- */
+.footer {
+    background-color: #161C2D;
+    padding: 80px 10px;
+    color: white;
+    margin-top: auto; /* Empuja el footer hacia abajo */
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.footer h4 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.footer .footer-description {
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.footer .footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+.footer .footer-links li {
+    margin-bottom: 10px;
+}
+
+.footer .footer-links a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer .footer-links a:hover {
+    color: #473BF0;
+    text-decoration: underline;
+}
+
+/* Social Icons Styles
+--------------------------------------------- */
+.social-icons {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.social-icons img {
+    width: 24px;
+    filter: brightness(0) invert(1);
+    transition: opacity 0.3s ease;
+}
+
+.social-icons img:hover {
+    opacity: 0.7;
+}
+
+/* Responsive Design (for screens <= 768px)
+--------------------------------------------- */
+@media (max-width: 768px) {
+    .footer {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .social-icons {
+        justify-content: center;
+    }
+}
+
+/* Dropdown Button Styling */
+.dropdown .btn {
+    background-color: transparent !important;
+    padding: 0 !important;
+    border: none !important;
+}
+
+.dropdown .user-name {
+    font-weight: 600 !important;
+    margin-left: 1px !important; /* Añade separación entre la imagen y el nombre */
+    color: #161C2D !important;
+    font-size: 16px !important;
+}
+
+.profile-pic{
+    max-width: 200px;
+    max-height:200px;
+    margin: 0 auto;
+    border-radius: 50%;
+}
+
+/* Image in the dropdown */
+.dropdown .profile-pic {
+    border: 2px solid #473BF0; /* Añade un borde para hacerla destacar */
+}
+
+/* Dropdown menu styling */
+.dropdown-menu {
+    border-radius: 10px !important ;
+    padding: 0.5rem 0 !important;
+    background-color: #f8f9fa !important ; /* Color de fondo suave */
+    border: none !important;
+}
+
+/* Dropdown item styling */
+.dropdown-item {
+    padding: 0.75rem 1.5rem !important ;
+    font-size: 15px !important;
+    font-weight: 500 !important;
+    color: #161C2D !important;
+    transition: background-color 0.2s, color 0.2s !important;
+}
+
+.dropdown-item:hover {
+    background-color: #473BF0 !important;
+    color: #fff !important ;
+}
+
+/* Divider in dropdown */
+.dropdown-divider {
+    margin: 0.5rem 0 !important;
+}

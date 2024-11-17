@@ -1,0 +1,119 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifications</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link type='text/css' href="{% static 'GLOBAL/css/global.css' %}" rel='stylesheet' />
+    <link type='text/css' href="{% static 'notifications/css/borrar.css' %}" rel='stylesheet' />
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <!-- HEADER -->
+    {% if request.user.is_authenticated %}
+        {% if request.user.is_client %}
+            {% include 'navbarClient.html' %}
+        {% elif request.user.is_freelancer %}
+            {% include 'navbarFreelancer.html' %}
+        {% endif %}
+    {% endif %}
+    <div class="container my-4">
+        <h1 class="text-center">{% trans "Notifications" %}</h1>
+
+        <!-- Filtros de notificaciones como pestañas -->
+        <ul class="nav nav-tabs mb-4">
+            <li class="nav-item">
+                <a class="nav-link {% if request.GET.filter == 'pending' or not request.GET.filter %}active{% endif %}" href="?filter=pending">{% trans "Pending" %}</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {% if request.GET.filter == 'read' %}active{% endif %}" href="?filter=read">{% trans "Readed" %}</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {% if request.GET.filter == 'all' %}active{% endif %}" href="?filter=all">{% trans "All" %}</a>
+            </li>
+        </ul>
+
+        <div class="list-group mt-4">
+            {% for notify in notify %}
+                <div class="list-group-item d-flex align-items-start mb-3">
+                    {% if notify.actor.freelancer %}
+                        {% if notify.actor.freelancer.profile_pic %}
+                            <img class="profile-pic rounded-circle me-3" src="{{ notify.actor.freelancer.profile_pic.url }}" alt="Freelancer Photo" style="width: 40px; height: 40px; object-fit: cover;">
+                        {% else %}
+                            <img class="profile-pic rounded-circle me-3" src="{% static 'img/default.png' %}" alt="Default Photo" style="width: 40px; height: 40px; object-fit: cover;">
+                        {% endif %}
+                    {% elif notify.actor.client %}
+                        {% if notify.actor.client.profile_pic %}
+                            <img class="profile-pic rounded-circle me-3" src="{{ notify.actor.client.profile_pic.url }}" alt="Client Photo" style="width: 40px; height: 40px; object-fit: cover;">
+                        {% else %}
+                            <img class="profile-pic rounded-circle me-3" src="{% static 'img/default.png' %}" alt="Default Photo" style="width: 40px; height: 40px; object-fit: cover;">
+                        {% endif %}
+                    {% endif %}
+                    {% if notify.url %}
+                        <a href="{% url 'notification_detail' notify.id %}" class="flex-grow-1 no-underline">
+                            <h5 class="mb-1">{{ notify.actor.first_name }} {{ notify.actor.last_name }}</h5>                            
+                            <p class="mb-1">{{ notify.verb }}</p>
+                            <small class="text-muted">{{ notify.timestamp|date:"F j, Y, g:i a" }}</small>
+                        </a>
+                    {% else %}
+                        <div class="flex-grow-1">
+                            <h5 class="mb-1">{{ notify.actor.first_name }} {{ notify.actor.last_name }}</h5>
+                            <p class="mb-1">{{ notify.verb }}</p>
+                            <small class="text-muted">{{ notify.timestamp|date:"F j, Y, g:i a" }}</small>
+                        </div>
+                    {% endif %}
+                    {% if not notify.read %}
+                        <a href="{% url 'mark_as_read' notify.id %}" class="btn btn-sm btn-primary btn-mark-read ms-2" onclick="markAsRead(event, this)">
+                            <span class="button-text">{% trans "Mark as read" %}</span>
+                            <div class="checkmark-container">
+                                <svg class="checkmark-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M5 13L9 17L19 7" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </a>
+                    {% else %}
+                        <span class="text-muted ms-2">{% trans "Read" %}</span>
+                    {% endif %}
+                </div>
+            {% empty %}
+                <div class="alert alert-warning" role="alert">
+                    {% trans "No notifications available" %}
+                </div>
+            {% endfor %}
+        </div>        
+    </div>
+    <!-- FOOTER -->
+    {% include 'footer.html' %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function markAsRead(event, button) {
+            event.preventDefault();
+            
+            const url = button.href;
+            if (!url || url === "" || url === "#") {
+                console.log("No valid URL, skipping redirection.");
+                return;  // No redirection if URL is invalid
+            }
+            
+            // Añade la clase checking al botón
+            button.classList.add('checking');
+            
+            // Encuentra el elemento list-group-item padre
+            const listItem = button.closest('.list-group-item');
+            
+            // Después de la animación del botón y el checkmark
+            setTimeout(() => {
+                // Añade la clase hiding al list item
+                listItem.classList.add('hiding');
+                
+                // Después de la animación de desaparición, redirige
+                setTimeout(() => {
+                    window.location.href = url;
+                }, 300); // Ajustado para coincidir con la duración de la animación slideOut
+            }, 600); // Tiempo suficiente para que se complete la animación del checkmark
+        }
+    </script>
+</body>
+</html>

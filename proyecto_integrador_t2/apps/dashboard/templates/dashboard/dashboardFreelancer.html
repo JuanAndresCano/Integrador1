@@ -1,0 +1,219 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillUp Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link type='text/css' href="{% static 'dashboard/css/dashboard1.css' %}" rel='stylesheet'/>
+    <style>
+        .hero-section {
+            background-image: url("{% static 'GLOBAL/img/panel.png' %}");
+            background-size: cover;
+            background-position: center;
+            border-radius: 16px;
+            padding: 3.5rem 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: transform var(--transition-speed);
+        }
+    </style>
+</head>
+<body>
+    {% include 'navbarFreelancer.html' %}
+
+    <div class="container mt-5">
+        <h1 class="welcome-header">{% trans "Welcome" %}, {{ request.user.first_name }}</h1>
+        
+        <div class="hero-section mb-5">
+            <div class="hero-content">
+                <h2 id="title-SkillUp" class="text-white fs-1 fw-bold mb-4">{% trans "Get started with SkillUp"  %}</h2>
+                <div class="search-bar">
+                    <input type="text" placeholder="Search for projects" aria-label="Search projects">
+                    <button class="search-button">
+                        <i class="fas fa-search me-2"></i>
+                        Search
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="dashboard-section">
+            <div class="row g-4">
+                <!-- My Projects Panel -->
+                <div class="col-md-6 col-lg-4">
+                    <h3 class="section-title">
+                        <i class="fas fa-tasks"></i>
+                        {% trans "My Projects" %}
+                    </h3>
+                    <a href="{% url 'browseOwnProjects' %}" class="text-decoration-none">
+                        <div class="dashboard-card h-100">
+                            <div class="card-body">
+                                {% for project in projects|slice:":5" %}
+                                    <div class="project-item">
+                                        <div class="d-flex justify-content-between align-items-center mb-2">
+                                            <h6 class="project-title">{{ project.title }}</h6>
+                                            <span class="project-percentage">{{ project.progress }}%</span>
+                                        </div>
+                                        <div class="progress">
+                                            <div class="progress-bar" role="progressbar"style="width: {{ project.progress }}%; background-color: #473BF0;"
+                                                 aria-valuenow="{{ project.progress }}" 
+                                                 aria-valuemin="0" 
+                                                 aria-valuemax="100">
+                                            </div>
+                                        </div>                                        
+                                    </div>
+                                {% empty %}
+                                    <div class="text-center py-4">
+                                        <i class="fas fa-folder-open fs-2 text-muted mb-3"></i>
+                                        <p class="text-muted">{% trans "No projects available." %}</p>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Messages Panel -->
+                <div class="col-md-6 col-lg-4">
+                    <h3 class="section-title">
+                        <i class="fas fa-comments"></i>
+                        {% trans "Messages" %}
+                    </h3>
+                    <a href="{% url 'freelancerMessageHome' %}" class="text-decoration-none">
+                        <div class="dashboard-card h-100">
+                            <div class="card-body">
+                                {% if latest_chats %}
+                                    {% for chat in latest_chats %}
+                                        <div class="message-item d-flex align-items-center mb-3">
+                                            <!-- Imagen del usuario en el chat -->
+                                            {% if chat.client.profile_pic %}
+                                                <img src="{{ chat.client.profile_pic.url }}" alt="User Image" class="rounded-circle me-3" style="width: 40px; height: 40px; object-fit: cover;">
+                                            {% else %}
+                                                <img src="{% static 'img/default.png' %}" alt="Default Image" class="rounded-circle me-3" style="width: 40px; height: 40px; object-fit: cover;">
+                                            {% endif %}
+                                            <div>
+                                                <h6 class="project-title">{{ chat.other_user_name }}</h6>
+                                                <p class="text-muted mb-0 small">{{ chat.last_message|default:"No messages yet." }}</p>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                {% else %}
+                                    <div class="text-center py-4">
+                                        <i class="fas fa-inbox fs-2 text-muted mb-3"></i>
+                                        <p class="text-muted">{% trans "No messages available." %}</p>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <h3 class="section-title">
+                        <i class="fas fa-chart-line"></i>
+                        {% trans "My Finances" %}
+                    </h3>
+                    <a href="{% url 'FreelancerFinancialControl' %}" class="text-decoration-none">
+                        <div class="dashboard-card h-100">
+                            <div class="balance-section">
+                                <h5 class="balance-label">
+                                    <i class="fas fa-wallet"></i>
+                                    {% trans "Available Balance" %}
+                                </h5>
+                                <p class="balance-amount">{{ balance|floatformat:2 }}</p>
+                            </div>
+                            
+                            <div class="transactions-section">
+                                <h5 class="transactions-title">
+                                    <i class="fas fa-history"></i>
+                                    {% trans "Recent Transactions" %}
+                                </h5>
+                                
+                                {% if transactions %}
+                                <div class="transactions-list">
+                                    {% for transaction in transactions %}
+                                    <div class="transaction-item">
+                                        <div class="transaction-info">
+                                            <div class="transaction-icon">
+                                                <i class="fas fa-file-invoice-dollar"></i>
+                                            </div>
+                                            <div class="transaction-details">
+                                                <h6 title="{{ transaction.project.title }}">{{ transaction.project.title }}</h6>
+                                                <p class="transaction-date">{{ transaction.transaction_date|date:"M d, Y" }}</p>
+                                            </div>
+                                        </div>
+                                        <div class="transaction-amount">
+                                            <span class="amount">${{ transaction.amount|floatformat:2 }}</span>
+                                            <span class="status-badge">{{ transaction.status }}</span>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                                {% else %}
+                                <div class="empty-transactions">
+                                    <i class="fas fa-receipt"></i>
+                                    <p>{% trans "No transactions available." %}</p>
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <!-- Analysis Panel -->
+                <div class="col-12">
+                    <h3 class="section-title analysis-title">
+                        <i class="fas fa-chart-bar"></i>
+                        {% trans "Analysis" %}
+                    </h3>
+                    <a href="{% url 'freelancerAnalysis' %}" class="text-decoration-none">
+                        <div class="dashboard-card">
+                            <div class="card-body">
+                                <div class="analysis-section">
+                                    <!-- Time Distribution Icon Card -->
+                                    <div class="analysis-card">
+                                        <div class="icon-container">
+                                            <i class="fas fa-hourglass-half"></i>
+                                        </div>
+                                        <p class="analysis-label">{% trans "Time Distribution" %}</p>
+                                    </div>
+
+                                    <!-- Deliverables Progress Icon Card -->
+                                    <div class="analysis-card">
+                                        <div class="icon-container">
+                                            <i class="fas fa-check-square"></i>
+                                        </div>
+                                        <p class="analysis-label">{% trans "Deliverables Progress" %}</p>
+                                    </div>
+
+                                    <!-- Success in Project Completion Icon Card -->
+                                    <div class="analysis-card">
+                                        <div class="icon-container">
+                                            <i class="fas fa-thumbs-up"></i>
+                                        </div>
+                                        <p class="analysis-label">{% trans "Project Completion Success" %}</p>
+                                    </div>
+
+                                    <!-- Project Complexity Icon Card -->
+                                    <div class="analysis-card">
+                                        <div class="icon-container">
+                                            <i class="fas fa-layer-group"></i>
+                                        </div>
+                                        <p class="analysis-label">{% trans "Projects by Complexity" %}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    {% include 'footer.html' %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

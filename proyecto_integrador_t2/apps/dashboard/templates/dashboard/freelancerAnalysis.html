@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    {% load i18n %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freelancer Project Analysis</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link type='text/css' href="{% static 'dashboard/css/clientAnalysis.css' %}" rel='stylesheet'/>
+</head>
+<body>
+    {% include 'navbarFreelancer.html' %}
+    <div class="container mt-5">
+        <h1 class="analysis-title">{% trans "Analysis Dashboard" %}</h1>
+        
+        <div class="grid-container">
+            <!-- Éxito en la Finalización de Proyectos -->
+            <div class="dashboard-card">
+                <h5 class="card-title">{% trans "Success in Project Completion" %}</h5>
+                <div class="chart-container">
+                    <canvas id="successChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Complejidad de Proyectos -->
+            <div class="dashboard-card">
+                <h5 class="card-title">{% trans "Projects by Complexity" %}</h5>
+                <div class="chart-container">
+                    <canvas id="complexityChart"></canvas>
+                </div>
+            </div>
+
+            
+            <!-- Progreso de Entregables por Proyecto -->
+            <div class="dashboard-card">
+                <h5 class="card-title">{% trans "Deliverables Progress by Project" %}</h5>
+                <div class="chart-container">
+                    <canvas id="deliverablesProgressChart"></canvas>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <script>
+        const timeDistribution = JSON.parse("{{ time_distribution|escapejs }}");
+        const projectTitles = JSON.parse("{{ project_titles|escapejs }}");
+        const projectProgress = JSON.parse("{{ project_progress|escapejs }}");
+        const complexityLabels = JSON.parse("{{ complexity_labels|escapejs }}");
+        const complexityCounts = JSON.parse("{{ complexity_counts|escapejs }}");
+        const completionDates = JSON.parse("{{ completion_dates|escapejs }}");
+        const successRates = JSON.parse("{{ success_rates|escapejs }}");
+
+
+        // Gráfico de Progreso de Entregables
+        const ctx2 = document.getElementById('deliverablesProgressChart').getContext('2d');
+        new Chart(ctx2, {
+            type: 'bar',
+            data: { labels: projectTitles, datasets: [{ label: 'Progress (%)', data: projectProgress, backgroundColor: 'rgba(71, 59, 240, 0.7)' }] },
+            options: { responsive: true, scales: { y: { beginAtZero: true, max: 100 } } }
+        });
+
+        // Gráfico de Éxito en Finalización de Proyectos
+        const ctx3 = document.getElementById('successChart').getContext('2d');
+        new Chart(ctx3, {
+            type: 'line',
+            data: { labels: completionDates, datasets: [{ label: 'Success Rate', data: successRates, borderColor: 'rgba(46, 204, 113, 1)', fill: false }] },
+            options: { responsive: true, scales: { y: { beginAtZero: true, max: 1 } } }
+        });
+
+        // Gráfico de Complejidad de Proyectos
+        const ctx4 = document.getElementById('complexityChart').getContext('2d');
+        new Chart(ctx4, {
+            type: 'pie',
+            data: { labels: complexityLabels, datasets: [{ data: complexityCounts, backgroundColor: ['rgba(71, 59, 240, 0.7)', 'rgba(59, 175, 218, 0.6)', 'rgba(46, 204, 113, 0.7)'] }] },
+            options: { responsive: true }
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

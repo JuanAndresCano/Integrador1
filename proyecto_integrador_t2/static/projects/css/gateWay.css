@@ -1,0 +1,195 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --dark-bg: #161C2D;
+    --primary: #473BF0;
+    --secondary: #68D585;
+    --alert: #F74D4D;
+    --soft-bg: #F1F0FE;
+    --neutral: #E6E6E6;
+    --white: #FFFFFF;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--dark-bg);
+    min-height: 100vh;
+}
+
+.payment-container {
+    max-width: 500px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: var(--white);
+    border-radius: 1rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.form-control, .form-select {
+    border: 2px solid var(--neutral);
+    padding: 0.8rem 1rem;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+    background-color: var(--white);
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 0.2rem rgba(71, 59, 240, 0.15);
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.btn-primary:hover {
+    background-color: #3929d9;
+    transform: translateY(-2px);
+}
+
+.payment-methods {
+    display: flex;
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.payment-method-item {
+    flex: 1;
+    padding: 1rem;
+    border: 2px solid var(--neutral);
+    border-radius: 0.5rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.payment-method-item:hover, .payment-method-item.active {
+    border-color: var(--primary);
+    background-color: var(--soft-bg);
+}
+
+.payment-method-item i {
+    font-size: 1.5rem;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+}
+
+.card-icons {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin: 2rem 0;
+    perspective: 1000px;
+}
+
+.card-icons i {
+    font-size: 2.2rem;
+    color: var(--dark-bg);
+    opacity: 0.7;
+    transition: all 0.3s ease;
+    transform-style: preserve-3d;
+}
+
+.card-icons i:hover {
+    opacity: 1;
+    transform: rotateY(180deg);
+}
+
+.security-badge {
+    background: var(--soft-bg);
+    border-radius: 1rem;
+    padding: 1rem;
+    margin: 2rem 0;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    animation: badge-pulse 2s infinite;
+}
+
+@keyframes badge-pulse {
+    0% { box-shadow: 0 0 0 0 rgba(71, 59, 240, 0.2); }
+    70% { box-shadow: 0 0 0 10px rgba(71, 59, 240, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(71, 59, 240, 0); }
+}
+
+.security-badge i {
+    color: var(--secondary);
+    font-size: 1.5rem;
+}
+
+.payment-form {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.payment-form.active {
+    display: block;
+    opacity: 1;
+}
+
+.forms-container {
+    position: relative;
+    min-height: 300px;
+}
+
+.paypal-info {
+    background-color: var(--soft-bg);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.btn-paypal {
+    background-color: #0070BA;
+    color: white;
+}
+
+.btn-paypal:hover {
+    background-color: #005ea6;
+}
+
+.partners {
+    background-color: var(--soft-bg);
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.partners img {
+    height: 30px;
+    margin: 0 1rem;
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+}
+
+.partners img:hover {
+    opacity: 1;
+}
+
+.footer {
+    background-color: var(--soft-bg);
+    padding: 1rem 0;
+    margin-top: 3rem;
+    text-align: center;
+}
+
+.footer a {
+    color: var(--dark-bg);
+    text-decoration: none;
+    margin: 0 1rem;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.footer a:hover {
+    color: var(--primary);
+}

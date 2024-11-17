@@ -1,0 +1,71 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link type='text/css' href="{% static 'GLOBAL/css/global.css' %}" rel='stylesheet'/>
+</head>
+<body>
+    <header class="header container-fluid py-3 bg-white border-bottom d-flex justify-content-between align-items-center flex-wrap">
+        <div class="header-left d-flex align-items-center flex-grow-1">
+            <a href="{% url 'dashboardFreelancer' %}" id="dashboard-link" class="nav-link mx-2"><span class="logo me-4">{% trans "SkillUp" %}</span></a>
+            <nav class="nav d-flex justify-content-between flex-nowrap">
+                <a href="{% url 'browseProject' %}" id="find-work-link" class="nav-link mx-2">{% trans "Find Work" %}</a>
+                <a href="{% url 'browseOwnProjects' %}" id="deliver-work-link" class="nav-link mx-2">{% trans "Deliver Work" %}</a>
+                <a href="{% url 'freelancerMessageHome' %}" id="messages-link" class="nav-link mx-2">{% trans "Messages" %}</a>
+                <a href="{% url 'FreelancerFinancialControl' %}" id="finances-link" class="nav-link mx-2">{% trans "Manage Finances" %}</a>
+                <a href="{% url 'notifications' %}" id="notifications-link" class="nav-link mx-2">
+                    {% trans "Notifications" %}
+                    {% if unread_count > 0 %}
+                        <span class="badge bg-danger">{{ unread_count }}</span>
+                    {% endif %}
+                </a>
+            </nav>
+        </div>
+        <!-- Language Selector -->
+        <div class="language-selector d-flex align-items-center me-3">
+            <form action="{% url 'set_language' %}" method="post" class="d-flex align-items-center">
+                {% csrf_token %}
+                <input type="hidden" name="next" value="{{ redirect_to }}" />
+                <input type="hidden" name="language" value="es" />
+                <button type="submit" class="btn p-0">
+                    <img src="{% static 'GLOBAL/img/colombia.png' %}" alt="Español" style="width: 30px; height: 20px;">
+                </button>
+            </form>
+
+            <form action="{% url 'set_language' %}" method="post" class="d-flex align-items-center ms-2">
+                {% csrf_token %}
+                <input type="hidden" name="next" value="{{ redirect_to }}" />
+                <input type="hidden" name="language" value="en" />
+                <button type="submit" class="btn p-0">
+                    <img src="{% static 'GLOBAL/img/usa.png' %}" alt="English" style="width: 30px; height: 20px;">
+                </button>
+            </form>
+        </div>
+
+        
+
+        <!-- Freelancer Profile Dropdown -->
+        <div class="dropdown">
+            <button class="btn d-flex align-items-center dropdown-toggle" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                {% if request.user.freelancer.profile_pic %}
+                    <img class="profile-pic rounded-circle me-3" src="{{ request.user.freelancer.profile_pic.url }}" alt="Freelancer Photo" style="width: 40px; height: 40px; object-fit: cover;">
+                {% else %}
+                    <img class="profile-pic rounded-circle me-3" src="{% static 'img/default.png' %}" alt="Default Photo" style="width: 40px; height: 40px; object-fit: cover;">
+                {% endif %}
+                <span class="user-name">{{ request.user.first_name }}</span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="dropdownMenuButton">
+                <li><a class="dropdown-item" href="{% url 'freelancerProfile' request.user.freelancer.user_id %}">{% trans "View Profile" %}</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="{% url 'freelancerProfileSettings' %}">{% trans "Customize Profile" %}</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="{% url 'logout' %}">{% trans "Log Out" %}</a></li>
+            </ul>
+        </div>
+</header>
+</body>
+</html>

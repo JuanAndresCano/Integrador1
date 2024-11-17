@@ -1,0 +1,181 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% trans "Freelancer Project Application" %}</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- CSS LISTFREELANCER PROJECT -->
+    <link type='text/css' href="{% static 'projects/css/deliverablesCss.css' %}" rel='stylesheet' />
+    <link rel="stylesheet" href="{% static 'GLOBAL/css/borrar.css' %}">
+
+    <!-- Agregar estilo personalizado para botones -->
+    <style>
+        /* Botón morado personalizado */
+        .btn-purple {
+            background-color: #473BF0 !important;
+            color: #fff !important;
+            border-radius: 25px;
+            padding: 10px 20px;
+            border: none;
+        }
+
+        .btn-purple:hover {
+            background-color: #3a31c4 !important;
+        }
+
+        /* Para mantener consistencia con los botones pequeños */
+        .btn-sm {
+            padding: 6px 12px;
+        }
+    </style>
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+    <!-- HEADER -->
+    {% include 'navbarFreelancer.html' %}
+
+    <!-- MAIN CONTENT -->
+    <main class="container my-5 flex-grow-1">
+        <div class="row">
+            <!-- Contenido principal -->
+            <div class="col-lg-8 col-md-7">
+                <h1>{{ projectContributor.title }}</h1>
+                <strong>{% trans "Description" %}:</strong> {{ projectContributor.description }}<br>
+                <hr>
+                <strong>{% trans "Date Posted" %}:</strong> {{ projectContributor.startDate }}<br>
+                <strong>{% trans "Required Position" %}:</strong> {{ projectContributor.requiredPosition }}<br>
+                <strong>{% trans "Days Duration" %}:</strong> {{ projectContributor.daysDuration }}<br>
+                <strong>{% trans "Budget" %}:</strong> {{ projectContributor.budget }}<br>
+                <hr>
+
+                <label class="form-label">{% trans "Skills and Expertise" %}</label>
+                <div class="skills-container">
+                    <div class="skill-card">
+                        {% for skill in projectContributor.project.skillExpertises.all %}
+                            <label class="skill-card-label">{{ skill.name }}</label>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <hr>
+
+                <!-- Add Deliverable Form -->
+                <h2 class="mt-4">{% trans "Add Deliverable" %}</h2>
+                <form method="post" action="{% url 'add_deliverable' projectContributor.id %}" class="mb-4">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="name" class="form-label">{% trans "Name" %}</label>
+                        <input type="text" class="form-control" id="name" name="name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="form-label">{% trans "Description" %}</label>
+                        <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="deadlineInDays" class="form-label">{% trans "Deadline (in days)" %}</label>
+                        <input type="number" class="form-control" id="deadlineInDays" name="deadlineInDays" required>
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="requiresEvidence" name="requiresEvidence">
+                        <label class="form-check-label" for="requiresEvidence">{% trans "Requires Evidence" %}</label>
+                    </div>
+                    <button type="submit" class="btn btn-purple">{% trans "Add Deliverable" %}</button>
+                </form>
+
+                <!-- List of Deliverables -->
+                <h2 class="mt-4">{% trans "Deliverables" %}</h2>
+                {% for deliverable in deliverables %}
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ deliverable.name }}</h5>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <p class="mb-0 text-justify"><strong>{% trans "Description" %}:</strong> {{ deliverable.description }}</p>
+                                <p class="mb-0"><strong>{% trans "Deadline" %}:</strong> {{ deliverable.deadlineInDays }} {% trans "days" %}</p>
+                                <!-- Mostrar si se requiere evidencia -->
+                                <p class="mb-0"><strong>{% trans "Requires Evidence" %}:</strong> 
+                                    {% if deliverable.requiresEvidence %}
+                                        {% trans "Yes" %}
+                                    {% else %}
+                                        {% trans "No" %}
+                                    {% endif %}
+                                </p>
+                            </div>
+                        </div>
+
+                        <hr class="my-3">
+
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="d-flex align-items-center">
+                                <i class="bi bi-calendar-check text-success me-2"></i>
+                                <p class="mb-0 text-muted"><small>{% trans "Due in" %} {{ deliverable.deadlineInDays }} {% trans "days" %}</small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                <p>{% trans "No deliverables added yet." %}</p>
+                {% endfor %}
+                
+                <!-- Apply for the Job Button -->
+                <form action="{% url 'apply_for_job' projectContributor.id %}" method="post" class="mt-4">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-purple">{% trans "Apply for the Job" %}</button>
+                </form>
+            </div>
+
+            <!-- Sección Acerca de Mí -->
+            <div class="col-lg-4 col-md-5 about-section">
+                <div class="about-me">
+                    <h2>{% trans "About the client" %}</h2>
+                    <div class="company-info">
+                        <img src="{% static 'GLOBAL/img/Globant.png' %}" alt="{% trans 'Logo de Globant' %}" class="company-logo mb-3">
+                        <div class="company-details">
+                            <h3>Globant</h3>
+                            <p>{% trans "Globant is a multinational technology services and consulting company that specializes in creating innovative digital solutions and business transformation. Founded in 2003 and headquartered in Buenos Aires, Argentina." %}</p>
+                            <p>{% trans "76 published works" %}</p>
+                            <p>{% trans "$49K spent in total" %}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    {% include 'footer.html' %}
+
+    <!-- Bootstrap JS -->
+    <!-- Toast messages -->
+    <div class="toast-container">
+        {% for message in messages %}
+            <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="3000">
+                <div class="toast-header">
+                    <strong class="me-auto">{% trans "Error" %}</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body">
+                    {{ message }}
+                </div>
+                <div class="toast-progress"></div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var toastElList = [].slice.call(document.querySelectorAll('.toast'))
+            var toastList = toastElList.map(function (toastEl) {
+                return new bootstrap.Toast(toastEl, { autohide: true, delay: 3000 })
+            })
+            toastList.forEach(toast => toast.show())
+        });
+    </script>
+</body>
+</html>

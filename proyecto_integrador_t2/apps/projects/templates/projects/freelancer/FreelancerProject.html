@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% trans "Freelancer Project" %}</title>
+    <link type='text/css' href='{% static "projects/css/browseProject.css" %}' rel='stylesheet'/>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">SkillUp</a>
+            </nav>
+            
+            <a href="{% url 'browseProject' %}">{% trans "Find work" %}</a>
+            <a class="highlight" href="{% url 'browseOwnProjects' %}">{% trans "Deliver work" %}</a>
+            <a href="#">{% trans "Messages" %}</a>
+            <a href="#">{% trans "Notifications" %}</a>
+        </div>
+    </header>
+
+    <div class="filters">
+        <h2>{% trans "Filters" %}</h2>
+        <form method="get">
+            {{ myFilter.form }}
+            
+            <label for="sort_by">{% trans "Sort by:" %}</label>
+            <select name="sort_by" id="sort_by">
+                <option value="-datePosted" {% if sort_by == "-datePosted" %}selected{% endif %}>{% trans "Date Posted (Newest First)" %}</option>
+                <option value="datePosted" {% if sort_by == "datePosted" %}selected{% endif %}>{% trans "Date Posted (Oldest First)" %}</option>
+                <option value="-budget" {% if sort_by == "-budget" %}selected{% endif %}>{% trans "Budget (High to Low)" %}</option>
+                <option value="budget" {% if sort_by == "budget" %}selected{% endif %}>{% trans "Budget (Low to High)" %}</option>
+            </select>
+            
+            <button type="submit">{% trans "Search" %}</button>
+        </form>
+    </div>
+    <h1>{% trans "Projects:" %}</h1>
+    <ul>
+        {% for project in projects %}  
+            <li class="project-item">  
+                <strong>{% trans "Title:" %}</strong>
+                <a href="{% url 'deliverablesProject' project.id %}">{{ project.title }}</a><br>  
+                <strong>{% trans "Description:" %}</strong> {{ project.description }}<br>
+                <strong>{% trans "Date Posted:" %}</strong> {{ project.datePosted }}<br>
+                <strong>{% trans "Required Position:" %}</strong> {{ project.requiredPosition }}<br>
+                <strong>{% trans "Days Duration:" %}</strong> {{ project.daysDuration }}<br>
+                <strong>{% trans "Budget:" %}</strong> {{ project.budget }}<br>                  
+            </li>  
+        {% endfor %} 
+    </ul>
+    
+</body>
+</html>

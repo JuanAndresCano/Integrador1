@@ -1,0 +1,44 @@
+{% load static %}
+{% load i18n %}
+<div class="milestone-card mb-4 p-3 border rounded">
+    <h4>{{ milestone.name }}</h4>
+
+    <!-- Si el milestone tiene deliverables, los mostramos -->
+    {% if milestone.deliverables.all %}
+        <div class="deliverables-list">
+            <h5>{% trans "Deliverables" %}:</h5>
+            <ul class="list-group">
+                {% for deliverable in milestone.deliverables.all %}
+                    <li class="list-group-item">
+                        <strong>{% trans "Name" %}:</strong> {{ deliverable.name }}<br>
+                        <strong>{% trans "Description" %}:</strong> {{ deliverable.description }}<br>
+                        <strong>{% trans "Deadline" %}:</strong> {{ deliverable.deadlineInDays }} {% trans "days" %} <br>
+                        <strong>{% trans "Requires evidence" %}:</strong>
+                        {% if deliverable.requiresEvidence %}
+                            {% trans "Requires evidence" %}
+                        {% else %}
+                            {% trans "Does not require evidence" %}
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% else %}
+        <p>{% trans "No deliverables added yet." %}</p>
+    {% endif %}
+
+    <!-- Botones para editar y eliminar el milestone -->
+    <div class="mt-3">
+        <!-- Botón para editar entregables -->
+        <a href="{% url 'addMilestoneDeliverable' milestone.id %}" class="btnWOW3">
+            <svg class="svg-icon" fill="none" height="24" width="24" xmlns="http://www.w3.org/2000/svg">
+                <g stroke="#473BF0" stroke-linecap="round" stroke-width="2">
+                    <path d="m20 20h-16"></path>
+                    <path clip-rule="evenodd" d="m14.5858 4.41422c.781-.78105 2.0474-.78105 2.8284 0 .7811.78105.7811 2.04738 0 2.82843l-8.28322 8.28325-3.03046.202.20203-3.0304z" fill-rule="evenodd"></path>
+                </g>
+            </svg>
+            <span class="label">Modify</span>
+        </a>
+    </div>
+
+</div>

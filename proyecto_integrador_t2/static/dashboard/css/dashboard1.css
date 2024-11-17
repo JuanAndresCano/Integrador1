@@ -1,0 +1,777 @@
+
+:root {
+    --primary-color: #473BF0;
+    --primary-hover: #4b00d9;
+    --background-light: #f8f9fa;
+    --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --transition-speed: 0.3s;
+    --title-color: #1a1a1a;
+    --icon-color: #473BF0;
+    --primary-soft: rgba(71, 59, 240, 0.08);
+    --border: #E2E8F0;
+    --text-soft: #718096;
+    --item-radius: 12px;
+    --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body {
+    background-color: var(--background-light);
+    font-family: 'Poppins', sans-serif;
+}
+
+.welcome-header {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--title-color);
+    margin-bottom: 2rem;
+}
+
+.hero-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.hero-section:hover {
+    transform: translateY(-5px);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.search-bar {
+    display: flex;
+    gap: 1rem;
+    max-width: 600px;
+}
+
+.search-bar input {
+    flex: 1;
+    padding: 1rem;
+    border: none;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    font-size: 1rem;
+    transition: box-shadow var(--transition-speed);
+}
+
+.search-bar input:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(90, 0, 255, 0.3);
+}
+
+.search-button {
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 12px;
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: 600;
+    transition: all var(--transition-speed);
+}
+
+.search-button:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-2px);
+}
+
+.dashboard-card {
+    background: white;
+    border-radius: 16px;
+    border: none;
+    box-shadow: var(--card-shadow);
+    transition: all var(--transition-speed);
+}
+
+.dashboard-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(90, 0, 255, 0.1);
+}
+
+.card-header {
+    background-color: transparent;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 1.75rem 1.5rem;
+}
+
+.card-body {
+    padding: 2rem 1.5rem 1.5rem 1.5rem;  /* Aumentado el padding superior a 2rem */
+}
+.card-header h5 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--title-color);
+    margin: 0;
+}
+
+.card-header i {
+    color: var(--text-color);
+    font-size: 1.25rem;
+    margin-right: 0.5rem;
+}
+
+/* Project Items */
+.project-item {
+    position: relative;
+    padding: 1.25rem;
+    background: white;
+    border-radius: var(--item-radius);
+    margin-bottom: 1rem;
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    overflow: hidden;
+    border-bottom: 1px solid var(--border);
+}
+
+.project-item::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 4px;
+    background: var(--primary-color);
+    transform: scaleY(0);
+    transition: var(--transition);
+    transform-origin: bottom;
+}
+
+.project-item:hover {
+    transform: translateX(5px);
+    background: var(--primary-soft);
+}
+
+.project-item:hover::after {
+    transform: scaleY(1);
+}
+
+.project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.project-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--title-color);
+    margin-bottom: 0.5rem;
+}
+
+.project-progress {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.project-percentage {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+.progress {
+    height: 6px;
+    background: var(--background-light);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background: linear-gradient(to right, var(--primary-color), var(--primary-hover));
+    border-radius: 10px;
+    transition: width 0.5s ease;
+}
+
+/* Message Items */
+.message-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    background: white;
+    border-bottom: 1px solid var(--border);
+    transition: var(--transition);
+    margin-bottom: 0;
+}
+
+.message-item:hover {
+    transform: translateX(5px);
+    background: var(--primary-soft);
+}
+
+.message-avatar {
+    position: relative;
+    width: 45px;
+    height: 45px;
+}
+
+.message-avatar img {
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    object-fit: cover;
+    border: 2px solid white;
+    box-shadow: 0 4px 8px rgba(71, 59, 240, 0.15);
+    transition: var(--transition);
+}
+
+.message-item:hover .message-avatar img {
+    transform: scale(1.05);
+}
+
+.message-content {
+    flex: 1;
+    overflow: hidden;
+}
+
+.message-content h6 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin: 0 0 0.25rem 0;
+}
+
+.message-content p {
+    font-size: 0.875rem;
+    color: var(--text-soft);
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.analysis-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.analysis-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.analysis-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin: 0.5rem 0;
+}
+
+.analysis-label {
+    color: var(--primary-color);
+    font-size: 0.875rem;
+}
+
+.analysis-chart {
+    width: 100%;
+    height: 300px;
+    margin-top: 1.5rem;
+}
+
+.dashboard-section {
+    margin-bottom: 4rem;
+}
+
+@media (max-width: 768px) {
+    .search-bar {
+        flex-direction: column;
+    }
+    
+    .welcome-header {
+        font-size: 2rem;
+    }
+    
+    .hero-section {
+        padding: 2rem 1rem;
+    }
+
+    .analysis-section {
+        grid-template-columns: 1fr;
+    }
+}
+
+.section-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--title-color);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.section-title i {
+    color: var(--icon-color);
+}
+
+.progress-bar {
+    background-color: var(--progress-color);
+    border-radius: 4px;
+}
+
+.dashboard-card {
+    margin-top: 0.5rem;
+}
+.section-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--title-color);
+    margin-bottom: 1.5rem; /* Aumentado de 1rem a 1.5rem */
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.projects-section {
+    margin-bottom: 2rem; /* Añade más espacio inferior para los proyectos */
+}
+
+.analysis-title {
+    margin-top: 3rem; /* Aumenta el margen superior del título */
+}
+
+.message-item img {
+    width: 45px;
+    height: 45px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.message-item h6 {
+    font-size: 1rem;
+    color: #333;
+}
+
+.message-item .text-muted {
+    font-size: 0.9rem;
+    color: var(--primary-color);
+}
+
+.dashboard-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.dashboard-card:hover {
+    transform: scale(1.03);
+}
+
+/* Resaltar el fondo de los íconos */
+.icon-container {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+/* Finanzas Panel Styles */
+.finance-card {
+    background: white;
+    border-radius: 16px;
+    box-shadow: var(--card-shadow);
+    transition: all var(--transition-speed);
+    overflow: hidden;
+    border: 1px solid rgba(71, 59, 240, 0.1);
+}
+
+.finance-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(71, 59, 240, 0.1);
+}
+
+/* Balance Section - Versión limpia */
+.balance-section {
+    padding: 2rem;
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 1px;
+    position: relative;
+    border: 2px solid var(--primary-light);
+    overflow: hidden;
+}
+
+/* Decoración sutil para el balance */
+.balance-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(to right, var(--primary-color), var(--primary-light));
+}
+
+.balance-label {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-secondary);
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.balance-label i {
+    color: var(--primary-color);
+    font-size: 1rem;
+}
+
+.balance-amount {
+    font-size: 2.5rem !important;
+    font-weight: 700 !important;
+    margin: 0;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.balance-amount::before {
+    content: '$';
+    font-size: 1.5rem;
+    opacity: 0.7;
+}
+
+/* Stats del balance */
+.balance-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-label {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.25rem;
+}
+
+.stat-value {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.stat-value.positive {
+    color: var(--accent-color);
+}
+
+.stat-value.negative {
+    color: #EF4444;
+}
+
+/* Transactions Section */
+.transactions-section {
+    padding: 1.5rem;
+    margin-top: 0%;
+}
+
+.transactions-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.transactions-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.transaction-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border-radius: 12px;
+    background: var(--background-light);
+    margin-bottom: 0.75rem;
+    transition: all var(--transition-speed);
+}
+
+.transaction-item:hover {
+    transform: translateX(5px);
+    background: var(--primary-light);
+}
+
+.transaction-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.transaction-icon {
+    width: 40px;
+    height: 40px;
+    background: white;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    box-shadow: 0 4px 6px rgba(71, 59, 240, 0.1);
+}
+
+.transaction-details h6 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin: 0;
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.transaction-date {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+.transaction-amount {
+    text-align: right;
+}
+
+.amount {
+    display: block;
+    font-weight: 600;
+    color: var(--primary-color);
+    font-size: 1rem;
+}
+
+.status-badge {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    background: var(--primary-light);
+    color: var(--primary-color);
+    font-weight: 500;
+    margin-top: 0.25rem;
+    display: inline-block;
+}
+
+/* Empty State */
+.empty-transactions {
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-secondary);
+}
+
+.empty-transactions i {
+    font-size: 2.5rem;
+    color: var(--primary-light);
+    margin-bottom: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .balance-section {
+        padding: 1.5rem;
+    }
+
+    .balance-amount {
+        font-size: 2rem !important;
+    }
+
+    .transaction-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .transaction-amount {
+        width: 100%;
+        text-align: left;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+/* Client Finance Card */
+.finance-overview {
+    background: white;
+    border-radius: 16px;
+    box-shadow: var(--card-shadow);
+    transition: all var(--transition-speed);
+    overflow: hidden;
+}
+
+.finance-overview:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(71, 59, 240, 0.1);
+}
+
+/* Transactions Section */
+.transactions-container {
+    padding: 1.5rem;
+}
+
+.transactions-group {
+    margin-bottom: 2rem;
+}
+
+.transactions-group:last-child {
+    margin-bottom: 0;
+}
+
+.transactions-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--primary-light);
+}
+
+.header-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--primary-color  );
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.transaction-count {
+    background: var(--primary-light);
+    color: var(--primary-color);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* Transaction List */
+.transaction-list {
+    color: var(--title-color);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.transaction-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    background: var(--background-light);
+    border-radius: 12px;
+    transition: all var(--transition-speed);
+}
+
+.transaction-item:hover {
+    transform: translateX(5px);
+    background: var(--primary-light);
+}
+
+.transaction-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--title-color);
+
+}
+
+.transaction-status {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+/* Status Variations */
+.status-completed {
+    background: rgba(46, 204, 113, 0.1);
+    color: #2ecc71;
+}
+
+.status-pending {
+    background: rgba(241, 196, 15, 0.1);
+    color: #f1c40f;
+}
+
+.transaction-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.transaction-amount {
+    font-weight: 600;
+    color: var(--text-color);
+    font-size: 1.1rem;
+}
+
+.transaction-date {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+/* Empty State */
+.empty-transactions {
+    text-align: center;
+    padding: 2rem;
+    color: var(--primary-color);
+
+}
+
+.empty-transactions i {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .transactions-container {
+        padding: 1rem;
+    }
+
+    .transaction-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .transaction-info {
+        width: 100%;
+    }
+}
+
+.nav-link#dashboard-link {
+    color: #473BF0 !important; /* Color morado */
+}

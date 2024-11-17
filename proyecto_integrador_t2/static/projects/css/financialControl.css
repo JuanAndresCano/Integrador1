@@ -1,0 +1,417 @@
+/* Variables y configuración base */
+:root {
+    --primary-color: #473BF0;
+    --primary-dark: #3329D2;
+    --text-color: #2D3748;
+    --light-purple: #F3F2FF;
+    --success-color: #0CAF60;
+    --success-light: #DEF7EC;
+    --warning-color: #F59E0B;
+    --warning-light: #FEF3C7;
+    --card-shadow: 0 10px 30px rgba(67, 57, 242, 0.08);
+    --gradient-start: #4339F2;
+    --gradient-end: #7C4DFF;
+}
+
+/* Estilos base */
+body {
+    background: linear-gradient(135deg, #fff 0%, var(--light-purple) 100%);
+    color: var(--text-color);
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Contenedor principal */
+.container {
+    padding: 2rem 1rem;
+}
+
+/* Sección de perfil */
+.profile-section {
+    background: white;
+    border-radius: 24px;
+    padding: 2rem;
+    margin-bottom: 3rem;
+    box-shadow: var(--card-shadow);
+    transition: all 0.3s ease;
+}
+
+.profile-section:hover {
+    transform: translateY(-5px);
+}
+
+.profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 20px;
+    border: 4px solid var(--light-purple);
+    object-fit: cover;
+    transition: all 0.3s ease;
+}
+
+.profile-image:hover {
+    border-color: var(--primary-color);
+    transform: scale(1.05);
+}
+
+.profile-info h2 {
+    color: var(--text-color);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.profile-info h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+    border-radius: 2px;
+}
+
+.company-description {
+    color: var(--text-color);
+    opacity: 0.8;
+    line-height: 1.6;
+}
+
+.company-name {
+    font-weight: 500;
+}
+
+/* Sección de resumen */
+.summary-section {
+    margin-bottom: 3rem;
+}
+
+.section-title {
+    color: var(--text-color);
+    font-weight: 700;
+    margin-bottom: 2rem;
+}
+
+.summary-card {
+    background: white;
+    border-radius: 20px;
+    padding: 1.5rem;
+    height: 100%;
+    transition: all 0.3s ease;
+    border: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.summary-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+}
+
+.summary-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--card-shadow);
+}
+
+.summary-card .card-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.summary-card .card-text {
+    color: var(--text-color);
+    font-weight: 500;
+    opacity: 0.8;
+}
+
+/* Contenedor de tablas */
+.table-container {
+    background: white;
+    border-radius: 20px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--card-shadow);
+}
+
+.table-title {
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.table-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+    border-radius: 2px;
+}
+
+/* Estilos de tabla */
+.table {
+    margin-bottom: 0;
+}
+
+.table thead th {
+    background: var(--light-purple);
+    color: var(--primary-color);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    padding: 1rem;
+    border: none;
+}
+
+.table tbody td {
+    padding: 1rem;
+    border-bottom: 1px solid rgba(67, 57, 242, 0.08);
+    vertical-align: middle;
+}
+
+.table tbody tr {
+    transition: all 0.3s ease;
+}
+
+.table tbody tr:hover {
+    background: rgba(243, 242, 255, 0.5);
+}
+
+/* Badges de estado */
+.status-badge {
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: 500;
+    font-size: 0.875rem;
+    display: inline-block;
+}
+
+.status-active {
+    background: var(--success-light);
+    color: var(--success-color);
+}
+
+.status-pending {
+    background: var(--warning-light);
+    color: var(--warning-color);
+}
+
+/* Animaciones */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.profile-section,
+.summary-card,
+.table-container {
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+
+    .profile-section {
+        text-align: center;
+        padding: 1.5rem;
+    }
+
+    .profile-info h2::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .summary-card {
+        margin-bottom: 1rem;
+    }
+
+    .table-container {
+        padding: 1rem;
+        border-radius: 15px;
+    }
+
+    .table thead th {
+        font-size: 0.8rem;
+        padding: 0.75rem;
+    }
+
+    .table tbody td {
+        padding: 0.75rem;
+    }
+
+    .status-badge {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+    }
+}
+
+/* Agregar al archivo financialControl.css */
+
+/* Botones sociales */
+.social-links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+
+.social-btn {
+    padding: 0.5rem 1rem;
+    border-radius: 12px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.social-btn.linkedin {
+    background: #E8F0FE;
+    color: #0077B5;
+}
+
+.social-btn.github {
+    background: #F6F8FA;
+    color: #24292E;
+}
+
+.social-btn.instagram {
+    background: #FCEEF3;
+    color: #E4405F;
+}
+
+.social-btn.resume {
+    background: var(--light-purple);
+    color: var(--primary-color);
+}
+
+.social-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.social-btn.linkedin:hover {
+    background: #0077B5;
+    color: white;
+}
+
+.social-btn.github:hover {
+    background: #24292E;
+    color: white;
+}
+
+.social-btn.instagram:hover {
+    background: #E4405F;
+    color: white;
+}
+
+.social-btn.resume:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+/* Ajustes adicionales para freelancer */
+.freelancer-description {
+    color: var(--text-color);
+    opacity: 0.8;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.experience-level {
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.experience-level strong {
+    color: var(--primary-color);
+}
+
+/* Responsive para botones sociales */
+@media (max-width: 768px) {
+    .social-links {
+        justify-content: center;
+        margin-top: 1.5rem;
+    }
+
+    .social-btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.85rem;
+    }
+}
+
+.social-links {
+    display: flex;
+    gap: 16px;
+    animation: fadeIn 1.6s ease-out;
+}
+
+.social-link {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    background: var(--light-purple);
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.social-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, var(--gradient-start), var(--gradient-end));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.social-link:hover {
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 10px 20px rgba(67, 57, 242, 0.2);
+}
+
+.social-link:hover::before {
+    opacity: 1;
+}
+
+.social-link i {
+    position: relative;
+    z-index: 1;
+    transition: color 0.3s ease;
+}
+
+.social-link:hover i {
+    color: white;
+}

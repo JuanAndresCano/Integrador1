@@ -1,0 +1,20 @@
+body {
+    background-color: #F4F7FA;
+    color: #161C2D;
+}
+
+/* Estilos del encabezado */
+header {
+    background-color: #fff;
+    border-bottom: 1px solid #E0E0E0; /* Línea fina para dividir el header */
+}
+
+header .header-brand {
+    font-weight: bold;
+    color: #161C2D; /* Color negro que mencionaste */
+    text-decoration: none;
+    font-size: 24px;
+}
+.header-brand:hover {
+    color: #473BF0 /* Cambia el color al pasar el ratón */
+}

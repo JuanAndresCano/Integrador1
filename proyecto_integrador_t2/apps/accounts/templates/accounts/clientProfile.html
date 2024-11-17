@@ -1,0 +1,96 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% trans "Profile Settings" %}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link type='text/css' href="{% static 'accounts/css/clientProfile.css' %}" rel='stylesheet'/>
+
+</head>
+<body>
+    {% include 'navbarClient.html' %}
+
+    <div class="settings-container">
+        <div class="settings-header">
+            <h1>{% trans "Company Profile" %}</h1>
+            <p>{% trans "Manage your company information and account settings" %}</p>
+        </div>
+
+        <div class="settings-content">
+            <!-- Profile Card -->
+            <div class="profile-card">
+                <div class="profile-header">
+                    <div class="profile-image-container">
+                        {% if request.user.client.profile_pic %}
+                            <img src="{{ request.user.client.profile_pic.url }}" alt="Profile">
+                        {% else %}
+                            <img src="{% static 'img/default.png' %}" alt="Default">
+                        {% endif %}
+                    </div>
+                    <div class="profile-info">
+                        <h2>{{ request.user.first_name }} {{ request.user.last_name }}</h2>
+                        <p class="company-type">{{ request.user.client.typeOfCompany }}</p>
+                        <p class="company-name">{{ request.user.client.companyName }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Settings Form -->
+            <form method="POST" action="" enctype="multipart/form-data" class="settings-form">
+                {% csrf_token %}
+                
+                <div class="form-section">
+                    <h3>{% trans "Basic Information" %}</h3>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>{% trans "Profile Picture" %}</label>
+                            <div class="file-input-container">
+                                <input type="file" id="id_profile_pic" name="profile_pic" accept=".jpg, .jpeg, .png">
+                                <label for="id_profile_pic" class="file-label">
+                                    <i class="fas fa-upload"></i>
+                                    {% trans "Choose File" %}
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label>{% trans "Company Description" %}</label>
+                            {{ form.description_company }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>{% trans "Company Details" %}</h3>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <span class="info-label">{% trans "Full Name" %}</span>
+                            <span class="info-value">{{ request.user.first_name }} {{ request.user.last_name }}</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">{% trans "Company Name" %}</span>
+                            <span class="info-value">{{ request.user.client.companyName }}</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">{% trans "Company Type" %}</span>
+                            <span class="info-value">{{ request.user.client.typeOfCompany }}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-submit">
+                    <i class="fas fa-save"></i>
+                    {% trans "Save Changes" %}
+                </button>
+            </form>
+        </div>
+    </div>
+
+    {% include 'footer.html' %}
+</body>
+</html>

@@ -1,0 +1,115 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% trans "Pasarela de Pagos" %}</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link type='text/css' href="{% static 'projects/css/gateWay.css' %}" rel='stylesheet' />
+</head>
+
+<body>
+    <div class="container">
+        <div class="payment-container">
+            <h2 class="text-center mb-4">{% trans "Realizar Pago" %}</h2>
+            
+            <div class="payment-methods">
+                <div class="payment-method-item active" data-method="card">
+                    <i class="fas fa-credit-card"></i>
+                    <div>{% trans "Tarjeta" %}</div>
+                </div>
+                <div class="payment-method-item" data-method="paypal">
+                    <i class="fab fa-paypal"></i>
+                    <div>{% trans "PayPal" %}</div>
+                </div>
+            </div>
+
+            <div class="forms-container">
+                <form id="cardForm" class="payment-form active" method="post" action="{% url 'gateWay' project_contributor_id %}">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label class="form-label">{% trans "Número de Tarjeta" %}</label>
+                        <input type="text" class="form-control" name="card_number" placeholder="{% trans '1234 5678 9012 3456' %}" required>
+                    </div>
+                
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label">{% trans "Fecha de Expiración" %}</label>
+                            <input type="text" class="form-control" name="expiry_date" placeholder="{% trans 'MM/AA' %}" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">{% trans "CVV" %}</label>
+                            <input type="text" class="form-control" name="cvv" placeholder="{% trans '123' %}" required>
+                        </div>
+                    </div>
+                
+                    <div class="mb-3">
+                        <label class="form-label">{% trans "Nombre en la Tarjeta" %}</label>
+                        <input type="text" class="form-control" name="card_name" placeholder="{% trans 'Juan Pérez' %}" required>
+                    </div>
+                
+                    <!-- Botón de pago ajustado -->
+                    <button type="submit" class="btn btn-primary">
+                        {% trans "Pagar" %} ${{ budget }} <i class="fas fa-lock ms-2"></i>
+                    </button>
+                </form>
+                
+
+                <form id="paypalForm" class="payment-form">
+                    <div class="paypal-info mb-4">
+                        <i class="fas fa-info-circle"></i>
+                        {% trans "Serás redirigido a PayPal para completar tu pago de forma segura." %}
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">{% trans "Correo Electrónico de PayPal" %}</label>
+                        <input type="email" class="form-control" placeholder="{% trans 'ejemplo@correo.com' %}">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">{% trans "País/Región" %}</label>
+                        <select class="form-select">
+                            <option value="">{% trans "Selecciona tu país" %}</option>
+                            <option value="ES">{% trans "España" %}</option>
+                            <option value="MX">{% trans "México" %}</option>
+                            <option value="AR">{% trans "Argentina" %}</option>
+                            <option value="CO">{% trans "Colombia" %}</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-paypal">
+                        <i class="fab fa-paypal me-2"></i>
+                        {% trans "Continuar con PayPal" %}
+                    </button>
+                </form>
+            </div>
+
+            <div class="security-badge">
+                <i class="fas fa-shield-alt"></i>
+                <small>{% trans "Pago 100% seguro y encriptado" %}</small>
+            </div>
+
+            <div class="card-icons">
+                <i class="fab fa-cc-visa"></i>
+                <i class="fab fa-cc-mastercard"></i>
+                <i class="fab fa-cc-amex"></i>
+                <i class="fab fa-cc-paypal"></i>
+            </div>
+
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <a href="#">{% trans "Términos y Condiciones" %}</a>
+            <a href="#">{% trans "Política de Privacidad" %}</a>
+            <a href="#">{% trans "Soporte" %}</a>
+        </div>
+    </footer>
+
+    <script src="{% static 'projects/js/gateWay.js' %}"></script>
+</body>
+</html>
