@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 import os
+import django_heroku
+
 from pathlib import Path
 import os
 from django.utils.translation import gettext_lazy as _
@@ -36,7 +38,7 @@ SECRET_KEY = 'django-insecure-q!2!$#=r4_kp1x+kqrd&i@s&vgxfk&-qtg@smruqc$e5x&13fh
 DEBUG = False
 
 
-ALLOWED_HOSTS = ['0.0.0.0']
+ALLOWED_HOSTS = ['skillupproject.herokuapp.com']
 
 
 
@@ -126,10 +128,10 @@ DATABASES = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME':'skillupdb',
-        'USER': 'admin',
-        'PASSWORD': 'admin',
-        'HOST': 'db',
+        'NAME':'d61d80kip6fpjb',
+        'USER': 'ud46cdr106ntkc',
+        'PASSWORD': 'pf6fa986cb7bad9cada11350005c41ae60eba134cee4c4f4056c17e0136b2c288',
+        'HOST': 'cb5ajfjosdpmil.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com',
         'PORT': '5432'
     }
 }
@@ -189,7 +191,11 @@ LOCALE_PATHS = (
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = '/static/'
+#STATIC_URL = '/static/'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_URL = "/static/"
+django_heroku.settings(locals())
 
 STATICFILES_DIRS = [
     BASE_DIR / "static",
